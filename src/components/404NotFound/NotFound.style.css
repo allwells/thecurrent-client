@@ -1,0 +1,23 @@
+* {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.notFound {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.notFound div {
+  width: 30%;
+  height: 40%;
+}
+
+.notFound span {
+  font-size: 62px;
+  color: #409cb5;
+  font-weight: 600;
+}

@@ -1,0 +1,61 @@
+* {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.login-container {
+  display: flex;
+  min-height: 85vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container .card {
+  width: 35%;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 0.5rem;
+}
+
+.login-container .card .card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #343335;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.login-container .card form input {
+  width: 100%;
+}
+
+.login-container .card form button {
+  width: 100%;
+  color: #ffffff;
+  margin-top: 1rem;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: #368dd6;
+  background-color: #368dd6;
+}
+
+.login-container .card .error p {
+  color: #c93c23;
+  font-size: 1.4rem;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 2vh;
+}
+
+@media only screen and (max-width: 768px) {
+  .login-container .card {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .login-container .card {
+    width: 95%;
+  }
+}

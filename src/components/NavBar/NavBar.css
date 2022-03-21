@@ -1,0 +1,85 @@
+* {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.navbar {
+  margin-bottom: 1vh;
+  background-color: #fff;
+  border-bottom: 1px solid #4443;
+}
+
+.navbar .container .navbar-brand {
+  cursor: pointer;
+  color: #368dd6;
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.navbar .container .navbar-collapse form input {
+  width: 18vw;
+  color: #333;
+  margin-left: 2vw;
+  border: 1px solid #368dd6;
+  background-color: #ffffff;
+}
+
+.navbar .container .navbar-collapse form input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar .container .navbar-collapse form button {
+  border: none;
+  outline: none;
+  background-color: #368dd6;
+}
+
+.navbar .container .navbar-collapse form button:hover {
+  background-color: #146bb4;
+}
+
+.navbar .container .navbar-collapse .new-post {
+  width: 100%;
+  border: none;
+  margin-right: 1vw;
+  border-radius: 4px;
+  background-color: #368dd6;
+}
+
+.navbar .container .navbar-collapse .new-post:hover {
+  background-color: #146bb4;
+}
+
+.navbar .container .navbar-collapse .user-icon {
+  border-radius: 50%;
+  background-color: #2e2d2e;
+  border: 2px solid #a6a5a7;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar .container .navbar-collapse .user-icon:hover {
+  transform: scale(1.05);
+}
+
+.navbar .container .navbar-collapse .dropdown-toggle::after {
+  display: none;
+}
+
+.navbar .container .navbar-collapse .login {
+  width: 100%;
+  border: none;
+  margin-right: 1vw;
+  border-radius: 4px;
+  background-color: #368dd6;
+}
+
+.navbar .container .navbar-collapse .login:hover {
+  background-color: #146bb4;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar .container .navbar-collapse .login {
+    margin-top: 1rem;
+  }
+}
