@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import AffiXx from "./components/Affix/AffiXx";
 import Blog from "./components/Blog/Blog";
 import CreatePost from "./components/CreatePost/CreatePost";
 import EditPost from "./components/EditPost/EditPost";
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      <AffiXx />
     </div>
   );
 }

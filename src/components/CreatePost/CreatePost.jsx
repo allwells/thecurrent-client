@@ -7,6 +7,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@aaditya1978/ckeditor5-build-classic";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
+import SelectForm from "../SelectForm/SelectForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +15,7 @@ export default function CreatePost() {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
   const [imageData, setImageData] = useState(null);
@@ -45,6 +47,7 @@ export default function CreatePost() {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", sanitizeContent);
+    formData.append("category", category);
     formData.append("image", imageData);
     formData.append("date", new Date());
     formData.append("token", localStorage.getItem("token"));
@@ -72,9 +75,10 @@ export default function CreatePost() {
         <Container>
           <Card>
             <Card.Body>
-              <h1 className="heading">New Post</h1>
+              <h1 className="heading">Create Post</h1>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
+                  <SelectForm category={category} setCategory={setCategory} />
                   <Form.Label>Add Cover Image</Form.Label>
                   <Form.Control
                     type="File"
@@ -108,6 +112,7 @@ export default function CreatePost() {
                 <Form.Group className="mb-3">
                   <Form.Control
                     type="text"
+                    className="postTitle"
                     placeholder="Post Title Here"
                     value={title}
                     onChange={(e) => {

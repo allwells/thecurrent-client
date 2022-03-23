@@ -1,6 +1,6 @@
 import "./Profile.css";
 
-import { Button, Card, ListGroup } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
 import { AiOutlineHeart } from "react-icons/ai";
@@ -9,17 +9,18 @@ import { FaRegComment } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import Identicon from "react-identicons";
 import NavBar from "../NavBar/NavBar";
+import Purify from "../../utils/Purify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const navigate = useNavigate();
-
+  // eslint-disable-next-line
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [blogs, setBlogs] = useState([]);
   const [likedBlogs, setLikedBlogs] = useState([]);
-  const [isBlog, setIsBlog] = useState(true);
+  const [isBlog] = useState(true);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -80,38 +81,19 @@ export default function Profile() {
     <>
       <NavBar />
       <div className="profile-container">
-        <div className="profle-card">
+        <div className="profile-card">
           <Card>
-            <Card.Header>Basic Profile</Card.Header>
+            <Card.Header>Profile</Card.Header>
             <Card.Body>
               <div className="basic-profile">
                 <Identicon className="user-icon" string={email} size={85} />
                 <div>
-                  <h1>{name}</h1>
                   <div className="user-email">{email}</div>
                   <div className="user-info">
-                    Blogs Published - {blogs.length}
+                    Posts Published - {blogs.length}
                   </div>
                 </div>
               </div>
-              <ListGroup>
-                <ListGroup.Item
-                  className={`${isBlog ? "active" : ""}`}
-                  onClick={() => {
-                    setIsBlog(true);
-                  }}
-                >
-                  Your Blogs <span>{blogs.length}</span>
-                </ListGroup.Item>
-                <ListGroup.Item
-                  className={`${!isBlog ? "active" : ""}`}
-                  onClick={() => {
-                    setIsBlog(false);
-                  }}
-                >
-                  Liked Blogs <span>{likedBlogs.length}</span>
-                </ListGroup.Item>
-              </ListGroup>
             </Card.Body>
           </Card>
         </div>
@@ -127,55 +109,54 @@ export default function Profile() {
           <div className="profile-blogs">
             {isBlog ? (
               <>
-                <h1 className="main-heading">Your Blogs</h1>
+                <h1 className="main-heading">Your Posts</h1>
                 <div>
                   {blogs.map((blog) => {
                     return (
                       <Card className="blog-card" key={blog._id}>
                         {blog.cloudinaryId ? (
-                          <Card.Img variant="top" src={blog.image} />
+                          <Card.Img
+                            variant="top"
+                            src={blog.image}
+                            className="blogLink"
+                            onClick={() => handlePost(blog._id)}
+                          />
                         ) : null}
                         <Card.Body>
                           <h1
-                            onClick={() => {
-                              handlePost(blog._id);
-                            }}
+                            className="blogLink"
+                            onClick={() => handlePost(blog._id)}
                           >
                             {blog.title}
                           </h1>
-                          <div className="blog-info">{blog.author}</div>
-                          <div className="blog-info">
-                            {new Date(blog.created_at).toDateString()}
+                          <div className="createdAt">
+                            <span className="date">
+                              {new Date(blog.created_at).toDateString()}
+                            </span>
+                            <span
+                              className="category"
+                              onClick={() => console.log("Category clicked!")}
+                            >
+                              {Purify(blog.category)}
+                            </span>
                           </div>
                           <div className="blog-items">
-                            <div>
-                              <span>
-                                <AiOutlineHeart /> {blog.likes.length} Reactions
-                              </span>
-                              <span>
-                                <FaRegComment /> {blog.comments.length} Comments
-                              </span>
-                            </div>
-                            <div>
-                              <Button
-                                className="edit-button"
-                                variant="info"
-                                onClick={() => {
-                                  handleEdit(blog._id);
-                                }}
-                              >
-                                Edit
-                              </Button>
-                              <Button
-                                className="edit-button"
-                                variant="danger"
-                                onClick={() => {
-                                  handleDelete(blog._id);
-                                }}
-                              >
-                                Delete
-                              </Button>
-                            </div>
+                            <Button
+                              className="editBtn"
+                              onClick={() => {
+                                handleEdit(blog._id);
+                              }}
+                            >
+                              Edit
+                            </Button>
+                            <Button
+                              className="deleteBtn"
+                              onClick={() => {
+                                handleDelete(blog._id);
+                              }}
+                            >
+                              Delete
+                            </Button>
                           </div>
                         </Card.Body>
                       </Card>

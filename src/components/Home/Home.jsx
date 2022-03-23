@@ -1,13 +1,12 @@
 import "./Home.css";
 
-import { Card, Container } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
-import { AiOutlineHeart } from "react-icons/ai";
 import { BallTriangle } from "react-loader-spinner";
-import { FaRegComment } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
+import Purify from "../../utils/Purify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -42,7 +41,9 @@ export default function Home() {
     <>
       <NavBar />
       <div className="home-container">
-        <h1 className="main-heading"></h1>
+        <h1 className="main-heading" align="center">
+          Latest
+        </h1>
         {loading ? (
           <div className="loader">
             <BallTriangle
@@ -56,35 +57,38 @@ export default function Home() {
             {blogs.length > 0 ? (
               blogs.reverse().map((blog) => {
                 return (
-                  <Card
-                    className="blog-card"
-                    key={blog._id}
-                    onClick={() => {
-                      handlePost(blog._id);
-                    }}
-                  >
+                  <Card className="blog-card" key={blog._id}>
                     {blog.cloudinaryId ? (
                       <Card.Img variant="top" src={blog.image} />
                     ) : null}
                     <Card.Body>
                       <h1>{blog.title}</h1>
-                      <div className="blog-info">{blog.author}</div>
-                      <div className="blog-info">
-                        {new Date(blog.created_at).toDateString()}
+                      <div className="createdAt">
+                        <span className="date">
+                          {new Date(blog.created_at).toDateString()}
+                        </span>
+                        <span
+                          className="category"
+                          onClick={() => console.log("Category clicked!")}
+                        >
+                          {Purify(blog.category)}
+                        </span>
                       </div>
                       <div className="blog-items">
-                        <span>
-                          <AiOutlineHeart /> {blog.likes.length} Reactions
-                        </span>
-                        <span>
-                          <FaRegComment /> {blog.comments.length} Comments
-                        </span>
+                        <Button
+                          className="readMore"
+                          onClick={() => {
+                            handlePost(blog._id);
+                          }}
+                        >
+                          Read More
+                        </Button>
                       </div>
                     </Card.Body>
                   </Card>
                 );
               })
-            )   : (
+            ) : (
               <>
                 <h1>No Post Available</h1>
                 <p></p>
@@ -93,6 +97,7 @@ export default function Home() {
           </Container>
         )}
       </div>
+      <Footer />
     </>
   );
 }

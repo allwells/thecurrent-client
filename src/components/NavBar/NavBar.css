@@ -16,12 +16,26 @@
   font-weight: bolder;
 }
 
+.navbar .container .navbar-collapse {
+  width: 100%;
+  flex-grow: 0;
+  justify-content: space-between;
+}
+
+.navbar .container .navbar-collapse .searchBar {
+  width: 69%;
+}
+
+.navbar .container .navbar-collapse .searchBar form {
+  width: 100%;
+}
+
 .navbar .container .navbar-collapse form input {
   width: 18vw;
   color: #333;
   margin-left: 2vw;
-  border: 1px solid #368dd6;
   background-color: #ffffff;
+  border: 1px solid #368dd699;
 }
 
 .navbar .container .navbar-collapse form input:focus {
@@ -45,6 +59,12 @@
   margin-right: 1vw;
   border-radius: 4px;
   background-color: #368dd6;
+}
+
+.navbar .container .navbar-collapse a {
+  display: flex;
+  place-items: center;
+  justify-content: center;
 }
 
 .navbar .container .navbar-collapse .new-post:hover {
@@ -79,6 +99,15 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .navbar .container .navbar-collapse .searchBar {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .navbar .container .navbar-collapse .searchBar input {
+    margin-left: 0;
+  }
+
   .navbar .container .navbar-collapse .login {
     margin-top: 1rem;
   }

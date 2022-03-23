@@ -5,6 +5,9 @@
   "dependencies": {
     "@aaditya1978/ckeditor5-build-classic": "^0.1.0",
     "@ckeditor/ckeditor5-react": "^3.0.3",
+    "@mantine/core": "^4.0.7",
+    "@mantine/hooks": "^4.0.7",
+    "@modulz/radix-icons": "^4.0.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",

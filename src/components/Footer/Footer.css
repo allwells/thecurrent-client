@@ -1,17 +1,24 @@
 .footer {
-  background-color: #e3d0ee;
-  padding: 20px;
-  text-align: center;
-  font-size: 14px;
-  color: #363535;
-  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
+  cursor: default;
+  padding: 30px 0;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  background-color: #368dd6;
 }
 
-.footer h3 {
-  font-size: 1.5rem;
+.footer .footerLogoLink {
+  color: #fff;
+  font-size: 1.1rem;
   font-weight: bold;
-  color: #368dd6;
+  text-decoration: none;
+}
+
+.footer .footerLogoLink:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

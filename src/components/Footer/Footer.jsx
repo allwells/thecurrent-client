@@ -1,24 +1,27 @@
-import React from "react";
-import { Container } from "react-bootstrap";
 import "./Footer.css";
 
+import { Container } from "react-bootstrap";
+import React from "react";
+
 export default function Footer() {
+  const currentYear = new Date().getUTCFullYear();
+
   return (
     <footer className="footer">
       <Container>
-        <h3>BugBlog</h3>
-        A constructive and inclusive social network for software developers.
-        With you every step of your journey.
-        <br />
-        Made with love and{" "}
+        {/* <h3>TheCurrent</h3> */}
+        {/* Built by{" "}
         <a
-          href="https://reactjs.org/"
+          href="https://github.com/allwells"
           target="_blank"
           rel="noopener noreferrer"
         >
-          React
+          Allwell Onen
+        </a> */}
+        <a className="footerLogoLink" href="/">
+          TheCurrent
         </a>
-        . BugBlog Community © 2022.
+        , Anchor University © {currentYear}.
       </Container>
     </footer>
   );

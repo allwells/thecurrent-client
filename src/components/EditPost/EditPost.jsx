@@ -8,6 +8,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@aaditya1978/ckeditor5-build-classic";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
+import SelectForm from "../SelectForm/SelectForm";
 import axios from "axios";
 
 export default function EditPost() {
@@ -16,6 +17,7 @@ export default function EditPost() {
   const { id } = useParams();
 
   const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
   const [imageData, setImageData] = useState(null);
@@ -32,6 +34,7 @@ export default function EditPost() {
       .get(`${process.env.REACT_APP_BASE_URL}/api/user/post/${id}`)
       .then((res) => {
         setTitle(res.data.blog.title);
+        setCategory(res.data.blog.category);
         setContent(res.data.blog.content);
         setImageData(res.data.blog.image);
         setImage(res.data.blog.image);
@@ -58,6 +61,7 @@ export default function EditPost() {
     const formData = new FormData();
     formData.append("id", id);
     formData.append("title", title);
+    formData.append("category", category);
     formData.append("content", sanitizeContent);
     formData.append("image", imageData);
     formData.append("date", new Date());
@@ -88,6 +92,7 @@ export default function EditPost() {
               <h1 className="heading">Edit Post</h1>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
+                  <SelectForm category={category} setCategory={setCategory} />
                   <Form.Label>Add Cover Image</Form.Label>
                   <Form.Control
                     type="File"
@@ -121,6 +126,7 @@ export default function EditPost() {
                 <Form.Group className="mb-3">
                   <Form.Control
                     type="text"
+                    className="postTitle"
                     placeholder="Post Title Here"
                     value={title}
                     onChange={(e) => {

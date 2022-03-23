@@ -13,15 +13,16 @@ import React, { useEffect, useState } from "react";
 
 import { FaSearch } from "react-icons/fa";
 import Identicon from "react-identicons";
-import anchorLogo from "../../img/anchor-logo.png"
+import anchorLogo from "../../img/anchor-logo.png";
 import axios from "axios";
-import thecurrentLogo from "../../img/thecurrent-logo.png"
+import thecurrentLogo from "../../img/thecurrent-logo.png";
 import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const navigate = useNavigate();
 
   const [loggedIn, setLoggedIn] = useState(false);
+  // eslint-disable-next-line
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
@@ -70,7 +71,7 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse>
             {/* Search Bar */}
-            <Nav className="me-auto">
+            <Nav className="searchBar">
               <Form
                 className="d-flex"
                 onSubmit={(e) => {
@@ -78,11 +79,11 @@ export default function NavBar() {
                 }}
               >
                 <FormControl
-                  type="search"
-                  placeholder="Search"
-                  className="me-2 w-100 searchBar"
-                  aria-label="Search"
                   value={query}
+                  type="search"
+                  aria-label="Search"
+                  placeholder="Search"
+                  className="me-2 w-100"
                   onChange={(e) => {
                     setQuery(e.target.value);
                   }}
@@ -112,8 +113,6 @@ export default function NavBar() {
                     <Identicon className="user-icon" string={email} size={40} />
                   }
                 >
-                  <NavDropdown.Item>{name}</NavDropdown.Item>
-                  <NavDropdown.Divider />
                   <NavDropdown.Item
                     onClick={() => {
                       navigate("/profile");

@@ -1,15 +1,15 @@
 import "./Blog.css";
 
-import { Button, Card, Form, Modal, Offcanvas } from "react-bootstrap";
-import { FaRegComment, FaShare } from "react-icons/fa";
+import { Card, Modal, Offcanvas } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
-import { AiOutlineHeart } from "react-icons/ai";
 import { BallTriangle } from "react-loader-spinner";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { FaShare } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import { MdContentCopy } from "react-icons/md";
 import NavBar from "../NavBar/NavBar";
+import Purify from "../../utils/Purify";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -19,7 +19,7 @@ export default function Blog() {
   const location = window.location.href;
 
   const [blog, setBlog] = useState({});
-  const [liked, setLiked] = useState(false);
+  const [setLiked] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState("");
   const [copied, setCopied] = useState(false);
@@ -31,7 +31,7 @@ export default function Blog() {
   const handleModalShow = () => setShowModal(true);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -53,6 +53,7 @@ export default function Blog() {
       .then((res) => {
         setBlog(res.data.blog);
         if (loggedIn) {
+          // eslint-disable-next-line
           res.data.blog.likes.map((like) => {
             if (like === userId) {
               setLiked(true);
@@ -71,66 +72,68 @@ export default function Blog() {
       });
   }, [id, loggedIn, userId]);
 
-  const handleLike = (id) => {
-    if (loggedIn) {
-      if (!liked) {
-        axios
-          .post(`${process.env.REACT_APP_BASE_URL}/api/user/post/like/${id}`, {
-            user_id: userId,
-          })
-          .then((res) => {
-            setBlog(res.data.blog);
-            if (loggedIn) {
-              res.data.blog.likes.map((like) => {
-                if (like === userId) {
-                  setLiked(true);
-                }
-              });
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      } else {
-        axios
-          .post(
-            `${process.env.REACT_APP_BASE_URL}/api/user/post/unlike/${id}`,
-            {
-              user_id: userId,
-            }
-          )
-          .then((res) => {
-            setBlog(res.data.blog);
-            if (loggedIn) {
-              res.data.blog.likes.map((like) => {
-                if (like === userId) {
-                  setLiked(true);
-                }
-              });
-              setLiked(false);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-    }
-  };
+  // const handleLike = (id) => {
+  //   if (loggedIn) {
+  //     if (!liked) {
+  //       axios
+  //         .post(`${process.env.REACT_APP_BASE_URL}/api/user/post/like/${id}`, {
+  //           user_id: userId,
+  //         })
+  //         .then((res) => {
+  //           setBlog(res.data.blog);
+  //           if (loggedIn) {
+  //             // eslint-disable-next-line
+  //             res.data.blog.likes.map((like) => {
+  //               if (like === userId) {
+  //                 setLiked(true);
+  //               }
+  //             });
+  //           }
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //     } else {
+  //       axios
+  //         .post(
+  //           `${process.env.REACT_APP_BASE_URL}/api/user/post/unlike/${id}`,
+  //           {
+  //             user_id: userId,
+  //           }
+  //         )
+  //         .then((res) => {
+  //           setBlog(res.data.blog);
+  //           if (loggedIn) {
+  //             // eslint-disable-next-line
+  //             res.data.blog.likes.map((like) => {
+  //               if (like === userId) {
+  //                 setLiked(true);
+  //               }
+  //             });
+  //             setLiked(false);
+  //           }
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //     }
+  //   }
+  // };
 
-  const addComment = (id) => {
-    axios
-      .post(`${process.env.REACT_APP_BASE_URL}/api/user/post/comment/${id}`, {
-        user_id: userId,
-        comment: document.getElementById("comment").value,
-      })
-      .then((res) => {
-        setBlog(res.data.blog);
-        document.getElementById("comment").value = "";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const addComment = (id) => {
+  //   axios
+  //     .post(`${process.env.REACT_APP_BASE_URL}/api/user/post/comment/${id}`, {
+  //       user_id: userId,
+  //       comment: document.getElementById("comment").value,
+  //     })
+  //     .then((res) => {
+  //       setBlog(res.data.blog);
+  //       document.getElementById("comment").value = "";
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <>
@@ -146,7 +149,7 @@ export default function Blog() {
           </div>
         ) : (
           <>
-            <div className="utilities">
+            {/* <div className="utilities">
               {loggedIn ? (
                 <>
                   <div
@@ -169,15 +172,31 @@ export default function Blog() {
               ) : (
                 <div className="account-alert">Login to like and comment</div>
               )}
-            </div>
+            </div> */}
             <div className="blog">
               <Card>
                 {blog.cloudinaryId ? <Card.Img src={blog.image} /> : null}
                 <Card.Body>
-                  <div>
-                    {blog.author}
-                    <br />
-                    {new Date(blog.created_at).toDateString()}
+                  <div className="postHeader">
+                    <div className="dateCategory">
+                      <span className="date">
+                        {new Date(blog.created_at).toDateString()}
+                      </span>
+
+                      <span
+                        className="category"
+                        onClick={() => console.log("Category clicked!")}
+                      >
+                        {Purify(blog.category)}
+                      </span>
+                    </div>
+
+                    <div
+                      className="utility-item share"
+                      onClick={handleModalShow}
+                    >
+                      <FaShare />
+                    </div>
                   </div>
                   <h1>{blog.title}</h1>
                   <div
@@ -192,7 +211,7 @@ export default function Blog() {
                 <Offcanvas.Title>Discussion</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <div className="comment-box">
+                {/* <div className="comment-box">
                   <Form
                     onSubmit={(e) => {
                       e.preventDefault();
@@ -207,8 +226,8 @@ export default function Blog() {
                       Comment
                     </Button>
                   </Form>
-                </div>
-                <div className="comment-container">
+                </div> */}
+                {/* <div className="comment-container">
                   {blog.comments ? (
                     blog.comments.reverse().map((comment) => {
                       return (
@@ -226,7 +245,7 @@ export default function Blog() {
                   ) : (
                     <div>No comments yet</div>
                   )}
-                </div>
+                </div> */}
               </Offcanvas.Body>
             </Offcanvas>
             <Modal

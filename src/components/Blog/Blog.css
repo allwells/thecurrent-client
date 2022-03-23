@@ -1,16 +1,18 @@
 .blog-container {
   min-height: calc(100vh - 34px);
   display: flex;
-  padding-top: 2vh;
-  margin-bottom: 30px;
+  padding-top: 5vh;
+  place-items: center;
+  margin-bottom: 90px;
+  flex-direction: column-reverse;
 }
 
 .blog-container .loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .blog-container .loader svg {
@@ -19,11 +21,10 @@
 }
 
 .blog-container .utilities {
-  width: 20%;
+  width: 30%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .blog-container .utilities .account-alert {
@@ -53,14 +54,16 @@
 }
 
 .blog-container .blog {
+  width: 60%;
+  display: flex;
   align-self: center;
-  width: 85%;
+  justify-content: center;
 }
 
 .blog-container .blog .card {
-  width: 80%;
-  border-radius: 12px;
-  padding: 2rem 3rem;
+  width: 100%;
+  border: none;
+  background-color: transparent;
 }
 
 .blog-container .blog .card .card-body {
@@ -74,17 +77,54 @@
   margin-top: 0.5rem;
 }
 
+.blog-container .blog .card .card-body .postHeader {
+  display: flex;
+  place-items: center;
+  justify-content: space-between;
+}
+
+.blog-container .blog .card .card-body .postHeader .date {
+  color: #777;
+  font-weight: 400;
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-right: 1rem;
+}
+
+.blog-container .blog .card .card-body .postHeader .category {
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.65rem;
+  margin-right: 1rem;
+  border-radius: 15px;
+  padding: 0.1rem 0.6rem;
+  text-transform: uppercase;
+  background-color: #368dd6;
+}
+
+.blog-container .blog .card .card-body .postHeader .share {
+  border-radius: 50%;
+  padding: 0.4rem 0.6rem;
+  transition-duration: 0.5s;
+}
+
+.blog-container .blog .card .card-body .postHeader .share:hover {
+  cursor: pointer;
+  background-color: #aaa5;
+}
+
 .comment-box form button {
   width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #368dd6;
   color: #fff;
-  border-radius: 7px;
-  padding: 0.5rem 1rem;
+  display: flex;
   cursor: pointer;
+  border-radius: 7px;
+  align-items: center;
   margin-bottom: 2rem;
+  padding: 0.5rem 1rem;
+  justify-content: center;
+  background-color: #368dd6;
 }
 
 .comment-box form button:hover {
@@ -150,4 +190,16 @@
   border-radius: 7px;
   padding: 0.5rem 1rem;
   /* background-color: #d4b9e4; */
+}
+
+@media only screen and (max-width: 1024px) {
+  .blog-container .blog {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .blog-container .blog {
+    width: 90%;
+  }
 }

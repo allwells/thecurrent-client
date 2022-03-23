@@ -3,7 +3,6 @@ import "./Login.css";
 import { Button, Card, Container, Form, Spinner } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
-import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
