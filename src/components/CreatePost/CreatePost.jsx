@@ -7,6 +7,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@aaditya1978/ckeditor5-build-classic";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
+import Notify from "../Notification/Notify";
 import SelectForm from "../SelectForm/SelectForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +24,7 @@ export default function CreatePost() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [notify, setNotify] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -34,6 +36,7 @@ export default function CreatePost() {
     e.preventDefault();
     setSubmitting(true);
     const sanitizeContent = content.trim();
+
     if (sanitizeContent.length < 200) {
       setError(true);
       setErrorMessage("Content must be at least 200 characters long");
@@ -44,6 +47,7 @@ export default function CreatePost() {
       }, 5000);
       return;
     }
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", sanitizeContent);
@@ -51,6 +55,7 @@ export default function CreatePost() {
     formData.append("image", imageData);
     formData.append("date", new Date());
     formData.append("token", localStorage.getItem("token"));
+
     axios({
       method: "post",
       url: `${process.env.REACT_APP_BASE_URL}/api/user/create`,
@@ -58,7 +63,12 @@ export default function CreatePost() {
     })
       .then((res) => {
         setSubmitting(false);
-        navigate("/");
+        setNotify(!notify);
+
+        setInterval(() => {
+          setNotify(!notify);
+          navigate("/");
+        }, 3000);
       })
       .catch((err) => {
         setSubmitting(false);
@@ -149,6 +159,7 @@ export default function CreatePost() {
           </Card>
         </Container>
       </div>
+      <Notify notify={notify} title="Published Successfully!" />
       <Footer />
     </>
   );

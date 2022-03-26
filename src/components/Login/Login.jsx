@@ -4,6 +4,7 @@ import { Button, Card, Container, Form, Spinner } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
 import NavBar from "../NavBar/NavBar";
+import Notify from "../Notification/Notify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +17,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [notify, setNotify] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -41,7 +43,12 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         setSubmitting(false);
-        navigate("/");
+        setNotify(!notify);
+
+        setTimeout(() => {
+          setNotify(!notify);
+          navigate("/");
+        }, 3000);
       })
       .catch((err) => {
         setSubmitting(false);
@@ -69,8 +76,8 @@ export default function Login() {
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Enter email"
                   value={email}
+                  placeholder="Enter email"
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
@@ -82,8 +89,8 @@ export default function Login() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Password"
                   value={password}
+                  placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
@@ -109,6 +116,11 @@ export default function Login() {
           </Card.Body>
         </Card>
       </Container>
+      <Notify
+        notify={notify}
+        title="Login Success!"
+        children="Welcome back to TheCurrent."
+      />
     </>
   );
 }

@@ -3,7 +3,12 @@ import "./SelectForm.css";
 import React from "react";
 import { Select } from "@mantine/core";
 
-const SelectForm = ({ category, setCategory }) => {
+const SelectForm = ({
+  category,
+  setCategory,
+  errorMsg = true,
+  placeholder = "Pick one",
+}) => {
   const categoryData = [
     {
       value: "anchor-university",
@@ -63,11 +68,17 @@ const SelectForm = ({ category, setCategory }) => {
     <Select
       id="selectForm"
       value={category}
-      label="Category"
+      label={errorMsg ? "Category" : ""}
       data={categoryData}
       onChange={setCategory}
-      placeholder="Pick one"
-      error={category === "" ? "Select at least one from the options" : ""}
+      placeholder={placeholder}
+      error={
+        errorMsg
+          ? category === ""
+            ? "Select at least one from the options"
+            : ""
+          : null
+      }
       required
     />
   );

@@ -3,10 +3,10 @@ import "./Blog.css";
 import { Card, Modal, Offcanvas } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
-import { BallTriangle } from "react-loader-spinner";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaShare } from "react-icons/fa";
 import Footer from "../Footer/Footer";
+import { Loader } from "@mantine/core";
 import { MdContentCopy } from "react-icons/md";
 import NavBar from "../NavBar/NavBar";
 import Purify from "../../utils/Purify";
@@ -141,11 +141,7 @@ export default function Blog() {
       <div className="blog-container">
         {loading ? (
           <div className="loader">
-            <BallTriangle
-              radius="4px"
-              color="#368dd6"
-              ariaLabel="loading-indicator"
-            />
+            <Loader size="lg" variant="bars" />
           </div>
         ) : (
           <>

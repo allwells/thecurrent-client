@@ -11,13 +11,17 @@
   justify-content: center;
 }
 
-.notFound div {
-  width: 30%;
-  height: 40%;
+.notFound .illustration {
+  width: 25%;
+  height: 30%;
 }
 
-.notFound span {
-  font-size: 62px;
+.notFound .page-not-found {
+  font-size: 50px;
   color: #409cb5;
   font-weight: 600;
+}
+
+.notFound .back-button {
+  color: #3e8ea3;
 }

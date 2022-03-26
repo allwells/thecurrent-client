@@ -4,10 +4,10 @@ import { Button, Card } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
 import { AiOutlineHeart } from "react-icons/ai";
-import { BallTriangle } from "react-loader-spinner";
 import { FaRegComment } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import Identicon from "react-identicons";
+import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
 import Purify from "../../utils/Purify";
 import axios from "axios";
@@ -99,11 +99,7 @@ export default function Profile() {
         </div>
         {loading ? (
           <div className="loader">
-            <BallTriangle
-              radius="4px"
-              color="#368DD6"
-              ariaLabel="loading-indicator"
-            />
+            <Loader size="lg" variant="bars" />
           </div>
         ) : (
           <div className="profile-blogs">
@@ -111,7 +107,7 @@ export default function Profile() {
               <>
                 <h1 className="main-heading">Your Posts</h1>
                 <div>
-                  {blogs.map((blog) => {
+                  {blogs.reverse().map((blog) => {
                     return (
                       <Card className="blog-card" key={blog._id}>
                         {blog.cloudinaryId ? (

@@ -1,7 +1,7 @@
 .blog-container {
-  min-height: calc(100vh - 34px);
   display: flex;
   padding-top: 5vh;
+  min-height: 75vh;
   place-items: center;
   margin-bottom: 90px;
   flex-direction: column-reverse;
@@ -9,15 +9,10 @@
 
 .blog-container .loader {
   width: 100%;
-  height: 100%;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.blog-container .loader svg {
-  width: 200px;
-  height: 200px;
 }
 
 .blog-container .utilities {
@@ -166,6 +161,7 @@
   font-size: 1rem;
   font-weight: 500;
   color: #d64531;
+  word-break: break-all;
 }
 
 .copy-link .copy-link-container .copy {

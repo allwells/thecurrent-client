@@ -8,6 +8,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@aaditya1978/ckeditor5-build-classic";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
+import Notify from "../Notification/Notify";
 import SelectForm from "../SelectForm/SelectForm";
 import axios from "axios";
 
@@ -25,6 +26,7 @@ export default function EditPost() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [notify, setNotify] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -66,11 +68,17 @@ export default function EditPost() {
     formData.append("image", imageData);
     formData.append("date", new Date());
     formData.append("token", localStorage.getItem("token"));
+
     axios
       .post(`${process.env.REACT_APP_BASE_URL}/api/user/edit`, formData)
       .then((res) => {
         setSubmitting(false);
-        navigate("/profile");
+        setNotify(!notify);
+
+        setInterval(() => {
+          setNotify(!notify);
+          navigate("/profile");
+        }, 3000);
       })
       .catch((err) => {
         setSubmitting(false);
@@ -164,6 +172,7 @@ export default function EditPost() {
           </Card>
         </Container>
       </div>
+      <Notify notify={notify} title="Updated Successfully!" />
       <Footer />
     </>
   );

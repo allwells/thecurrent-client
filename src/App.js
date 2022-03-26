@@ -10,7 +10,6 @@ import NotFound from "./components/404NotFound/NotFound";
 import Profile from "./components/Profile/Profile";
 import React from "react";
 import Search from "./components/Search/Search";
-import Signup from "./components/Signup/Signup";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/new" element={<CreatePost />} />
           <Route exact path="/edit/:id" element={<EditPost />} />

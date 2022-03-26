@@ -19,11 +19,6 @@
   justify-content: center;
 }
 
-.profile-container .loader svg {
-  width: 200px;
-  height: 200px;
-}
-
 .profile-container .profile-card {
   margin-top: 5rem;
   height: fit-content;

@@ -1,0 +1,57 @@
+.newsCard * {
+  cursor: pointer;
+}
+
+.newsCard {
+  flex-grow: 1;
+  height: 20rem;
+  margin: 0.3rem;
+  min-width: 21rem;
+  border-radius: 5px;
+}
+
+.newsCard .tint {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 1rem;
+  border-radius: 5px;
+  flex-direction: column;
+  background-color: #1117;
+  transition-duration: 0.8s;
+}
+
+.newsCard .tint:hover {
+  background-color: #111d;
+}
+
+.newsCard .tint .category {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.7rem;
+  border-radius: 3px;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.1rem 0.5rem;
+  text-transform: uppercase;
+  background-color: #368dd6;
+}
+
+.newsCard .tint .date {
+  color: #fff9;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  width: fit-content;
+  height: fit-content;
+}
+
+.newsCard .tint h2 {
+  color: #fff;
+  height: fit-content;
+}
+
+@media only screen and (max-width: 426px) {
+  .newsCard {
+    height: 15rem;
+  }
+}

@@ -7,6 +7,7 @@
     "@ckeditor/ckeditor5-react": "^3.0.3",
     "@mantine/core": "^4.0.7",
     "@mantine/hooks": "^4.0.7",
+    "@mantine/notifications": "^4.0.7",
     "@modulz/radix-icons": "^4.0.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -29,7 +30,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "rm -rf node_modules && npm install"
   },
   "eslintConfig": {
     "extends": [

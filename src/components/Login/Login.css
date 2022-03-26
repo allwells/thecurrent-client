@@ -4,7 +4,7 @@
 
 .login-container {
   display: flex;
-  min-height: 85vh;
+  min-height: 90vh;
   align-items: center;
   justify-content: center;
 }
@@ -14,6 +14,7 @@
   border: none;
   border-radius: 10px;
   padding: 1rem 0.5rem;
+  background-color: transparent;
 }
 
 .login-container .card .card-title {
