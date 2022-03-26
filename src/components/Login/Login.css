@@ -43,10 +43,9 @@
 
 .login-container .card .error p {
   color: #c93c23;
-  font-size: 1.4rem;
-  text-align: center;
-  font-weight: bold;
   padding-top: 2vh;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 @media only screen and (max-width: 768px) {
