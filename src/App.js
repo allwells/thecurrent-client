@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/new" element={<CreatePost />} />
           <Route exact path="/edit/:id" element={<EditPost />} />
-          <Route exact path="/blog/:id" element={<Blog />} />
+          <Route exact path="/news/:id" element={<Blog />} />
           <Route exact path="/search/:query" element={<Search />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="*" element={<NotFound />} />

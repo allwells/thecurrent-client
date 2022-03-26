@@ -60,15 +60,11 @@ export default function Blog() {
             }
           });
         }
-        setInterval(() => {
-          setLoading(false);
-        }, 1000);
+        setLoading(false);
       })
       .catch((err) => {
-        setInterval(() => {
-          setLoading(false);
-        }, 1000);
-        console.log(err);
+        setLoading(false);
+        // console.log(err);
       });
   }, [id, loggedIn, userId]);
 
@@ -171,7 +167,9 @@ export default function Blog() {
             </div> */}
             <div className="blog">
               <Card>
-                {blog.cloudinaryId ? <Card.Img src={blog.image} /> : null}
+                {blog.cloudinaryId ? (
+                  <Card.Img className="blog-image" src={blog.image} />
+                ) : null}
                 <Card.Body>
                   <div className="postHeader">
                     <div className="dateCategory">

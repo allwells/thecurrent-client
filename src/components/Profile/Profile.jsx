@@ -51,7 +51,7 @@ export default function Profile() {
   }, [navigate, setName, setEmail, setBlogs, setLikedBlogs]);
 
   const handlePost = (id) => {
-    navigate(`/blog/${id}`);
+    navigate(`/news/${id}`);
   };
 
   const handleDelete = (id) => {

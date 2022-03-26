@@ -25,8 +25,13 @@ export default function Home() {
       axios
         .get(`${process.env.REACT_APP_BASE_URL}/api/user/posts`)
         .then((res) => {
-          setBlogs(res.data.blogs.reverse());
-          setLatestNews(res.data.blogs.slice(-5));
+          setBlogs(res.data.blogs.reverse().slice(5));
+          setLatestNews(
+            res.data.blogs
+              .reverse()
+              .slice(-5)
+              .reverse()
+          );
           setLoading(!loading);
         })
         .catch((err) => {
@@ -38,7 +43,7 @@ export default function Home() {
   }, []);
 
   const handlePost = (id) => {
-    navigate(`/blog/${id}`);
+    navigate(`/news/${id}`);
   };
 
   return (
