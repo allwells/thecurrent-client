@@ -36,7 +36,7 @@ export default function Login() {
     }
 
     axios
-      .post(`${process.env.REACT_APP_BASE_URL}/api/auth/login`, {
+      .post(`/api/auth/login`, {
         email,
         password,
       })

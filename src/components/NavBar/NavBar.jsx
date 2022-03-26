@@ -31,7 +31,7 @@ export default function NavBar() {
     if (localStorage.getItem("token")) {
       setLoggedIn(true);
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/api/user/data`, {
+        .post(`${process.env.REACT_APP_BASE_URL}/data`, {
           token: localStorage.getItem("token"),
         })
         .then((res) => {

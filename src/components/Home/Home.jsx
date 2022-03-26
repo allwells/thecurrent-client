@@ -23,7 +23,7 @@ export default function Home() {
   useEffect(() => {
     const fetchPosts = () => {
       axios
-        .get(`${process.env.REACT_APP_BASE_URL}/api/user/posts`)
+        .get(`${process.env.REACT_APP_BASE_URL}/posts`)
         .then((res) => {
           setBlogs(res.data.blogs.reverse().slice(5));
           setLatestNews(

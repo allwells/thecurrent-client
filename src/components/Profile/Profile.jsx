@@ -28,7 +28,7 @@ export default function Profile() {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/api/user/profile`, {
+        .post(`${process.env.REACT_APP_BASE_URL}/profile`, {
           token: localStorage.getItem("token"),
         })
         .then((res) => {

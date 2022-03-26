@@ -58,7 +58,7 @@ export default function CreatePost() {
 
     axios({
       method: "post",
-      url: `${process.env.REACT_APP_BASE_URL}/api/user/create`,
+      url: `${process.env.REACT_APP_BASE_URL}/create`,
       data: formData,
     })
       .then((res) => {

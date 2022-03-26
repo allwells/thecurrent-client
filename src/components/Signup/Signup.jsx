@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Container, Card, Form, Button, Spinner } from "react-bootstrap";
-import axios from "axios";
-import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Footer";
 import "./Signup.css";
+
+import { Button, Card, Container, Form, Spinner } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+
+import Footer from "../Footer/Footer";
+import NavBar from "../NavBar/NavBar";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -46,7 +48,7 @@ export default function Signup() {
     }
 
     axios
-      .post(`${process.env.REACT_APP_BASE_URL}/api/auth/register`, {
+      .post(`/api/auth/register`, {
         name,
         email,
         password,

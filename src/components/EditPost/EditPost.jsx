@@ -70,7 +70,7 @@ export default function EditPost() {
     formData.append("token", localStorage.getItem("token"));
 
     axios
-      .post(`${process.env.REACT_APP_BASE_URL}/api/user/edit`, formData)
+      .post(`${process.env.REACT_APP_BASE_URL}/edit`, formData)
       .then((res) => {
         setSubmitting(false);
         setNotify(true);

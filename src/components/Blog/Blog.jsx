@@ -36,7 +36,7 @@ export default function Blog() {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/api/user/data`, {
+        .post(`${process.env.REACT_APP_BASE_URL}/data`, {
           token: localStorage.getItem("token"),
         })
         .then((res) => {
@@ -49,7 +49,7 @@ export default function Blog() {
         });
     }
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/api/user/post/${id}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/post/${id}`)
       .then((res) => {
         setBlog(res.data.blog);
         if (loggedIn) {

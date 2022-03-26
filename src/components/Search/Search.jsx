@@ -23,7 +23,7 @@ export default function Search() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/api/user/search/${query}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/search/${query}`)
       .then((res) => {
         setBlogs(res.data.blogs.reverse());
         setLoading(false);
