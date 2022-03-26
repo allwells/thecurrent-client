@@ -25,9 +25,9 @@ export default function Home() {
       axios
         .get(`${process.env.REACT_APP_BASE_URL}/api/user/posts`)
         .then((res) => {
-          setBlogs(res.data.blogs);
-          setLatestNews(res.data.blogs.slice(-5).reverse());
-          setLoading(false);
+          setBlogs(res.data.blogs.reverse());
+          setLatestNews(res.data.blogs.slice(-5));
+          setLoading(!loading);
         })
         .catch((err) => {
           // set error, to display to user
@@ -84,7 +84,7 @@ export default function Home() {
               </Button>
             </div>
             {blogs.length > 0 ? (
-              blogs.reverse().map((blog) => {
+              blogs.map((blog) => {
                 if (category === "" || category === null) {
                   return (
                     <Card className="blog-card" key={blog._id}>

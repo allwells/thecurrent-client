@@ -25,16 +25,12 @@ export default function Search() {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/api/user/search/${query}`)
       .then((res) => {
-        setBlogs(res.data.blogs);
-        setInterval(() => {
-          setLoading(false);
-        }, 800);
+        setBlogs(res.data.blogs.reverse());
+        setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
-        setInterval(() => {
-          setLoading(false);
-        }, 800);
+        // console.log(err);
+        setLoading(false);
       });
   }, [query]);
 
@@ -54,7 +50,7 @@ export default function Search() {
         ) : (
           <Container>
             {blogs.length > 0 ? (
-              blogs.reverse().map((blog) => {
+              blogs.map((blog) => {
                 return (
                   <Card className="blog-card" key={blog._id}>
                     {blog.cloudinaryId ? (

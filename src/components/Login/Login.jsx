@@ -43,12 +43,12 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         setSubmitting(false);
-        setNotify(!notify);
+        setNotify(true);
 
         setTimeout(() => {
-          setNotify(!notify);
+          setNotify(false);
           navigate("/");
-        }, 3000);
+        }, 1500);
       })
       .catch((err) => {
         setSubmitting(false);
@@ -57,7 +57,7 @@ export default function Login() {
         setTimeout(() => {
           setError(false);
           setErrorMsg("");
-        }, 3000);
+        }, 2000);
       });
 
     setValidated(true);

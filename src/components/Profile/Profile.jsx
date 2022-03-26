@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import Identicon from "react-identicons";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
+import Notify from "../Notification/Notify";
 import Purify from "../../utils/Purify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +23,7 @@ export default function Profile() {
   const [likedBlogs, setLikedBlogs] = useState([]);
   const [isBlog] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [notify, setNotify] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -32,16 +34,12 @@ export default function Profile() {
         .then((res) => {
           setName(res.data.name);
           setEmail(res.data.email);
-          setBlogs(res.data.blogs);
+          setBlogs(res.data.blogs.reverse());
           setLikedBlogs(res.data.likedBlogs);
-          setInterval(() => {
-            setLoading(false);
-          }, 1000);
+          setLoading(!loading);
         })
         .catch((err) => {
-          setInterval(() => {
-            setLoading(false);
-          }, 1000);
+          setLoading(!loading);
           navigate("/login");
         });
     } else {
@@ -63,8 +61,13 @@ export default function Profile() {
         id: id,
       })
       .then((res) => {
-        setBlogs(res.data.blogs);
+        setBlogs(res.data.blogs.reverse());
         setLikedBlogs(res.data.likedBlogs);
+        setNotify(true);
+
+        setTimeout(() => {
+          setNotify(false);
+        }, 3000);
       })
       .catch((err) => {
         if (err.response.status === 401) {
@@ -107,7 +110,7 @@ export default function Profile() {
               <>
                 <h1 className="main-heading">Your Posts</h1>
                 <div>
-                  {blogs.reverse().map((blog) => {
+                  {blogs.map((blog) => {
                     return (
                       <Card className="blog-card" key={blog._id}>
                         {blog.cloudinaryId ? (
@@ -200,6 +203,7 @@ export default function Profile() {
           </div>
         )}
       </div>
+      <Notify notify={notify} title="Post deleted successfully!" />
       <Footer />
     </>
   );

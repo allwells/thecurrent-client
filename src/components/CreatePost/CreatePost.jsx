@@ -63,10 +63,10 @@ export default function CreatePost() {
     })
       .then((res) => {
         setSubmitting(false);
-        setNotify(!notify);
+        setNotify(true);
 
         setInterval(() => {
-          setNotify(!notify);
+          setNotify(false);
           navigate("/");
         }, 3000);
       })

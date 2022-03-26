@@ -5,7 +5,7 @@ const Notify = ({ notify, title, children }) => {
   return (
     <div
       style={{
-        display: notify === true ? "flex" : "none",
+        display: notify ? "flex" : "none",
         right: "2%",
         bottom: "14%",
         height: "4rem",
@@ -18,6 +18,7 @@ const Notify = ({ notify, title, children }) => {
         color="teal"
         title={title}
         style={{ width: "100%", height: "100%" }}
+        disallowClose
       >
         {children}
       </Notification>

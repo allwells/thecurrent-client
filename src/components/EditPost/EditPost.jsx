@@ -73,10 +73,10 @@ export default function EditPost() {
       .post(`${process.env.REACT_APP_BASE_URL}/api/user/edit`, formData)
       .then((res) => {
         setSubmitting(false);
-        setNotify(!notify);
+        setNotify(true);
 
         setInterval(() => {
-          setNotify(!notify);
+          setNotify(false);
           navigate("/profile");
         }, 3000);
       })
