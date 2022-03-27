@@ -3,8 +3,9 @@
 }
 
 .newsCard {
+  width: 35%;
   flex-grow: 1;
-  height: 20rem;
+  height: 15rem;
   margin: 0.3rem;
   min-width: 21rem;
   border-radius: 5px;
@@ -45,8 +46,9 @@
   height: fit-content;
 }
 
-.newsCard .tint h2 {
+.newsCard .tint h3 {
   color: #fff;
+  font-size: 1.3rem;
   height: fit-content;
 }
 

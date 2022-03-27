@@ -74,7 +74,7 @@ export default function Home() {
           </div>
         ) : (
           <Container>
-            <div className="explore">
+            <div className={blogs.length > 0 ? "explore" : "no-explore"}>
               <h1 className="main-heading" align="center">
                 Explore news posts:
               </h1>
@@ -162,8 +162,7 @@ export default function Home() {
               })
             ) : (
               <>
-                <h1>No Post Available</h1>
-                <p></p>
+                <h1 className="no-post">No Post Available</h1>
               </>
             )}
           </Container>

@@ -10,6 +10,10 @@
   flex-direction: column;
 }
 
+.home-container .no-post {
+  font-size: 1.2rem;
+}
+
 .home-container .main-heading {
   margin: 0;
   color: #368dd6;
@@ -40,6 +44,11 @@
   margin-bottom: 2rem;
   place-items: center;
   justify-content: center;
+}
+
+.home-container .container .no-explore,
+.home-container .no-post {
+  display: none;
 }
 
 .home-container .loader {
