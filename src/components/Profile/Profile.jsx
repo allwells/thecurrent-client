@@ -1,9 +1,9 @@
 import "./Profile.css";
 
-import { Button, Card } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
 import { AiOutlineHeart } from "react-icons/ai";
+import { Card } from "react-bootstrap";
 import { FaRegComment } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import Identicon from "react-identicons";
@@ -11,7 +11,6 @@ import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
 import NewsCardSmall from "../NewsCards/NewsCardSmall";
 import Notify from "../Notification/Notify";
-import Purify from "../../utils/Purify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 

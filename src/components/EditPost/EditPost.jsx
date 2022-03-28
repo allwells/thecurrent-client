@@ -19,6 +19,7 @@ export default function EditPost() {
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
+  const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
   const [imageData, setImageData] = useState(null);
@@ -37,6 +38,7 @@ export default function EditPost() {
       .then((res) => {
         setTitle(res.data.blog.title);
         setCategory(res.data.blog.category);
+        setAuthor(res.data.blog.author);
         setContent(res.data.blog.content);
         setImageData(res.data.blog.image);
         setImage(res.data.blog.image);
@@ -63,6 +65,7 @@ export default function EditPost() {
     const formData = new FormData();
     formData.append("id", id);
     formData.append("title", title);
+    formData.append("author", author);
     formData.append("category", category);
     formData.append("content", sanitizeContent);
     formData.append("image", imageData);

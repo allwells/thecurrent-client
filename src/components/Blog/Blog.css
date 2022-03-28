@@ -61,6 +61,12 @@
   background-color: transparent;
 }
 
+.blog-container .blog .card .author-section {
+  display: flex;
+  place-items: center;
+  justify-content: flex-start;
+}
+
 .blog-container .blog .card .blog-image {
   max-height: 28rem;
   border-radius: 2px;

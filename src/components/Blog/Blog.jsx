@@ -184,7 +184,10 @@ export default function Blog() {
                 {blog.cloudinaryId ? (
                   <Card.Img className="blog-image" src={blog.image} />
                 ) : null}
-                <Author blog={blog} />
+                <div className="author-section">
+                  <Author blog={blog} />
+                </div>
+
                 <Card.Body>
                   <div
                     className="blog-content"

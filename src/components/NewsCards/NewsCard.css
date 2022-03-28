@@ -39,16 +39,17 @@
 }
 
 .news-card .tint .date {
-  color: #fff9;
-  margin-top: 1rem;
+  color: #ccc;
   font-size: 0.75rem;
   width: fit-content;
+  margin-top: 0.5rem;
   height: fit-content;
-  margin-bottom: 0.3rem;
 }
 
 .news-card .tint h3 {
   color: #fff;
+  margin-top: 1rem;
+  margin-bottom: 0;
   font-size: 1.3rem;
   height: fit-content;
 }

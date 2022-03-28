@@ -1,19 +1,28 @@
 .author {
-  margin: 1rem 0;
   display: flex;
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 1rem;
   place-items: center;
   justify-content: flex-start;
 }
 
 .author .author-label {
   color: #333;
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
   margin-right: 0.3rem;
 }
 
 .author .author-name {
   color: #333d;
-  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-align: center;
   font-style: italic;
+  width: fit-content;
+  height: fit-content;
 }

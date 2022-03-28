@@ -11,7 +11,7 @@
 }
 
 .createpost-container .container .card {
-  width: 60%;
+  width: 65%;
   border: none;
   padding: 1rem;
   border-radius: 7px;
@@ -19,16 +19,17 @@
 }
 
 .createpost-container .container .card .heading {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 /* input type file */
 .createpost-container .container .card form label {
+  margin-top: 1rem;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .createpost-container .container .card form .img-preview {
@@ -61,6 +62,7 @@
 
 .createpost-container .container .card form input[type="file"] {
   width: 100%;
+  font-size: 0.8rem;
   border-radius: 5px;
   margin-bottom: 1rem;
   border: 1px solid #ddd;
@@ -88,15 +90,15 @@
 }
 
 .createpost-container .container .card form .ck-editor__editable {
-  min-height: 25vh;
+  min-height: 30vh;
 }
 
 .createpost-container .container .card form .submit {
-  width: 9rem;
+  width: 8rem;
   border: none;
   padding: 0.3rem;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   border-radius: 4px;
   background-color: #368dd6;
 }
@@ -104,7 +106,7 @@
 .createpost-container .container .card .error {
   color: #f44336;
   margin: 1rem 0;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 

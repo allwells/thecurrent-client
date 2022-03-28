@@ -3,6 +3,7 @@ import "./NewsCardSmall.css";
 import { Button, Highlight, Menu } from "@mantine/core";
 import { Edit, Trash } from "tabler-icons-react";
 
+import Author from "../Author/Author";
 import { Card } from "react-bootstrap";
 import CategoryBadge from "../Badge/CategoryBadge";
 import DatePublished from "../DatePublished/DatePublished";
@@ -64,6 +65,8 @@ const NewsCardSmall = ({
             <DatePublished blog={blog} />
             <span className="divider"></span>
             <CategoryBadge blog={blog} color="#333" onClick={setCategory} />
+            <span className="divider"></span>
+            <Author label={false} blog={blog} />
           </div>
           <div className="blog-items">
             {profile ? null : (

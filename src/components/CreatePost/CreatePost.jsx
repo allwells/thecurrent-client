@@ -1,6 +1,7 @@
 import "./CreatePost.css";
 
 import { Button, Card, Container, Form, Spinner } from "react-bootstrap";
+import { Input, InputWrapper } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
@@ -17,6 +18,7 @@ export default function CreatePost() {
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
+  const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
   const [imageData, setImageData] = useState(null);
@@ -51,6 +53,7 @@ export default function CreatePost() {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", sanitizeContent);
+    formData.append("author", author);
     formData.append("category", category);
     formData.append("image", imageData);
     formData.append("date", new Date());
@@ -89,6 +92,18 @@ export default function CreatePost() {
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                   <SelectForm category={category} setCategory={setCategory} />
+                  <InputWrapper
+                    style={{ marginBottom: "1rem" }}
+                    id="input-demo"
+                    label="Author"
+                  >
+                    <Input
+                      id="input-demo"
+                      placeholder="Author name"
+                      value={author}
+                      onChange={(event) => setAuthor(event.currentTarget.value)}
+                    />
+                  </InputWrapper>
                   <Form.Label>Add Cover Image</Form.Label>
                   <Form.Control
                     type="File"
