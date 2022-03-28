@@ -2,10 +2,11 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  cursor: default;
-  padding: 30px 0;
-  font-size: 15px;
   color: #fff;
+  cursor: default;
+  padding: 0.7rem 0;
+  font-size: 15px;
+  font-size: 0.9rem;
   text-align: center;
   position: relative;
   background-color: #368dd6;
@@ -13,7 +14,7 @@
 
 .footer .footerLogoLink {
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   text-decoration: none;
 }

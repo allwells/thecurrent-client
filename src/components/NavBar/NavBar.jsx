@@ -1,7 +1,6 @@
 import "./NavBar.css";
 
 import {
-  Button,
   Container,
   Form,
   FormControl,
@@ -11,8 +10,9 @@ import {
 } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
-import { FaSearch } from "react-icons/fa";
+import { Button } from "@mantine/core";
 import Identicon from "react-identicons";
+import { Search } from "tabler-icons-react";
 import anchorLogo from "../../img/anchor-logo.png";
 import axios from "axios";
 import thecurrentLogo from "../../img/thecurrent-logo.png";
@@ -65,8 +65,8 @@ export default function NavBar() {
               navigate("/");
             }}
           >
-            <img src={anchorLogo} height={40} alt="logo" />
-            <img src={thecurrentLogo} height={40} alt="logo" />
+            <img src={anchorLogo} height={35} alt="logo" />
+            <img src={thecurrentLogo} height={35} alt="logo" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse>
@@ -88,15 +88,20 @@ export default function NavBar() {
                     setQuery(e.target.value);
                   }}
                 />
-                <Button type="submit" variant="success">
-                  <FaSearch />
+                <Button
+                  className="search-button"
+                  type="submit"
+                  variant="subtle"
+                  size="sm"
+                >
+                  <Search color="#368dd6" size={20} />
                 </Button>
               </Form>
             </Nav>
 
             {loggedIn ? (
               <Nav>
-                <Nav.Link>
+                {/* <Nav.Link>
                   <Button
                     variant="success"
                     className="new-post"
@@ -106,11 +111,14 @@ export default function NavBar() {
                   >
                     Create New Post
                   </Button>
-                </Nav.Link>
+                </Nav.Link> */}
                 <NavDropdown
+                  style={{
+                    textAlign: "left",
+                  }}
                   align={{ lg: "end" }}
                   title={
-                    <Identicon className="user-icon" string={email} size={40} />
+                    <Identicon className="user-icon" string={email} size={35} />
                   }
                 >
                   <NavDropdown.Item
@@ -120,6 +128,13 @@ export default function NavBar() {
                   >
                     Profile
                   </NavDropdown.Item>
+                  <NavDropdown.Item
+                    onClick={() => {
+                      navigate("/new");
+                    }}
+                  >
+                    Create Post
+                  </NavDropdown.Item>
                   <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
@@ -127,7 +142,7 @@ export default function NavBar() {
               <Nav>
                 <Nav.Link>
                   <Button
-                    variant="success"
+                    variant="outine"
                     className="login"
                     onClick={() => {
                       navigate("/login");

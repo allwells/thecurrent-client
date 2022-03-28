@@ -5,13 +5,12 @@
 .navbar {
   margin-bottom: 1vh;
   background-color: #fff;
-  border-bottom: 1px solid #4443;
+  box-shadow: 0 3px 10px #2222;
 }
 
 .navbar .container .navbar-brand {
   cursor: pointer;
   color: #368dd6;
-  font-size: 1.8rem;
   font-style: italic;
   font-weight: bolder;
 }
@@ -23,7 +22,8 @@
 }
 
 .navbar .container .navbar-collapse .searchBar {
-  width: 69%;
+  width: 90%;
+  height: 2.3rem;
 }
 
 .navbar .container .navbar-collapse .searchBar form {
@@ -34,28 +34,49 @@
   width: 18vw;
   color: #333;
   margin-left: 2vw;
-  background-color: #ffffff;
-  border: 1px solid #368dd699;
+  font-size: 0.9rem;
+  border-right: none;
+  background-color: #fff;
+  border-radius: 20px 0 0 20px;
+  border-top: 1px solid #3336;
+  border-left: 1px solid #3336;
+  border-bottom: 1px solid #3336;
 }
 
 .navbar .container .navbar-collapse form input:focus {
   outline: none;
   box-shadow: none;
+  border-right: none;
+  border-top: 1px solid #368dd6aa;
+  border-left: 1px solid #368dd6aa;
+  border-bottom: 1px solid #368dd6aa;
 }
 
-.navbar .container .navbar-collapse form button {
-  border: none;
-  outline: none;
-  background-color: #368dd6;
+.navbar .container .navbar-collapse .searchBar form .search-button {
+  height: 2.3rem;
+  padding: 0.45rem;
+  border-radius: 50%;
+  border-left: none;
+  margin-left: -0.6rem;
+  transition-duration: 0.3s;
+  background-color: #ffffff;
+  border-radius: 0 20px 20px 0;
+  border-top: 1px solid #3336;
+  border-right: 1px solid #3336;
+  border-bottom: 1px solid #3336;
 }
 
-.navbar .container .navbar-collapse form button:hover {
-  background-color: #146bb4;
+.navbar .container .navbar-collapse form input:focus ~ .search-button {
+  border-left: none;
+  border-top: 1px solid #368dd6aa;
+  border-right: 1px solid #368dd6aa;
+  border-bottom: 1px solid #368dd6aa;
 }
 
 .navbar .container .navbar-collapse .new-post {
   width: 100%;
   border: none;
+  font-size: 0.8rem;
   margin-right: 1vw;
   border-radius: 4px;
   background-color: #368dd6;
@@ -63,6 +84,7 @@
 
 .navbar .container .navbar-collapse a {
   display: flex;
+  font-size: 0.8rem;
   place-items: center;
   justify-content: center;
 }
@@ -74,7 +96,7 @@
 .navbar .container .navbar-collapse .user-icon {
   border-radius: 50%;
   background-color: #2e2d2e;
-  border: 2px solid #a6a5a7;
+  border: 1px solid #111111;
   transition: all 0.3s ease-in-out;
 }
 
@@ -89,6 +111,7 @@
 .navbar .container .navbar-collapse .login {
   width: 100%;
   border: none;
+  font-size: 0.8rem;
   margin-right: 1vw;
   border-radius: 4px;
   background-color: #368dd6;

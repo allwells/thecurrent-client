@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import Identicon from "react-identicons";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
+import NewsCardSmall from "../NewsCards/NewsCardSmall";
 import Notify from "../Notification/Notify";
 import Purify from "../../utils/Purify";
 import axios from "axios";
@@ -56,7 +57,7 @@ export default function Profile() {
 
   const handleDelete = (id) => {
     axios
-      .post(`${process.env.REACT_APP_BASE_URL}/api/user/delete`, {
+      .post(`${process.env.REACT_APP_BASE_URL}/delete`, {
         token: localStorage.getItem("token"),
         id: id,
       })
@@ -102,7 +103,7 @@ export default function Profile() {
         </div>
         {loading ? (
           <div className="loader">
-            <Loader size="lg" variant="bars" />
+            <Loader size="sm" variant="bars" />
           </div>
         ) : (
           <div className="profile-blogs">
@@ -112,53 +113,14 @@ export default function Profile() {
                 <div>
                   {blogs.map((blog) => {
                     return (
-                      <Card className="blog-card" key={blog._id}>
-                        {blog.cloudinaryId ? (
-                          <Card.Img
-                            variant="top"
-                            src={blog.image}
-                            className="blogLink"
-                            onClick={() => handlePost(blog._id)}
-                          />
-                        ) : null}
-                        <Card.Body>
-                          <h1
-                            className="blogLink"
-                            onClick={() => handlePost(blog._id)}
-                          >
-                            {blog.title}
-                          </h1>
-                          <div className="createdAt">
-                            <span className="date">
-                              {new Date(blog.created_at).toDateString()}
-                            </span>
-                            <span
-                              className="category"
-                              onClick={() => console.log("Category clicked!")}
-                            >
-                              {Purify(blog.category)}
-                            </span>
-                          </div>
-                          <div className="blog-items">
-                            <Button
-                              className="editBtn"
-                              onClick={() => {
-                                handleEdit(blog._id);
-                              }}
-                            >
-                              Edit
-                            </Button>
-                            <Button
-                              className="deleteBtn"
-                              onClick={() => {
-                                handleDelete(blog._id);
-                              }}
-                            >
-                              Delete
-                            </Button>
-                          </div>
-                        </Card.Body>
-                      </Card>
+                      <NewsCardSmall
+                        blog={blog}
+                        key={blog._id}
+                        profile={true}
+                        handlePost={handlePost}
+                        handleEdit={handleEdit}
+                        handleDelete={handleDelete}
+                      />
                     );
                   })}
                 </div>

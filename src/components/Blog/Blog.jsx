@@ -1,15 +1,17 @@
 import "./Blog.css";
 
-import { Card, Modal, Offcanvas } from "react-bootstrap";
+import { Card, Modal } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
+import Author from "../Author/Author";
+import CategoryBadge from "../Badge/CategoryBadge";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import DatePublished from "../DatePublished/DatePublished";
 import { FaShare } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import { Loader } from "@mantine/core";
 import { MdContentCopy } from "react-icons/md";
 import NavBar from "../NavBar/NavBar";
-import Purify from "../../utils/Purify";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -23,14 +25,14 @@ export default function Blog() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState("");
   const [copied, setCopied] = useState(false);
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const handleModalClose = () => setShowModal(false);
   const handleModalShow = () => setShowModal(true);
 
-  const handleClose = () => setShow(false);
+  // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
 
   useEffect(() => {
@@ -72,7 +74,7 @@ export default function Blog() {
   //   if (loggedIn) {
   //     if (!liked) {
   //       axios
-  //         .post(`${process.env.REACT_APP_BASE_URL}/api/user/post/like/${id}`, {
+  //         .post(`/api/user/post/like/${id}`, {
   //           user_id: userId,
   //         })
   //         .then((res) => {
@@ -92,7 +94,7 @@ export default function Blog() {
   //     } else {
   //       axios
   //         .post(
-  //           `${process.env.REACT_APP_BASE_URL}/api/user/post/unlike/${id}`,
+  //           `/api/user/post/unlike/${id}`,
   //           {
   //             user_id: userId,
   //           }
@@ -118,7 +120,7 @@ export default function Blog() {
 
   // const addComment = (id) => {
   //   axios
-  //     .post(`${process.env.REACT_APP_BASE_URL}/api/user/post/comment/${id}`, {
+  //     .post(`/api/user/post/comment/${id}`, {
   //       user_id: userId,
   //       comment: document.getElementById("comment").value,
   //     })
@@ -137,7 +139,7 @@ export default function Blog() {
       <div className="blog-container">
         {loading ? (
           <div className="loader">
-            <Loader size="lg" variant="bars" />
+            <Loader size="sm" variant="bars" />
           </div>
         ) : (
           <>
@@ -167,32 +169,23 @@ export default function Blog() {
             </div> */}
             <div className="blog">
               <Card>
+                <h1>{blog.title}</h1>
+                <div className="postHeader">
+                  <div className="dateCategory">
+                    <DatePublished blog={blog} />
+                    <span id="divider"></span>
+                    <CategoryBadge blog={blog} />
+                  </div>
+
+                  <div className="utility-item share" onClick={handleModalShow}>
+                    <FaShare />
+                  </div>
+                </div>
                 {blog.cloudinaryId ? (
                   <Card.Img className="blog-image" src={blog.image} />
                 ) : null}
+                <Author blog={blog} />
                 <Card.Body>
-                  <div className="postHeader">
-                    <div className="dateCategory">
-                      <span className="date">
-                        {new Date(blog.created_at).toDateString()}
-                      </span>
-
-                      <span
-                        className="category"
-                        onClick={() => console.log("Category clicked!")}
-                      >
-                        {Purify(blog.category)}
-                      </span>
-                    </div>
-
-                    <div
-                      className="utility-item share"
-                      onClick={handleModalShow}
-                    >
-                      <FaShare />
-                    </div>
-                  </div>
-                  <h1>{blog.title}</h1>
                   <div
                     className="blog-content"
                     dangerouslySetInnerHTML={{ __html: blog.content }}
@@ -200,12 +193,12 @@ export default function Blog() {
                 </Card.Body>
               </Card>
             </div>
-            <Offcanvas show={show} placement="end" onHide={handleClose}>
+            {/* <Offcanvas show={show} placement="end" onHide={handleClose}>
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Discussion</Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body>
-                {/* <div className="comment-box">
+              <Offcanvas.Body> */}
+            {/* <div className="comment-box">
                   <Form
                     onSubmit={(e) => {
                       e.preventDefault();
@@ -221,7 +214,7 @@ export default function Blog() {
                     </Button>
                   </Form>
                 </div> */}
-                {/* <div className="comment-container">
+            {/* <div className="comment-container">
                   {blog.comments ? (
                     blog.comments.reverse().map((comment) => {
                       return (
@@ -240,8 +233,8 @@ export default function Blog() {
                     <div>No comments yet</div>
                   )}
                 </div> */}
-              </Offcanvas.Body>
-            </Offcanvas>
+            {/* </Offcanvas.Body>
+            </Offcanvas> */}
             <Modal
               className="copy-link"
               show={showModal}

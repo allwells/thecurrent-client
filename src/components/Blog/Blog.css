@@ -49,7 +49,7 @@
 }
 
 .blog-container .blog {
-  width: 60%;
+  width: 55%;
   display: flex;
   align-self: center;
   justify-content: center;
@@ -62,55 +62,50 @@
 }
 
 .blog-container .blog .card .blog-image {
-  max-height: 35rem;
+  max-height: 28rem;
+  border-radius: 2px;
 }
 
 .blog-container .blog .card .card-body {
   padding: 0.5rem;
 }
 
-.blog-container .blog .card .card-body h1 {
-  font-size: 2.2rem;
+.blog-container .blog .card h1 {
   font-weight: 700;
-  margin-bottom: 1rem;
-  margin-top: 0.5rem;
+  font-size: 2.2rem;
+  margin-top: 2.5rem;
+  letter-spacing: 0.08rem;
 }
 
-.blog-container .blog .card .card-body .postHeader {
+.blog-container .blog .card .postHeader {
   display: flex;
+  margin-bottom: 2rem;
   place-items: center;
   justify-content: space-between;
 }
 
-.blog-container .blog .card .card-body .postHeader .date {
-  color: #777;
-  font-weight: 400;
-  font-size: 0.8rem;
-  font-style: italic;
-  margin-right: 1rem;
-}
-
-.blog-container .blog .card .card-body .postHeader .category {
-  color: #fff;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.65rem;
-  margin-right: 1rem;
-  border-radius: 15px;
-  padding: 0.1rem 0.6rem;
-  text-transform: uppercase;
-  background-color: #368dd6;
-}
-
-.blog-container .blog .card .card-body .postHeader .share {
+.blog-container .blog .card .postHeader .share {
   border-radius: 50%;
   padding: 0.4rem 0.6rem;
   transition-duration: 0.5s;
 }
 
-.blog-container .blog .card .card-body .postHeader .share:hover {
+.blog-container .blog .card .postHeader .share:hover {
   cursor: pointer;
   background-color: #aaa5;
+}
+
+.blog-container .blog .postHeader .dateCategory {
+  display: flex;
+  place-items: center;
+  justify-content: center;
+}
+
+.blog-container .blog .postHeader .dateCategory #divider {
+  width: 1px;
+  height: 20px;
+  margin: 0 0.5rem;
+  background-color: #3336;
 }
 
 .comment-box form button {
@@ -189,7 +184,6 @@
 .copy-link .copied-text span {
   border-radius: 7px;
   padding: 0.5rem 1rem;
-  /* background-color: #d4b9e4; */
 }
 
 @media only screen and (max-width: 1024px) {

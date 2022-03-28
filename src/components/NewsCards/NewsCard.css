@@ -1,59 +1,60 @@
-.newsCard * {
+.news-card * {
   cursor: pointer;
 }
 
-.newsCard {
+.news-card {
   width: 35%;
   flex-grow: 1;
   height: 15rem;
-  margin: 0.3rem;
-  min-width: 21rem;
-  border-radius: 5px;
+  margin: 0.2rem;
+  min-width: 18rem;
+  border-radius: 4px;
 }
 
-.newsCard .tint {
+.news-card .tint {
   width: 100%;
   height: 100%;
   display: flex;
-  padding: 1rem;
-  border-radius: 5px;
+  padding: 1.3rem;
+  border-radius: 4px;
   flex-direction: column;
   background-color: #111a;
   transition-duration: 0.8s;
 }
 
-.newsCard .tint:hover {
+.news-card .tint:hover {
   background-color: #111d;
 }
 
-.newsCard .tint .category {
+.news-card .tint .category {
   color: #fff;
   font-weight: 600;
-  font-size: 0.7rem;
-  border-radius: 3px;
+  font-size: 0.6rem;
+  border-radius: 2px;
   width: fit-content;
   height: fit-content;
-  padding: 0.1rem 0.5rem;
+  padding: 0.05rem 0.3rem;
   text-transform: uppercase;
   background-color: #368dd6;
 }
 
-.newsCard .tint .date {
+.news-card .tint .date {
   color: #fff9;
   margin-top: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   width: fit-content;
   height: fit-content;
+  margin-bottom: 0.3rem;
 }
 
-.newsCard .tint h3 {
+.news-card .tint h3 {
   color: #fff;
   font-size: 1.3rem;
   height: fit-content;
 }
 
 @media only screen and (max-width: 426px) {
-  .newsCard {
-    height: 15rem;
+  .news-card {
+    height: 13rem;
   }
 }

@@ -30,11 +30,6 @@
   background-color: #fff;
 }
 
-.profile-container .card .card-body {
-  padding: 0rem;
-  padding-top: 0.5rem;
-}
-
 .profile-container .card .card-body .basic-profile {
   display: flex;
   padding: 1rem;
@@ -77,101 +72,7 @@
   margin-bottom: 2rem;
 }
 
-.profile-container .blog-card {
-  width: 80%;
-  cursor: default;
-  border-radius: 6px;
-  margin-bottom: 40px;
-}
-
-.profile-container .blog-card .card-img-top {
-  height: 40vh;
-  cursor: pointer;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-}
-
-.profile-container .blog-card .card-body {
-  padding: 1rem 1rem 2rem 1rem;
-}
-
-.profile-container .blog-card .card-body h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  transition-duration: 0.4s;
-}
-
-.profile-container .blog-card .card-body h1:hover {
-  cursor: pointer;
-  color: #257cc5;
-}
-
-.profile-container .blog-card .createdAt {
-  display: flex;
-}
-
-.profile-container .blog-card .createdAt .date {
-  color: #777;
-  font-weight: 400;
-  font-size: 0.8rem;
-  font-style: italic;
-  margin-right: 1rem;
-}
-
-.profile-container .blog-card .createdAt .category {
-  color: #fff;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.65rem;
-  margin-right: 1rem;
-  border-radius: 15px;
-  padding: 0.1rem 0.6rem;
-  text-transform: uppercase;
-  background-color: #368dd6;
-}
-
-.profile-container .blog-card .card-body .blog-items {
-  display: flex;
-  margin-top: 1rem;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.profile-container .blog-card .card-body .blog-items .editBtn {
-  border: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  padding: 0.3rem 0.9rem;
-  background-color: #368dd6;
-}
-
-.profile-container .blog-card .card-body .blog-items .editBtn:hover {
-  background-color: #257cc5;
-}
-
-.profile-container .blog-card .card-body .blog-items .deleteBtn {
-  border: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  margin-left: 1rem;
-  padding: 0.3rem 0.9rem;
-  background-color: #f23c34;
-}
-
-.profile-container .blog-card .card-body .blog-items .deleteBtn:hover {
-  background-color: #e12b23;
-}
-
-.profile-container .blog-card .card-body .blog-items span {
-  padding-right: 1.7rem;
-}
-
 @media only screen and (max-width: 1024px) {
-  .profile-container .profile-blogs .blog-card {
-    width: 100%;
-  }
-
   .profile-container .card {
     min-width: 19rem;
   }

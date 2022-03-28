@@ -4,6 +4,8 @@ import { Card, Container } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
 import { Button } from "@mantine/core";
+import CategoryBadge from "../Badge/CategoryBadge";
+import DatePublished from "../DatePublished/DatePublished";
 import Footer from "../Footer/Footer";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
@@ -56,10 +58,7 @@ export default function Home() {
                 return (
                   <NewsCard
                     key={blog._id}
-                    img={blog.image}
-                    date={new Date(blog.created_at).toDateString()}
-                    title={blog.title}
-                    category={blog.category}
+                    blog={blog}
                     onClick={() => {
                       handlePost(blog._id);
                     }}
@@ -70,7 +69,7 @@ export default function Home() {
         </div>
         {loading ? (
           <div className="loader">
-            <Loader size="lg" variant="bars" />
+            <Loader size="sm" variant="bars" />
           </div>
         ) : (
           <Container>
@@ -99,15 +98,11 @@ export default function Home() {
                       <Card.Body>
                         <h1>{blog.title}</h1>
                         <div className="createdAt">
-                          <span className="date">
-                            {new Date(blog.created_at).toDateString()}
-                          </span>
-                          <span
-                            className="category"
-                            onClick={() => setCategory(blog.category)}
-                          >
-                            {Purify(blog.category)}
-                          </span>
+                          <DatePublished blog={blog} />
+                          <CategoryBadge
+                            blog={blog}
+                            onClick={() => setCategory("")}
+                          />
                         </div>
                         <div className="blog-items">
                           <Button

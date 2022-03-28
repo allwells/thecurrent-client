@@ -1,24 +1,25 @@
 import "./NewsCard.css";
 
-import Purify from "../../utils/Purify";
+import CategoryBadge from "../Badge/CategoryBadge";
+import DatePublished from "../DatePublished/DatePublished";
 import React from "react";
 
-const NewsCardBig = ({ title, date, category, img, onClick }) => {
+const NewsCardBig = ({ blog, onClick }) => {
   return (
     <div
       style={{
-        backgroundImage: `url(${img})`,
+        backgroundImage: `url(${blog.image})`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
       onClick={onClick}
-      className="newsCard"
+      className="news-card"
     >
       <div className="tint">
-        <span className="category">{Purify(category)}</span>
-        <span className="date">{date}</span>
-        <h3>{title}</h3>
+        <CategoryBadge color="#ffffff" blog={blog} onClick={onClick} />
+        <DatePublished blog={blog} />
+        <h3>{blog.title}</h3>
       </div>
     </div>
   );

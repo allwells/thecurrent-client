@@ -1,0 +1,19 @@
+.author {
+  margin: 1rem 0;
+  display: flex;
+  place-items: center;
+  justify-content: flex-start;
+}
+
+.author .author-label {
+  color: #333;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+}
+
+.author .author-name {
+  color: #333d;
+  font-size: 0.9rem;
+  font-style: italic;
+}
