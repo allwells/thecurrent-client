@@ -1,4 +1,4 @@
-import { Affix, Button, Transition } from "@mantine/core";
+import { ActionIcon, Affix, Transition } from "@mantine/core";
 
 import { ArrowUpIcon } from "@modulz/radix-icons";
 import React from "react";
@@ -9,19 +9,16 @@ const AffiXx = () => {
 
   return (
     <>
-      <Affix
-        style={{ border: "1px solid #f5f5f5", borderRadius: "4px" }}
-        position={{ bottom: 20, right: 20 }}
-      >
+      <Affix position={{ bottom: 20, right: 20 }}>
         <Transition transition="slide-up" mounted={scroll.y > 0}>
           {(transitionStyles) => (
-            <Button
-              leftIcon={<ArrowUpIcon />}
+            <ActionIcon
               style={transitionStyles}
+              variant="default"
               onClick={() => scrollTo({ y: 0 })}
             >
-              Scroll to top
-            </Button>
+              <ArrowUpIcon size={18} />
+            </ActionIcon>
           )}
         </Transition>
       </Affix>

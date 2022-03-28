@@ -26,3 +26,11 @@
   width: fit-content;
   height: fit-content;
 }
+
+@media only screen and (max-width: 320px) {
+  .author .author-label,
+  .author .author-name {
+    text-align: left;
+    margin-top: 0.4rem;
+  }
+}

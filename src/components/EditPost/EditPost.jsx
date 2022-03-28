@@ -1,6 +1,7 @@
 import "./EditPost.css";
 
 import { Button, Card, Container, Form, Spinner } from "react-bootstrap";
+import { Input, InputWrapper } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -34,7 +35,7 @@ export default function EditPost() {
       navigate("/login");
     }
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/api/user/post/${id}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/post/${id}`)
       .then((res) => {
         setTitle(res.data.blog.title);
         setCategory(res.data.blog.category);
@@ -56,10 +57,12 @@ export default function EditPost() {
       setError(true);
       setErrorMessage("Content must be at least 200 characters long");
       setSubmitting(false);
+
       setTimeout(() => {
         setError(false);
         setErrorMessage("");
       }, 5000);
+
       return;
     }
     const formData = new FormData();
@@ -78,10 +81,10 @@ export default function EditPost() {
         setSubmitting(false);
         setNotify(true);
 
-        setInterval(() => {
+        setTimeout(() => {
           setNotify(false);
           navigate("/profile");
-        }, 3000);
+        }, 2000);
       })
       .catch((err) => {
         setSubmitting(false);
@@ -104,6 +107,18 @@ export default function EditPost() {
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                   <SelectForm category={category} setCategory={setCategory} />
+                  <InputWrapper
+                    style={{ marginBottom: "1rem" }}
+                    id="input-demo"
+                    label="Author"
+                  >
+                    <Input
+                      id="input-demo"
+                      placeholder="Author name"
+                      value={author}
+                      onChange={(event) => setAuthor(event.currentTarget.value)}
+                    />
+                  </InputWrapper>
                   <Form.Label>Add Cover Image</Form.Label>
                   <Form.Control
                     type="File"

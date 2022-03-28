@@ -6,7 +6,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { Card } from "react-bootstrap";
 import { FaRegComment } from "react-icons/fa";
 import Footer from "../Footer/Footer";
-import Identicon from "react-identicons";
+// import Identicon from "react-identicons";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
 import NewsCardSmall from "../NewsCards/NewsCardSmall";
@@ -89,7 +89,7 @@ export default function Profile() {
             <Card.Header>Profile</Card.Header>
             <Card.Body>
               <div className="basic-profile">
-                <Identicon className="user-icon" string={email} size={85} />
+                {/* <Identicon className="user-icon" string={email} size={85} /> */}
                 <div>
                   <div className="user-email">{email}</div>
                   <div className="user-info">

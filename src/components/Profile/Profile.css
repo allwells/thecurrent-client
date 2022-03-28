@@ -32,7 +32,6 @@
 
 .profile-container .card .card-body .basic-profile {
   display: flex;
-  padding: 1rem;
   align-items: center;
   justify-content: space-around;
 }
@@ -50,15 +49,15 @@
 
 .profile-container .card .user-email {
   color: #333;
-  font-size: 1rem;
   font-weight: 500;
+  font-size: 0.8rem;
   margin-bottom: 0.1rem;
 }
 
 .profile-container .card .user-info {
   color: #333;
-  font-size: 1rem;
   font-weight: 500;
+  font-size: 0.8rem;
 }
 
 .profile-container .profile-blogs {
@@ -66,10 +65,14 @@
 }
 
 .profile-container .profile-blogs .main-heading {
-  font-weight: 700;
+  font-weight: 500;
   color: #368dd6;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
+}
+
+.author {
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 1024px) {
