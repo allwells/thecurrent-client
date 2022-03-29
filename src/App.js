@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import AffiXx from "./components/Affix/AffiXx";
 import Blog from "./components/Blog/Blog";
+import Category from "./components/Category/Category";
 import CreatePost from "./components/CreatePost/CreatePost";
 import EditPost from "./components/EditPost/EditPost";
 import Home from "./components/Home/Home";
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/edit/:id" element={<EditPost />} />
           <Route exact path="/news/:id" element={<Blog />} />
           <Route exact path="/search/:query" element={<Search />} />
+          <Route exact path="/category/:query" element={<Category />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="*" element={<NotFound />} />
         </Routes>
