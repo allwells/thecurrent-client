@@ -8,7 +8,6 @@ import Footer from "../Footer/Footer";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
 import NewsCardSmall from "../NewsCards/NewsCardSmall";
-import NotFound from "../404NotFound/NotFound";
 import Purify from "../../utils/Purify";
 import axios from "axios";
 
