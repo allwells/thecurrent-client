@@ -1,21 +1,25 @@
 import "./Profile.css";
 
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 import { AiOutlineHeart } from "react-icons/ai";
+import { Button } from "@mantine/core";
 import { Card } from "react-bootstrap";
 import { FaRegComment } from "react-icons/fa";
 import Footer from "../Footer/Footer";
-// import Identicon from "react-identicons";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
 import NewsCardSmall from "../NewsCards/NewsCardSmall";
-import Notify from "../Notification/Notify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const navigate = useNavigate();
+
+  const notifySuccess = () => toast.success("Deleted Successfully!");
+  const notifyError = (message) => toast.error(message);
+
   // eslint-disable-next-line
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,7 +27,6 @@ export default function Profile() {
   const [likedBlogs, setLikedBlogs] = useState([]);
   const [isBlog] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [notify, setNotify] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -61,15 +64,11 @@ export default function Profile() {
         id: id,
       })
       .then((res) => {
+        notifySuccess();
         setBlogs(res.data.blogs.reverse());
-        setLikedBlogs(res.data.likedBlogs);
-        setNotify(true);
-
-        setTimeout(() => {
-          setNotify(false);
-        }, 3000);
       })
       .catch((err) => {
+        notifyError(err.response.data.error);
         if (err.response.status === 401) {
           navigate("/login");
         }
@@ -99,6 +98,18 @@ export default function Profile() {
               </div>
             </Card.Body>
           </Card>
+
+          <div className="tab">
+            <Button
+              fullWidth
+              color="dark"
+              radius="sm"
+              variant="default"
+              onClick={() => navigate("/new")}
+            >
+              Create Post
+            </Button>
+          </div>
         </div>
         {loading ? (
           <div className="loader">
@@ -164,7 +175,7 @@ export default function Profile() {
           </div>
         )}
       </div>
-      <Notify notify={notify} title="Post deleted successfully!" />
+      <Toaster />
       <Footer />
     </>
   );

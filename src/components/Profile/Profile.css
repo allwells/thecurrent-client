@@ -20,8 +20,12 @@
 }
 
 .profile-container .profile-card {
-  margin-top: 5rem;
+  margin-top: 4rem;
   height: fit-content;
+}
+
+.profile-container .profile-card .tab {
+  margin-top: 1rem;
 }
 
 .profile-container .card {
@@ -33,7 +37,7 @@
 .profile-container .card .card-body .basic-profile {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .profile-container .card .user-icon {

@@ -10,21 +10,21 @@ import {
   PasswordInput,
 } from "@mantine/core";
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
-import Notify from "../Notification/Notify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
 
+  const notifySuccess = () => toast.success("Login Successful!");
+  const notifyError = (message) => toast.error(message);
+
   const [validated, setValidated] = useState(false);
-  const [error, setError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [notify, setNotify] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -50,21 +50,17 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         setSubmitting(false);
-        setNotify(true);
+
+        notifySuccess();
 
         setTimeout(() => {
-          setNotify(false);
           navigate("/profile");
-        }, 1500);
+        }, 2000);
       })
       .catch((err) => {
         setSubmitting(false);
-        setError(true);
-        setErrorMsg(err.response.data.error);
-        setTimeout(() => {
-          setError(false);
-          setErrorMsg("");
-        }, 2000);
+
+        notifyError(err.response.data.error);
       });
 
     setValidated(true);
@@ -144,14 +140,9 @@ export default function Login() {
               Back to Home
             </MantineButton>
           </Form>
-          <div className="error">{error && <p>{errorMsg}</p>}</div>
+          <Toaster />
         </Card.Body>
       </Card>
-      <Notify
-        notify={notify}
-        title="Login Success!"
-        children="Welcome back to TheCurrent."
-      />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { Edit, Trash } from "tabler-icons-react";
 import Author from "../Author/Author";
 import { Card } from "react-bootstrap";
 import CategoryBadge from "../Badge/CategoryBadge";
+import { Confirm } from "react-st-modal";
 import DatePublished from "../DatePublished/DatePublished";
 import React from "react";
 
@@ -41,8 +42,17 @@ const NewsCardSmall = ({
                 Edit
               </Menu.Item>
               <Menu.Item
-                onClick={() => {
-                  handleDelete(blog._id);
+                onClick={async () => {
+                  const result = await Confirm(
+                    "Are you sure you want to delete this post?",
+                    "Delete",
+                    "Yes",
+                    "No"
+                  );
+
+                  if (result) {
+                    handleDelete(blog._id);
+                  }
                 }}
                 icon={<Trash size={14} />}
               >

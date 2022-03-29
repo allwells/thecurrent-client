@@ -3,18 +3,21 @@ import "./CreatePost.css";
 import { Button, Card, Container, Form, Spinner } from "react-bootstrap";
 import { Input, InputWrapper } from "@mantine/core";
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@aaditya1978/ckeditor5-build-classic";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
-import Notify from "../Notification/Notify";
 import SelectForm from "../SelectForm/SelectForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function CreatePost() {
   const navigate = useNavigate();
+
+  const notifySuccess = () => toast.success("Published Successfully!");
+  const notifyError = (message) => toast.error(message);
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -24,9 +27,6 @@ export default function CreatePost() {
   const [imageData, setImageData] = useState(null);
   const [imageName, setImageName] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [notify, setNotify] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -40,13 +40,8 @@ export default function CreatePost() {
     const sanitizeContent = content.trim();
 
     if (sanitizeContent.length < 200) {
-      setError(true);
-      setErrorMessage("Content must be at least 200 characters long");
+      notifyError("Content must be at least 200 characters long");
       setSubmitting(false);
-      setTimeout(() => {
-        setError(false);
-        setErrorMessage("");
-      }, 5000);
       return;
     }
 
@@ -66,17 +61,16 @@ export default function CreatePost() {
     })
       .then((res) => {
         setSubmitting(false);
-        setNotify(true);
+
+        notifySuccess();
 
         setInterval(() => {
-          setNotify(false);
           navigate("/");
-        }, 3000);
+        }, 2100);
       })
       .catch((err) => {
         setSubmitting(false);
-        setError(true);
-        setErrorMessage(err.response.data.error);
+        notifyError(err.response.data.error);
         navigate("/login");
       });
   };
@@ -169,12 +163,12 @@ export default function CreatePost() {
                   )}
                 </Button>
               </Form>
-              {error && <p className="error">{errorMessage}</p>}
             </Card.Body>
           </Card>
         </Container>
       </div>
-      <Notify notify={notify} title="Published Successfully!" />
+
+      <Toaster />
       <Footer />
     </>
   );

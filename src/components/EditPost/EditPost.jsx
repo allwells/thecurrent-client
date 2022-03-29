@@ -3,18 +3,21 @@ import "./EditPost.css";
 import { Button, Card, Container, Form, Spinner } from "react-bootstrap";
 import { Input, InputWrapper } from "@mantine/core";
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@aaditya1978/ckeditor5-build-classic";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
-import Notify from "../Notification/Notify";
 import SelectForm from "../SelectForm/SelectForm";
 import axios from "axios";
 
 export default function EditPost() {
   const navigate = useNavigate();
+
+  const notifySuccess = () => toast.success("Updated Successfully!");
+  const notifyError = (message) => toast.error(message);
 
   const { id } = useParams();
 
@@ -26,9 +29,6 @@ export default function EditPost() {
   const [imageData, setImageData] = useState(null);
   const [imageName, setImageName] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [notify, setNotify] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -54,14 +54,8 @@ export default function EditPost() {
     setSubmitting(true);
     const sanitizeContent = content.trim();
     if (sanitizeContent.length < 200) {
-      setError(true);
-      setErrorMessage("Content must be at least 200 characters long");
+      notifyError("Content must be at least 200 characters long");
       setSubmitting(false);
-
-      setTimeout(() => {
-        setError(false);
-        setErrorMessage("");
-      }, 5000);
 
       return;
     }
@@ -79,17 +73,16 @@ export default function EditPost() {
       .post(`${process.env.REACT_APP_BASE_URL}/edit`, formData)
       .then((res) => {
         setSubmitting(false);
-        setNotify(true);
+
+        notifySuccess();
 
         setTimeout(() => {
-          setNotify(false);
-          navigate("/profile");
-        }, 2000);
+          navigate(`/news/${id}`);
+        }, 2100);
       })
       .catch((err) => {
         setSubmitting(false);
-        setError(true);
-        setErrorMessage(err.response.data.error);
+        notifyError(err.response.data.error);
         if (err.response.status === 401) {
           navigate("/login");
         }
@@ -185,12 +178,11 @@ export default function EditPost() {
                   )}
                 </Button>
               </Form>
-              {error && <p className="error">{errorMessage}</p>}
             </Card.Body>
           </Card>
         </Container>
       </div>
-      <Notify notify={notify} title="Updated Successfully!" />
+      <Toaster />
       <Footer />
     </>
   );
