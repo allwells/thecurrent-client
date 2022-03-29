@@ -112,9 +112,9 @@
   width: 100%;
   border: none;
   color: #fff;
-  font-size: 0.8rem;
-  margin-right: 1vw;
-  border-radius: 4px;
+  margin-left: 2rem;
+  font-size: 0.85rem;
+  border-radius: 50px;
   background-color: #368dd6;
 }
 
@@ -134,5 +134,9 @@
 
   .navbar .container .navbar-collapse .login {
     margin-top: 1rem;
+  }
+
+  .navbar .container .navbar-collapse .login-button {
+    margin: 0;
   }
 }

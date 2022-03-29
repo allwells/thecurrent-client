@@ -59,7 +59,9 @@ export default function NavBar() {
         opened={opened}
         loggedIn={loggedIn}
         closeButton={() => setOpened((o) => !o)}
-        logout={() => logout()}
+        logout={() => {
+          logout() && setOpened((o) => !o);
+        }}
       />
       <Navbar collapseOnSelect expand="lg" sticky="top" variant="light">
         <Container>
@@ -124,6 +126,9 @@ export default function NavBar() {
               <Nav>
                 <Nav.Link>
                   <Button
+                    compact
+                    radius="lg"
+                    size="lg"
                     variant="outline"
                     className="login-button"
                     onClick={() => {
