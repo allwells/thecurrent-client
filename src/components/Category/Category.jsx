@@ -40,7 +40,18 @@ const Category = () => {
     <>
       <NavBar />
       <div className="category-container">
-        <h1 className="main-heading">Category: {Purify(query)}</h1>
+        <h1 className="main-heading">
+          Category:{" "}
+          <span
+            style={{
+              fontSize: "1rem",
+              fontWeight: "400",
+              textTransform: "capitalize",
+            }}
+          >
+            {Purify(query)}
+          </span>
+        </h1>
         {loading ? (
           <div className="loader">
             <Loader size="sm" variant="bars" />
@@ -60,7 +71,11 @@ const Category = () => {
             ) : (
               <>
                 <h1 className="message">
-                  Sorry, we couldn't find any post under “{query}” category
+                  Sorry, we couldn't find any post under{" "}
+                  <span style={{ textTransform: "capitalize" }}>
+                    “{Purify(query)}”
+                  </span>{" "}
+                  category
                 </h1>
               </>
             )}

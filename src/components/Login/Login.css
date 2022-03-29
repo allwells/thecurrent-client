@@ -4,56 +4,75 @@
 
 .login-container {
   display: flex;
-  min-height: 88vh;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(to right bottom, #a8c0ff, #3f2b96);
 }
 
 .login-container .card {
-  width: 35%;
+  width: 30%;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 1rem 0.5rem;
   border: 1px solid #1112;
   transition-duration: 0.4s;
-  background-color: transparent;
+  background-color: #fff2;
   box-shadow: 1px 1px 16px #2221;
 }
 
 .login-container .card .card-title {
   font-size: 1.7rem;
   font-weight: bold;
-  color: #343335;
+  color: #ffffff;
   text-align: center;
   margin-bottom: 2rem;
 }
 
-.login-container .card form input {
-  width: 100%;
-}
-
-.login-container .card .form .email-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
 .login-container .card form .login-button {
   width: 100%;
-  color: #ffffff;
-  margin-top: 1rem;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  font-weight: 500;
+  border: none;
+  color: #444;
+  outline: none;
   cursor: pointer;
-  border: #368dd6;
-  background-color: #368dd6;
+  margin-top: 1rem;
+  font-weight: 500;
+  box-shadow: none;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  transition-duration: 0.4s;
+  background-color: #ededed;
+}
+
+.login-container .card form .login-button:hover {
+  color: #fff;
+  background-color: #4d4399;
+}
+
+.login-container .card form .mantine-button {
+  color: #fff;
+  background-color: transparent;
+}
+
+.login-container .card form .mantine-button:hover {
+  text-decoration: underline;
+}
+
+.login-container .card form .input-field label {
+  color: #fff;
 }
 
 .login-container .card .error p {
+  font-size: 1rem;
   color: #c93c23;
   padding-top: 2vh;
-  font-size: 1.2rem;
   text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .login-container .card {
+    width: 40%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -62,8 +81,14 @@
   }
 }
 
+@media only screen and (max-width: 530px) {
+  .login-container .card {
+    width: 70%;
+  }
+}
+
 @media only screen and (max-width: 426px) {
   .login-container .card {
-    width: 95%;
+    width: 90%;
   }
 }
