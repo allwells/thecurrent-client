@@ -108,16 +108,17 @@
   display: none;
 }
 
-.navbar .container .navbar-collapse .login {
+.navbar .container .navbar-collapse .login-button {
   width: 100%;
   border: none;
+  color: #fff;
   font-size: 0.8rem;
   margin-right: 1vw;
   border-radius: 4px;
   background-color: #368dd6;
 }
 
-.navbar .container .navbar-collapse .login:hover {
+.navbar .container .navbar-collapse .login-button:hover {
   background-color: #146bb4;
 }
 

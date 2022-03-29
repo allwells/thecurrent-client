@@ -47,7 +47,7 @@ export default function Login() {
 
         setTimeout(() => {
           setNotify(false);
-          navigate("/");
+          navigate("/profile");
         }, 1500);
       })
       .catch((err) => {

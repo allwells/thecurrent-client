@@ -1,31 +1,28 @@
 import "./NavBar.css";
 
-import {
-  Container,
-  Form,
-  FormControl,
-  Nav,
-  NavDropdown,
-  Navbar,
-} from "react-bootstrap";
+import { Burger, Button } from "@mantine/core";
+import { Container, Form, FormControl, Nav, Navbar } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
-import { Button } from "@mantine/core";
-import Identicon from "react-identicons";
+import ExtendedNav from "./ExtendedNav";
 import { Search } from "tabler-icons-react";
 import anchorLogo from "../../img/anchor-logo.png";
 import axios from "axios";
 import thecurrentLogo from "../../img/thecurrent-logo.png";
 import { useNavigate } from "react-router-dom";
+import { useViewportSize } from "@mantine/hooks";
 
 export default function NavBar() {
   const navigate = useNavigate();
+  const viewPort = useViewportSize();
 
   const [loggedIn, setLoggedIn] = useState(false);
   // eslint-disable-next-line
   const [name, setName] = useState("");
+  // eslint-disable-next-line
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
+  const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -58,6 +55,12 @@ export default function NavBar() {
 
   return (
     <>
+      <ExtendedNav
+        opened={opened}
+        loggedIn={loggedIn}
+        closeButton={() => setOpened((o) => !o)}
+        logout={() => logout()}
+      />
       <Navbar collapseOnSelect expand="lg" sticky="top" variant="light">
         <Container>
           <Navbar.Brand
@@ -100,50 +103,29 @@ export default function NavBar() {
             </Nav>
 
             {loggedIn ? (
-              <Nav>
-                {/* <Nav.Link>
-                  <Button
-                    variant="success"
-                    className="new-post"
-                    onClick={() => {
-                      navigate("/new");
-                    }}
-                  >
-                    Create New Post
-                  </Button>
-                </Nav.Link> */}
-                <NavDropdown
-                  style={{
-                    textAlign: "left",
-                  }}
-                  align={{ lg: "end" }}
-                  title={
-                    <Identicon className="user-icon" string={email} size={35} />
-                  }
+              viewPort.width <= 768 ? (
+                <Button
+                  fullWidth
+                  radius="xl"
+                  variant="outline"
+                  style={{ marginTop: "1rem" }}
+                  onClick={() => setOpened((o) => !o)}
                 >
-                  <NavDropdown.Item
-                    onClick={() => {
-                      navigate("/profile");
-                    }}
-                  >
-                    Profile
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    onClick={() => {
-                      navigate("/new");
-                    }}
-                  >
-                    Create Post
-                  </NavDropdown.Item>
-                  <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
-                </NavDropdown>
-              </Nav>
+                  Menu
+                </Button>
+              ) : (
+                <Burger
+                  color="#368dd6"
+                  opened={opened}
+                  onClick={() => setOpened((o) => !o)}
+                />
+              )
             ) : (
               <Nav>
                 <Nav.Link>
                   <Button
-                    variant="outine"
-                    className="login"
+                    variant="outline"
+                    className="login-button"
                     onClick={() => {
                       navigate("/login");
                     }}
@@ -151,17 +133,6 @@ export default function NavBar() {
                     Login
                   </Button>
                 </Nav.Link>
-                {/* <Nav.Link>
-                  <Button
-                    variant="success"
-                    className="signup"
-                    onClick={() => {
-                      navigate("/signup");
-                    }}
-                  >
-                    Signup
-                  </Button>
-                </Nav.Link> */}
               </Nav>
             )}
           </Navbar.Collapse>
