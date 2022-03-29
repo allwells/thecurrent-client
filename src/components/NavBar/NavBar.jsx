@@ -43,6 +43,7 @@ export default function NavBar() {
   }, []);
 
   const logout = () => {
+    setOpened((o) => !o);
     localStorage.removeItem("token");
     setLoggedIn(false);
     navigate("/");
@@ -59,9 +60,7 @@ export default function NavBar() {
         opened={opened}
         loggedIn={loggedIn}
         closeButton={() => setOpened((o) => !o)}
-        logout={() => {
-          logout() && setOpened((o) => !o);
-        }}
+        logout={() => logout()}
       />
       <Navbar collapseOnSelect expand="lg" sticky="top" variant="light">
         <Container>

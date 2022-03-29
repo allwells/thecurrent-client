@@ -1,6 +1,8 @@
 import "./Login.css";
 
+import { At, EyeCheck, EyeOff, Lock } from "tabler-icons-react";
 import { Button, Card, Container, Form, Spinner } from "react-bootstrap";
+import { Input, InputWrapper, PasswordInput } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 
 import NavBar from "../NavBar/NavBar";
@@ -72,36 +74,49 @@ export default function Login() {
           <Card.Body>
             <Card.Title>Login</Card.Title>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
+              {/* EMAIL FIELD */}
               <Form.Group className="mb-3">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  value={email}
-                  placeholder="Enter email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
+                <InputWrapper id="input-demo" required label="Email">
+                  <Input
+                    value={email}
+                    placeholder="Email"
+                    icon={<At size={20} />}
+                    onChange={(event) => setEmail(event.currentTarget.value)}
+                  />
+                </InputWrapper>
+
+                {/* EMAIL WARNING MESSAGE */}
                 <Form.Control.Feedback type="invalid">
                   Please provide email
                 </Form.Control.Feedback>
               </Form.Group>
+
+              {/* PASSWORD FIELD */}
               <Form.Group className="mb-3">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  value={password}
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
+                <PasswordInput
                   required
+                  label="Password"
+                  icon={<Lock size={20} />}
+                  placeholder="Password"
+                  value={password}
+                  onChange={(event) => setPassword(event.currentTarget.value)}
+                  visibilityToggleIcon={({ reveal, size }) =>
+                    reveal ? <EyeOff size={size} /> : <EyeCheck size={size} />
+                  }
                 />
+
+                {/* PASSWORD WARNING MESSAGE */}
                 <Form.Control.Feedback type="invalid">
                   Please enter password
                 </Form.Control.Feedback>
               </Form.Group>
+
+              {/* LOGIN BUTTON */}
               <div className="d-flex justify-content-center">
                 <Button
-                  variant="primary"
                   type="submit"
+                  variant="primary"
+                  className="login-button"
                   {...(submitting ? { disabled: true } : {})}
                 >
                   {submitting ? (

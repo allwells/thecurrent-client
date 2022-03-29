@@ -4,7 +4,7 @@
 
 .login-container {
   display: flex;
-  min-height: 90vh;
+  min-height: 88vh;
   align-items: center;
   justify-content: center;
 }
@@ -14,14 +14,17 @@
   border: none;
   border-radius: 10px;
   padding: 1rem 0.5rem;
+  border: 1px solid #1112;
+  transition-duration: 0.4s;
   background-color: transparent;
+  box-shadow: 1px 1px 16px #2221;
 }
 
 .login-container .card .card-title {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: bold;
   color: #343335;
-  text-align: left;
+  text-align: center;
   margin-bottom: 2rem;
 }
 
@@ -29,12 +32,17 @@
   width: 100%;
 }
 
-.login-container .card form button {
+.login-container .card .form .email-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.login-container .card form .login-button {
   width: 100%;
   color: #ffffff;
   margin-top: 1rem;
   border-radius: 5px;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
   border: #368dd6;
