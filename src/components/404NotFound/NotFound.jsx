@@ -15,7 +15,7 @@ const NotFound = () => {
   };
 
   return (
-    <div className="notFound">
+    <div className="not-found">
       <div className="illustration" style={notFoundStyle}></div>
       <span className="page-not-found">PAGE NOT FOUND</span>
       <Button
