@@ -15,12 +15,11 @@ const NewsCardSmall = ({
   query,
   handlePost,
   handleEdit,
-  setCategory,
   handleDelete,
   profile = false,
 }) => {
   return (
-    <Card className="blog-card">
+    <div className="post-card">
       {blog.cloudinaryId ? (
         <Card.Img
           variant="top"
@@ -29,7 +28,7 @@ const NewsCardSmall = ({
           onClick={() => (profile ? handlePost(blog._id) : null)}
         />
       ) : null}
-      <Card.Body>
+      <div className="card-body">
         {profile ? (
           <div className="menu-container">
             <Menu className="post-menu-items" shadow="xl">
@@ -74,9 +73,9 @@ const NewsCardSmall = ({
           <div className="created-at">
             <DatePublished blog={blog} />
             <span className="divider"></span>
-            <CategoryBadge blog={blog} color="#333" onClick={setCategory} />
+            <CategoryBadge blog={blog} color="#333" />
             <span className="divider"></span>
-            <Author label={false} blog={blog} />
+            <Author blog={blog} />
           </div>
           <div className="blog-items">
             {profile ? null : (
@@ -93,8 +92,8 @@ const NewsCardSmall = ({
             )}
           </div>
         </div>
-      </Card.Body>
-    </Card>
+      </div>
+    </div>
   );
 };
 

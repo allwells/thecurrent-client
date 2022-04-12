@@ -7,6 +7,11 @@
   flex-direction: column-reverse;
 }
 
+.blog-container * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
 .blog-container .loader {
   width: 100%;
   height: 70vh;
@@ -36,18 +41,6 @@
   cursor: pointer;
 }
 
-.blog-container .utilities .like:hover {
-  color: #f33838;
-}
-
-.blog-container .utilities .liked {
-  color: #f33838;
-}
-
-.blog-container .utilities .comment:hover {
-  color: #368dd6;
-}
-
 .blog-container .blog {
   width: 55%;
   display: flex;
@@ -74,6 +67,7 @@
 
 .blog-container .blog .card .card-body {
   padding: 0.5rem;
+  margin-top: 2rem;
 }
 
 .blog-container .blog .card h1 {

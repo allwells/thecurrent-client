@@ -25,15 +25,11 @@ export default function Blog() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState("");
   const [copied, setCopied] = useState(false);
-  // const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const handleModalClose = () => setShowModal(false);
   const handleModalShow = () => setShowModal(true);
-
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -70,69 +66,6 @@ export default function Blog() {
       });
   }, [id, loggedIn, userId]);
 
-  // const handleLike = (id) => {
-  //   if (loggedIn) {
-  //     if (!liked) {
-  //       axios
-  //         .post(`/api/user/post/like/${id}`, {
-  //           user_id: userId,
-  //         })
-  //         .then((res) => {
-  //           setBlog(res.data.blog);
-  //           if (loggedIn) {
-  //             // eslint-disable-next-line
-  //             res.data.blog.likes.map((like) => {
-  //               if (like === userId) {
-  //                 setLiked(true);
-  //               }
-  //             });
-  //           }
-  //         })
-  //         .catch((err) => {
-  //           console.log(err);
-  //         });
-  //     } else {
-  //       axios
-  //         .post(
-  //           `/api/user/post/unlike/${id}`,
-  //           {
-  //             user_id: userId,
-  //           }
-  //         )
-  //         .then((res) => {
-  //           setBlog(res.data.blog);
-  //           if (loggedIn) {
-  //             // eslint-disable-next-line
-  //             res.data.blog.likes.map((like) => {
-  //               if (like === userId) {
-  //                 setLiked(true);
-  //               }
-  //             });
-  //             setLiked(false);
-  //           }
-  //         })
-  //         .catch((err) => {
-  //           console.log(err);
-  //         });
-  //     }
-  //   }
-  // };
-
-  // const addComment = (id) => {
-  //   axios
-  //     .post(`/api/user/post/comment/${id}`, {
-  //       user_id: userId,
-  //       comment: document.getElementById("comment").value,
-  //     })
-  //     .then((res) => {
-  //       setBlog(res.data.blog);
-  //       document.getElementById("comment").value = "";
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   return (
     <>
       <NavBar />
@@ -143,30 +76,6 @@ export default function Blog() {
           </div>
         ) : (
           <>
-            {/* <div className="utilities">
-              {loggedIn ? (
-                <>
-                  <div
-                    className={`utility-item like ${liked ? "liked" : ""}`}
-                    onClick={() => {
-                      handleLike(id);
-                    }}
-                  >
-                    <AiOutlineHeart />{" "}
-                    <span>{blog.likes ? blog.likes.length : 0}</span>
-                  </div>
-                  <div className="utility-item comment" onClick={handleShow}>
-                    <FaRegComment />{" "}
-                    <span>{blog.comments ? blog.comments.length : 0}</span>
-                  </div>
-                  <div className="utility-item share" onClick={handleModalShow}>
-                    <FaShare />
-                  </div>
-                </>
-              ) : (
-                <div className="account-alert">Login to like and comment</div>
-              )}
-            </div> */}
             <div className="blog">
               <Card>
                 <h1>{blog.title}</h1>
@@ -175,6 +84,8 @@ export default function Blog() {
                     <DatePublished blog={blog} />
                     <span id="divider"></span>
                     <CategoryBadge blog={blog} />
+                    <span id="divider"></span>
+                    <Author blog={blog} />
                   </div>
 
                   <div className="utility-item share" onClick={handleModalShow}>
@@ -184,9 +95,6 @@ export default function Blog() {
                 {blog.cloudinaryId ? (
                   <Card.Img className="blog-image" src={blog.image} />
                 ) : null}
-                <div className="author-section">
-                  <Author blog={blog} />
-                </div>
 
                 <Card.Body>
                   <div
@@ -196,48 +104,6 @@ export default function Blog() {
                 </Card.Body>
               </Card>
             </div>
-            {/* <Offcanvas show={show} placement="end" onHide={handleClose}>
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Discussion</Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body> */}
-            {/* <div className="comment-box">
-                  <Form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      addComment(id);
-                    }}
-                  >
-                    <Form.Group>
-                      <Form.Label>Add New Comment</Form.Label>
-                      <Form.Control id="comment" as="textarea" rows="3" />
-                    </Form.Group>
-                    <Button variant="success" type="submit" className="mt-3">
-                      Comment
-                    </Button>
-                  </Form>
-                </div> */}
-            {/* <div className="comment-container">
-                  {blog.comments ? (
-                    blog.comments.reverse().map((comment) => {
-                      return (
-                        <Card className="comment" key={comment._id}>
-                          <div className="comment-author">{comment.name}</div>
-                          <div className="comment-date">
-                            {new Date(comment.date).toDateString()}
-                          </div>
-                          <div className="comment-content">
-                            {comment.comment}
-                          </div>
-                        </Card>
-                      );
-                    })
-                  ) : (
-                    <div>No comments yet</div>
-                  )}
-                </div> */}
-            {/* </Offcanvas.Body>
-            </Offcanvas> */}
             <Modal
               className="copy-link"
               show={showModal}

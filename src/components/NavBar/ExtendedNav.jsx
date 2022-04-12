@@ -8,7 +8,7 @@ import anchorLogo from "../../img/anchor-logo.png";
 import thecurrentLogo from "../../img/thecurrent-logo.png";
 import { useNavigate } from "react-router-dom";
 
-const ExtendedNav = ({ opened, closeButton, loggedIn, logout }) => {
+const ExtendedNav = ({ opened, closeButton, loggedIn }) => {
   const navigate = useNavigate();
 
   return (
@@ -107,9 +107,6 @@ const ExtendedNav = ({ opened, closeButton, loggedIn, logout }) => {
           onClick={closeButton}
           item="Transport"
         />
-        {loggedIn ? (
-          <ExtendedNavLink to="/#" onClick={logout} item="Logout" />
-        ) : null}
       </div>
     </div>
   );

@@ -7,8 +7,8 @@
   padding-top: 3vh;
   min-height: 75vh;
   flex-direction: row;
-  margin-bottom: 5rem;
-  justify-content: space-around;
+  margin-bottom: 3.5rem;
+  justify-content: space-between;
 }
 
 .profile-container .loader {
@@ -20,18 +20,24 @@
 }
 
 .profile-container .profile-card {
-  margin-top: 4rem;
+  top: 4rem;
+  left: 3rem;
+  width: 20rem;
   height: fit-content;
+}
+
+.profile-container .profile-card .card {
+  margin: 0;
+  border-radius: 6px;
+  background-color: #fff;
 }
 
 .profile-container .profile-card .tab {
   margin-top: 1rem;
 }
 
-.profile-container .card {
-  min-width: 22rem;
-  border-radius: 6px;
-  background-color: #fff;
+.profile-container .profile-card .tab .tab-buttons {
+  margin-bottom: 0.7rem;
 }
 
 .profile-container .card .card-body .basic-profile {
@@ -65,7 +71,7 @@
 }
 
 .profile-container .profile-blogs {
-  width: 60%;
+  width: 70%;
 }
 
 .profile-container .profile-blogs .main-heading {
@@ -82,6 +88,10 @@
 @media only screen and (max-width: 1024px) {
   .profile-container .card {
     min-width: 19rem;
+  }
+
+  .profile-container .profile-blogs {
+    width: 60%;
   }
 }
 
@@ -101,8 +111,23 @@
   }
 
   .profile-container .profile-card {
+    top: 0;
     width: 90%;
     margin-top: 3rem;
+  }
+
+  .profile-container .profile-card .card {
+    margin: 0 0.3rem;
+  }
+
+  .profile-container .profile-card .tab {
+    display: flex;
+    place-items: center;
+    justify-content: space-between;
+  }
+
+  .profile-container .profile-card .tab-buttons {
+    margin: 0 0.3rem;
   }
 
   .profile-container .card .card-body .basic-profile {
@@ -115,5 +140,11 @@
 
   .profile-container .profile-blogs .blog-card {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .profile-container .profile-card .tab {
+    flex-direction: column;
   }
 }

@@ -18,7 +18,7 @@ const NewsCardBig = ({ blog, onClick }) => {
       className="news-card"
     >
       <div className="tint">
-        <CategoryBadge color="#ffffff" blog={blog} onClick={onClick} />
+        <CategoryBadge color="#ffffff" blog={blog} />
         <h3>{blog.title}</h3>
         <DatePublished blog={blog} />
         <Author color="#ccc" blog={blog} />

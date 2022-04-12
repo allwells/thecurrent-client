@@ -3,19 +3,18 @@ import "./Profile.css";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-import { AiOutlineHeart } from "react-icons/ai";
 import { Button } from "@mantine/core";
-import { Card } from "react-bootstrap";
-import { FaRegComment } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
 import NewsCardSmall from "../NewsCards/NewsCardSmall";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useViewportSize } from "@mantine/hooks";
 
 export default function Profile() {
   const navigate = useNavigate();
+  const viewPort = useViewportSize();
 
   const notifySuccess = () => toast.success("Deleted Successfully!");
   const notifyError = (message) => toast.error(message);
@@ -24,7 +23,6 @@ export default function Profile() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [blogs, setBlogs] = useState([]);
-  const [likedBlogs, setLikedBlogs] = useState([]);
   const [isBlog] = useState(true);
   const [loading, setLoading] = useState(true);
 
@@ -38,7 +36,6 @@ export default function Profile() {
           setName(res.data.name);
           setEmail(res.data.email);
           setBlogs(res.data.blogs.reverse());
-          setLikedBlogs(res.data.likedBlogs);
           setLoading(!loading);
         })
         .catch((err) => {
@@ -51,7 +48,7 @@ export default function Profile() {
       }, 1000);
       navigate("/login");
     }
-  }, [navigate, setName, setEmail, setBlogs, setLikedBlogs]);
+  }, [navigate, setName, setEmail, setBlogs]);
 
   const handlePost = (id) => {
     navigate(`/news/${id}`);
@@ -75,6 +72,11 @@ export default function Profile() {
       });
   };
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
   const handleEdit = (id) => {
     navigate(`/edit/${id}`);
   };
@@ -83,12 +85,16 @@ export default function Profile() {
     <>
       <NavBar />
       <div className="profile-container">
-        <div className="profile-card">
-          <Card>
-            <Card.Header>Profile</Card.Header>
-            <Card.Body>
+        <div
+          style={{
+            position: viewPort >= 768 ? "static" : "relative",
+          }}
+          className="profile-card"
+        >
+          <div className="card">
+            <div className="card-header">Profile</div>
+            <div className="card-body">
               <div className="basic-profile">
-                {/* <Identicon className="user-icon" string={email} size={85} /> */}
                 <div>
                   <div className="user-email">{email}</div>
                   <div className="user-info">
@@ -96,18 +102,39 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
-            </Card.Body>
-          </Card>
+            </div>
+          </div>
 
           <div className="tab">
             <Button
               fullWidth
-              color="dark"
               radius="sm"
+              color="dark"
               variant="default"
-              onClick={() => navigate("/new")}
+              className="tab-buttons"
+              onClick={() => navigate("/create")}
             >
               Create Post
+            </Button>
+            {/* <Button
+              fullWidth
+              radius="sm"
+              color="dark"
+              variant="default"
+              className="tab-buttons"
+              onClick={() => navigate("/setting")}
+            >
+              Settings
+            </Button> */}
+            <Button
+              fullWidth
+              radius="sm"
+              color="dark"
+              variant="default"
+              className="tab-buttons"
+              onClick={() => logout()}
+            >
+              Logout
             </Button>
           </div>
         </div>
@@ -135,43 +162,7 @@ export default function Profile() {
                   })}
                 </div>
               </>
-            ) : (
-              <>
-                <h1 className="main-heading">Liked Blogs</h1>
-                <div>
-                  {likedBlogs.map((blog) => {
-                    return (
-                      <Card
-                        className="blog-card"
-                        key={blog._id}
-                        onClick={() => {
-                          handlePost(blog._id);
-                        }}
-                      >
-                        {blog.cloudinaryId ? (
-                          <Card.Img variant="top" src={blog.image} />
-                        ) : null}
-                        <Card.Body>
-                          <h1>{blog.title}</h1>
-                          <div className="blog-info">{blog.author}</div>
-                          <div className="blog-info">
-                            {new Date(blog.created_at).toDateString()}
-                          </div>
-                          <div className="blog-items">
-                            <span>
-                              <AiOutlineHeart /> {blog.likes.length} Reactions
-                            </span>
-                            <span>
-                              <FaRegComment /> {blog.comments.length} Comments
-                            </span>
-                          </div>
-                        </Card.Body>
-                      </Card>
-                    );
-                  })}
-                </div>
-              </>
-            )}
+            ) : null}
           </div>
         )}
       </div>

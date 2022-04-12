@@ -42,13 +42,6 @@ export default function NavBar() {
     }
   }, []);
 
-  const logout = () => {
-    setOpened((o) => !o);
-    localStorage.removeItem("token");
-    setLoggedIn(false);
-    navigate("/");
-  };
-
   const handleSearch = (e) => {
     e.preventDefault();
     navigate(`/search/${query}`);
@@ -60,7 +53,6 @@ export default function NavBar() {
         opened={opened}
         loggedIn={loggedIn}
         closeButton={() => setOpened((o) => !o)}
-        logout={() => logout()}
       />
       <Navbar collapseOnSelect expand="lg" sticky="top" variant="light">
         <Container>
@@ -93,10 +85,10 @@ export default function NavBar() {
                   }}
                 />
                 <Button
-                  className="search-button"
+                  size="sm"
                   type="submit"
                   variant="subtle"
-                  size="sm"
+                  className="search-button"
                 >
                   <Search color="#368dd6" size={20} />
                 </Button>

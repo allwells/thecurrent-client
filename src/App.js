@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import About from "./components/AboutUs/About";
 import AffiXx from "./components/Affix/AffiXx";
 import Blog from "./components/Blog/Blog";
 import Category from "./components/Category/Category";
@@ -18,8 +19,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/about" element={<About />} />
           <Route exact path="/login" element={<Login />} />
-          <Route exact path="/new" element={<CreatePost />} />
+          <Route exact path="/create" element={<CreatePost />} />
           <Route exact path="/edit/:id" element={<EditPost />} />
           <Route exact path="/news/:id" element={<Blog />} />
           <Route exact path="/search/:query" element={<Search />} />
