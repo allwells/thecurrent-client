@@ -1,20 +1,22 @@
 import "./NavBar.css";
 
+import { Burger, Divider, Menu } from "@mantine/core";
 import {
   Dashboard,
   InfoCircle,
   Login,
   Logout,
+  Menu2,
   Search,
   Settings,
 } from "tabler-icons-react";
-import { Divider, Menu } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 import CategoryItem from "./CategoryItem";
 import anchorLogo from "../../img/anchor-logo.png";
 import axios from "axios";
+import profileBtnImg from "../../img/profileButtonImg.png";
 import thecurrentLogo from "../../img/thecurrent-logo.png";
 import { useViewportSize } from "@mantine/hooks";
 
@@ -29,6 +31,9 @@ export default function NavBar() {
   // eslint-disable-next-line
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
+
+  const [opened, setOpened] = useState(false);
+  const title = opened ? "Close navigation" : "Open navigation";
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -67,41 +72,27 @@ export default function NavBar() {
               navigate("/");
             }}
           >
+            {/* <img className="is-clickable" src={anchorLogo} alt="logo" />
+            <div className="has-background-link is-flex is-flex-direction-column">
+              <span className="has-text-light is-uppercase is-size-7 has-text-weight-bold">
+                The
+              </span>
+              <span className="has-text-light is-uppercase is-size-5 has-text-weight-bold">
+                Current
+              </span>
+            </div> */}
             <img className="is-clickable" src={anchorLogo} alt="logo" />
             <img className="is-clickable" src={thecurrentLogo} alt="logo" />
           </span>
-
-          {/* NAVBAR BURGER - FOR SMALLER SCREENS */}
-          {loggedIn ? (
-            <a
-              role="button"
-              aria-label="menu"
-              aria-expanded="false"
-              className="navbar-burger"
-              data-target="navbarBasicExample"
-            ></a>
-          ) : (
-            <a
-              role="button"
-              aria-label="menu"
-              aria-expanded="false"
-              className="navbar-burger"
-              data-target="navbarBasicExample"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          )}
         </div>
 
-        <div id="navbarBasicExample" className="navbar-menu">
+        <div id="navbar-basic" className="navbar-menu">
           {/* SEARCH FORM */}
           <form
             onSubmit={(e) => {
               handleSearch(e);
             }}
-            className="search-form mr-4 is-flex is-justify-content-between is-align-items-center"
+            className="search-form mr-4 is-justify-content-between is-align-items-center"
           >
             {/* SEARCH INPUT FIELD */}
             <div className="control">
@@ -124,69 +115,153 @@ export default function NavBar() {
           </form>
 
           {loggedIn ? (
-            // <Burger
-            //   color="#368dd6"
-            //   opened={opened}
-            //   onClick={() => setOpened((o) => !o)}
-            // />
-            <Menu placement="end" withArrow>
-              <Menu.Item
-                icon={<Dashboard size={14} />}
-                component={Link}
-                to="/dashboard"
+            <>
+              <Menu
+                className="is-flex ml-5 is-justify-content-center is-align-items-center"
+                placement="end"
+                withArrow
+                control={
+                  // <button className="button is-link is-light">Profile</button>
+                  <img
+                    src={profileBtnImg}
+                    width={"45"}
+                    height={"45"}
+                    style={{ borderRadius: "50%" }}
+                    alt="profile"
+                  />
+                }
               >
-                Dashboard
-              </Menu.Item>
-              <Menu.Item
-                icon={<Settings size={14} />}
-                component={Link}
-                to="/settings"
-              >
-                Settings
-              </Menu.Item>
-              <Divider />
-              <Menu.Item icon={<Logout size={14} />} color="red">
-                Logout
-              </Menu.Item>
-            </Menu>
+                <Menu.Item
+                  icon={<Dashboard size={14} />}
+                  component={Link}
+                  to="/dashboard"
+                >
+                  Dashboard
+                </Menu.Item>
+                <Menu.Item
+                  icon={<Settings size={14} />}
+                  component={Link}
+                  to="/settings"
+                >
+                  Settings
+                </Menu.Item>
+                <Divider />
+                <Menu.Item icon={<Logout size={14} />} color="red">
+                  Logout
+                </Menu.Item>
+              </Menu>
+            </>
           ) : (
-            <div className="navbar-end">
-              <div className="navbar-item">
-                <div className="buttons">
-                  {/* LOGIN BUTTON */}
-                  <a
-                    onClick={() => {
-                      navigate("/login");
+            <>
+              <Menu
+                size={"lg"}
+                id="navbar-end-1"
+                className="ml-4 is-justify-content-center is-align-items-center"
+                placement="end"
+                withArrow
+                control={
+                  <button className="button is-link is-light">
+                    <Menu2 />
+                  </button>
+                }
+              >
+                <Menu.Label>SEARCH</Menu.Label>
+                <Menu.Label>
+                  <form
+                    onSubmit={(e) => {
+                      handleSearch(e);
                     }}
-                    className="login-button button is-link is-light"
+                    className="search-form mr-4 is-flex is-justify-content-between is-align-items-center"
                   >
-                    <Login className="mr-1" />
-                    Log in
-                  </a>
+                    {/* SEARCH INPUT FIELD */}
+                    <div className="control">
+                      <input
+                        type="text"
+                        value={query}
+                        className="input"
+                        aria-label="Search"
+                        onChange={(e) => {
+                          setQuery(e.target.value);
+                        }}
+                        style={{ height: "34px", fontSize: "12px" }}
+                        placeholder="Search..."
+                      />
+                    </div>
 
-                  {/* ABOUT US BUTTON - FOR VIEWERS */}
-                  <a
-                    onClick={() => {
-                      navigate("/about");
-                    }}
-                    className="about-button button is-warning"
-                  >
-                    <InfoCircle className="mr-1" />
-                    About Us
-                  </a>
+                    {/* SEARCH BUTTON ELEMENT */}
+                    <button
+                      type="submit"
+                      className="button is-clickable is-link"
+                      style={{
+                        width: "28px",
+                        height: "28px",
+                        marginLeft: "-2.4rem",
+                        boxShadow: "0 4px 8px #485fc777",
+                      }}
+                    >
+                      <Search size={14} />
+                    </button>
+                  </form>
+                </Menu.Label>
+                <Divider />
+                <Menu.Label>LOGIN</Menu.Label>
+                <Menu.Item
+                  to="/login"
+                  color="blue"
+                  component={Link}
+                  icon={<Login size={14} />}
+                >
+                  Log in
+                </Menu.Item>
+                <Divider />
+                <Menu.Label>ABOUT</Menu.Label>
+                <Menu.Item
+                  to="/login"
+                  color="orange"
+                  component={Link}
+                  icon={<InfoCircle size={14} />}
+                >
+                  About TheCurrent
+                </Menu.Item>
+              </Menu>
+              <div id="navbar-end-2" className="navbar-end ml-2">
+                <div className="navbar-item">
+                  <div className="buttons">
+                    {/* LOGIN BUTTON */}
+                    <a
+                      onClick={() => {
+                        navigate("/login");
+                      }}
+                      className="login-button button is-link is-light is-size-7 has-text-weight-semibold"
+                    >
+                      <Login size={18} className="mr-1" />
+                      Log in
+                    </a>
+
+                    {/* ABOUT US BUTTON - FOR VIEWERS */}
+                    <a
+                      onClick={() => {
+                        navigate("/about");
+                      }}
+                      className="about-button button is-warning is-size-7 has-text-weight-semibold"
+                    >
+                      <InfoCircle size={18} className="mr-1" />
+                      About Us
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+            </>
           )}
         </div>
       </nav>
 
       {/* LOWER NAVBAR SECTION - NEWS CATEGORIES */}
       <nav
-        class="breadcrumb is-small is-flex is-justify-content-center has-bullet-separator"
+        class="breadcrumb has-background-white is-small is-flex is-justify-content-center is-align-items-center has-bullet-separator"
         aria-label="breadcrumbs"
       >
-        <ul className="has-background-white m-0 py-2 is-flex is-justify-content-center">
+        <ul className="m-0 px-0 py-2 is-flex is-justify-content-center is-align-items-center">
           <CategoryItem />
         </ul>
       </nav>

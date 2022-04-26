@@ -5,19 +5,36 @@
   position: fixed;
 }
 
-/* FOT BOTTOM(CATEGORY) NAV */
+/* FOR BOTTOM(CATEGORY) NAV */
 .header-section nav.breadcrumb {
-  top: 3.9rem;
+  top: 4.2rem;
+  padding: 0.3rem 1rem;
 }
 
-/* TOP NAVBAR SECTION */
-.header-section .navbar div span#logo-section img {
-  min-height: 35px;
+.header-section .navbar div#navbar-basic #navbar-end-1 {
+  display: none;
 }
 
+/* FOR TOP NAVBAR SECTION */
 .header-section .navbar {
-  padding: 0 1%;
+  padding: 0 2%;
+  padding-right: 3%;
   border-bottom: 1px solid #eee;
+}
+
+/* LOGO SECTION */
+.header-section .navbar span#logo-section div {
+  border-radius: 3px;
+  padding: 0.3rem 0.6rem;
+}
+
+.header-section .navbar div span#logo-section img {
+  min-height: 40px;
+}
+
+.header-section .navbar span#logo-section span {
+  line-height: 1;
+  letter-spacing: 1px;
 }
 
 .header-section .navbar-item .buttons a.login-button,
@@ -35,6 +52,7 @@ a.about-button:active {
 
 .header-section .navbar .navbar-menu form.search-form {
   flex: 1;
+  display: flex;
 }
 
 .header-section .navbar .navbar-menu form.search-form .control {
@@ -51,11 +69,38 @@ a.about-button:active {
 /* LOWER NAVBAR SECTION(NEWS CATEGORIES) */
 .header-section nav.breadcrumb {
   flex: 1;
+  width: 100%;
+  box-shadow: 0 3px 10px #2222;
 }
 
 .header-section nav.breadcrumb ul {
   flex: 1;
-  box-shadow: 0 3px 10px #2222;
+  width: 100%;
+}
+
+.header-section nav.breadcrumb ul li a {
+  font-size: 11px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .header-section .navbar div.navbar-brand {
+    flex: none;
+  }
+
+  .header-section .navbar div#navbar-basic {
+    flex: 1;
+    box-shadow: none;
+    display: flex !important;
+    background-color: transparent;
+  }
+
+  .header-section .navbar div#navbar-basic #navbar-end-1 {
+    display: flex;
+  }
+
+  .header-section .navbar div#navbar-basic #navbar-end-2 {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 1023px) {
@@ -70,6 +115,16 @@ a.about-button:active {
 @media only screen and (max-width: 768px) {
   /* FOR TOP NAVBAR SECTION ON SMALLER SCREENS */
   .header-section .navbar {
-    padding: 0 0 0 2%;
+    padding: 0 3% 0 2%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header-section .navbar div#navbar-basic {
+    justify-content: flex-end;
+  }
+
+  .header-section .navbar div#navbar-basic form {
+    display: none;
   }
 }
