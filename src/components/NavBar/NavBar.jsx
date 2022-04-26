@@ -104,7 +104,8 @@ export default function NavBar() {
                 onChange={(e) => {
                   setQuery(e.target.value);
                 }}
-                placeholder="Search news..."
+                style={{ fontSize: "15px" }}
+                placeholder="Search..."
               />
             </div>
 
