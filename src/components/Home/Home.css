@@ -1,12 +1,10 @@
-* {
-  font-family: Ubuntu;
-}
-
 .home-container {
   width: 100%;
   display: flex;
-  min-height: 85vh;
+  padding-top: 6rem;
+  min-height: 100vh;
   place-items: center;
+  padding-bottom: 3rem;
   flex-direction: column;
 }
 

@@ -1,5 +1,6 @@
 .category-container {
-  min-height: calc(100vh - 34px);
+  min-height: 100vh;
+  padding-top: 7rem;
 }
 
 .category-container .main-heading {

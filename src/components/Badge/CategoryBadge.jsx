@@ -9,16 +9,23 @@ const CategoryBadge = ({ color, blog }) => {
   const navigate = useNavigate();
 
   return (
-    <Badge
-      size="xs"
-      radius="xs"
-      variant="dot"
+    // <Badge
+    //   size="xs"
+    //   radius="xs"
+    //   variant="dot"
+    //   onClick={() => navigate(`/category/${blog.category}`)}
+    //   style={{ color: color }}
+    //   className="category-badge"
+    // >
+
+    //   {Purify(blog.category)}
+    // </Badge>
+    <span
       onClick={() => navigate(`/category/${blog.category}`)}
-      style={{ color: color }}
-      className="category-badge"
+      class="tag is-link is-light is-text-uppercase is-text-7"
     >
       {Purify(blog.category)}
-    </Badge>
+    </span>
   );
 };
 

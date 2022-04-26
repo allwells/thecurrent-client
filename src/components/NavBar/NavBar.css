@@ -2,13 +2,8 @@
 .header-section .navbar,
 .header-section nav.breadcrumb {
   width: 100%;
+  z-index: 1;
   position: fixed;
-}
-
-/* FOR BOTTOM(CATEGORY) NAV */
-.header-section nav.breadcrumb {
-  top: 4.2rem;
-  padding: 0.3rem 1rem;
 }
 
 .header-section .navbar div#navbar-basic #navbar-end-1 {
@@ -69,8 +64,10 @@ a.about-button:active {
 /* LOWER NAVBAR SECTION(NEWS CATEGORIES) */
 .header-section nav.breadcrumb {
   flex: 1;
+  top: 4.2rem;
   width: 100%;
-  box-shadow: 0 3px 10px #2222;
+  padding: 0.3rem 1rem;
+  box-shadow: 0 3px 4px #2222;
 }
 
 .header-section nav.breadcrumb ul {

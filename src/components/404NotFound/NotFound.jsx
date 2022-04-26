@@ -1,30 +1,28 @@
 import "./NotFound.style.css";
 
-import { Button } from "@mantine/core";
 import React from "react";
-import notFound from "./page-not-found.png";
+import notFound from "./pagenotfound.svg";
 import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
   const navigate = useNavigate();
-  const notFoundStyle = {
-    backgroundImage: `url(${notFound})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  };
 
   return (
-    <div className="not-found">
-      <div className="illustration" style={notFoundStyle}></div>
-      <span className="page-not-found">PAGE NOT FOUND</span>
-      <Button
-        variant="subtle"
-        className="back-button"
-        onClick={() => navigate("/")}
-      >
-        Back to Home
-      </Button>
+    <div className="not-found px-4">
+      <span className="title is-3 is-spaced has-text-centered">
+        Sorry, page not found!
+      </span>
+      <span className="subtitle is-6 has-text-centered">
+        Sorry, we couldn't find the page you're looking for. Perhaps you've
+        mistyped the URL?
+      </span>
+      <span className="subtitle is-6 has-text-centered">
+        Be sure to check your spelling.
+      </span>
+      <img className="my-5" src={notFound} alt="page not found" />
+      <button className="button is-link" onClick={() => navigate("/")}>
+        Go To Home
+      </button>
     </div>
   );
 };
