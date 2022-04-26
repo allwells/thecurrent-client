@@ -34,3 +34,7 @@ code {
 #root {
   background-color: #f8f9fa;
 }
+
+a {
+  text-decoration: none;
+}

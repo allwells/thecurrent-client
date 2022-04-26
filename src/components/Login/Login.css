@@ -7,7 +7,7 @@
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right bottom, #a8c0ff, #3f2b96);
+  background: linear-gradient(to right bottom, #a8c0ff, #485fc7);
 }
 
 .login-container .card {
@@ -29,28 +29,18 @@
   margin-bottom: 2rem;
 }
 
-.login-container .card form .login-button {
-  width: 100%;
-  border: none;
-  color: #444;
-  outline: none;
-  cursor: pointer;
-  margin-top: 1rem;
-  font-weight: 500;
-  box-shadow: none;
-  font-size: 0.9rem;
-  border-radius: 3px;
-  transition-duration: 0.4s;
-  background-color: #ededed;
+.login-container .card,
+.login-container .card-body {
+  padding-bottom: 0.5rem;
 }
 
-.login-container .card form .login-button:hover {
-  color: #fff;
-  background-color: #4d4399;
+.login-container .card form .login-button {
+  width: 100%;
 }
 
 .login-container .card form .mantine-button {
   color: #fff;
+  cursor: pointer !important;
   background-color: transparent;
 }
 

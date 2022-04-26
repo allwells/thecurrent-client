@@ -1,6 +1,13 @@
 import "./Login.css";
 
-import { ArrowLeft, At, EyeCheck, EyeOff, Lock } from "tabler-icons-react";
+import {
+  ArrowLeft,
+  At,
+  EyeCheck,
+  EyeOff,
+  Lock,
+  Login as LoginIcon,
+} from "tabler-icons-react";
 import { Button, Card, Form, Spinner } from "react-bootstrap";
 import {
   Divider,
@@ -55,7 +62,7 @@ export default function Login() {
 
         setTimeout(() => {
           navigate("/profile");
-        }, 2000);
+        }, 1000);
       })
       .catch((err) => {
         setSubmitting(false);
@@ -113,21 +120,33 @@ export default function Login() {
             </Form.Group>
 
             {/* LOGIN BUTTON */}
-            <div className="d-flex justify-content-center">
+            <div className="is-full">
               <Button
                 type="submit"
-                variant="primary"
-                className="login-button"
+                className="login-button button is-full is-link has-text-bold"
                 {...(submitting ? { disabled: true } : {})}
               >
                 {submitting ? (
                   <Spinner as="span" animation="border" role="status" />
                 ) : (
-                  "Login"
+                  <>
+                    <LoginIcon size={20} className="mr-2" />
+                    <span>Login</span>
+                  </>
                 )}
               </Button>
             </div>
-            <Divider mt="lg" mb="xs" />
+            {/* <MantineButton
+              className="mantine-button mt-2 is-clickable"
+              variant="subtle"
+              radius="xs"
+              size="xs"
+              compact
+              onClick={() => navigate("/")}
+            >
+              Forgot password?
+            </MantineButton> */}
+            <Divider mt="lg" mb="md" />
             <MantineButton
               className="mantine-button"
               variant="subtle"

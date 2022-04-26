@@ -67,7 +67,7 @@ export default function Home() {
               })
             : null}
         </div>
-        {loading ? (
+        {/* {loading ? (
           <div className="loader">
             <Loader size="sm" variant="bars" />
           </div>
@@ -161,7 +161,7 @@ export default function Home() {
               </>
             )}
           </Container>
-        )}
+        )} */}
       </div>
       <Footer />
     </>

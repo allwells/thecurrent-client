@@ -1,20 +1,27 @@
 import "./NavBar.css";
 
-import { Burger, Button } from "@mantine/core";
-import { Container, Form, FormControl, Nav, Navbar } from "react-bootstrap";
+import {
+  Dashboard,
+  InfoCircle,
+  Login,
+  Logout,
+  Search,
+  Settings,
+} from "tabler-icons-react";
+import { Divider, Menu } from "@mantine/core";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
-import ExtendedNav from "./ExtendedNav";
-import { Search } from "tabler-icons-react";
+import CategoryItem from "./CategoryItem";
 import anchorLogo from "../../img/anchor-logo.png";
 import axios from "axios";
 import thecurrentLogo from "../../img/thecurrent-logo.png";
-import { useNavigate } from "react-router-dom";
 import { useViewportSize } from "@mantine/hooks";
 
 export default function NavBar() {
   const navigate = useNavigate();
   const viewPort = useViewportSize();
+  const mobileViewPort = 768;
 
   const [loggedIn, setLoggedIn] = useState(false);
   // eslint-disable-next-line
@@ -22,11 +29,11 @@ export default function NavBar() {
   // eslint-disable-next-line
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
-  const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setLoggedIn(true);
+
       axios
         .post(`${process.env.REACT_APP_BASE_URL}/data`, {
           token: localStorage.getItem("token"),
@@ -42,98 +49,153 @@ export default function NavBar() {
     }
   }, []);
 
+  // HANDLE SEARCH ACTION
   const handleSearch = (e) => {
     e.preventDefault();
     navigate(`/search/${query}`);
   };
 
   return (
-    <>
-      <ExtendedNav
-        opened={opened}
-        loggedIn={loggedIn}
-        closeButton={() => setOpened((o) => !o)}
-      />
-      <Navbar collapseOnSelect expand="lg" sticky="top" variant="light">
-        <Container>
-          <Navbar.Brand
+    <div className="header-section">
+      <nav className="navbar" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand">
+          {/* LOGO */}
+          <span
+            id="logo-section"
+            className="navbar-item"
             onClick={() => {
               navigate("/");
             }}
           >
-            <img src={anchorLogo} height={35} alt="logo" />
-            <img src={thecurrentLogo} height={35} alt="logo" />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse>
-            {/* Search Bar */}
-            <Nav className="searchBar">
-              <Form
-                className="d-flex"
-                onSubmit={(e) => {
-                  handleSearch(e);
-                }}
-              >
-                <FormControl
-                  value={query}
-                  type="search"
-                  aria-label="Search"
-                  placeholder="Search"
-                  className="me-2 w-100"
-                  onChange={(e) => {
-                    setQuery(e.target.value);
-                  }}
-                />
-                <Button
-                  size="sm"
-                  type="submit"
-                  variant="subtle"
-                  className="search-button"
-                >
-                  <Search color="#368dd6" size={20} />
-                </Button>
-              </Form>
-            </Nav>
+            <img className="is-clickable" src={anchorLogo} alt="logo" />
+            <img className="is-clickable" src={thecurrentLogo} alt="logo" />
+          </span>
 
-            {loggedIn ? (
-              viewPort.width <= 768 ? (
-                <Button
-                  fullWidth
-                  radius="xl"
-                  variant="outline"
-                  style={{ marginTop: "1rem" }}
-                  onClick={() => setOpened((o) => !o)}
-                >
-                  Menu
-                </Button>
-              ) : (
-                <Burger
-                  color="#368dd6"
-                  opened={opened}
-                  onClick={() => setOpened((o) => !o)}
-                />
-              )
-            ) : (
-              <Nav>
-                <Nav.Link>
-                  <Button
-                    compact
-                    radius="lg"
-                    size="lg"
-                    variant="outline"
-                    className="login-button"
+          {/* NAVBAR BURGER - FOR SMALLER SCREENS */}
+          {loggedIn ? (
+            <a
+              role="button"
+              aria-label="menu"
+              aria-expanded="false"
+              className="navbar-burger"
+              data-target="navbarBasicExample"
+            ></a>
+          ) : (
+            <a
+              role="button"
+              aria-label="menu"
+              aria-expanded="false"
+              className="navbar-burger"
+              data-target="navbarBasicExample"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          )}
+        </div>
+
+        <div id="navbarBasicExample" className="navbar-menu">
+          {/* SEARCH FORM */}
+          <form
+            onSubmit={(e) => {
+              handleSearch(e);
+            }}
+            className="search-form mr-4 is-flex is-justify-content-between is-align-items-center"
+          >
+            {/* SEARCH INPUT FIELD */}
+            <div className="control">
+              <input
+                type="text"
+                value={query}
+                className="input"
+                aria-label="Search"
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
+                placeholder="Search news..."
+              />
+            </div>
+
+            {/* SEARCH BUTTON ELEMENT */}
+            <button className="button is-clickable is-link" type="submit">
+              <Search />
+            </button>
+          </form>
+
+          {loggedIn ? (
+            // <Burger
+            //   color="#368dd6"
+            //   opened={opened}
+            //   onClick={() => setOpened((o) => !o)}
+            // />
+            <Menu placement="end" withArrow>
+              <Menu.Item
+                icon={<Dashboard size={14} />}
+                component={Link}
+                to="/dashboard"
+              >
+                Dashboard
+              </Menu.Item>
+              <Menu.Item
+                icon={<Settings size={14} />}
+                component={Link}
+                to="/settings"
+              >
+                Settings
+              </Menu.Item>
+              <Divider />
+              <Menu.Item icon={<Logout size={14} />} color="red">
+                Logout
+              </Menu.Item>
+            </Menu>
+          ) : (
+            <div className="navbar-end">
+              <div className="navbar-item">
+                <div className="buttons">
+                  {/* LOGIN BUTTON */}
+                  <a
                     onClick={() => {
                       navigate("/login");
                     }}
+                    className="login-button button is-link is-light"
                   >
-                    Login
-                  </Button>
-                </Nav.Link>
-              </Nav>
-            )}
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </>
+                    <Login className="mr-1" />
+                    Log in
+                  </a>
+
+                  {/* ABOUT US BUTTON - FOR VIEWERS */}
+                  <a
+                    onClick={() => {
+                      navigate("/about");
+                    }}
+                    className="about-button button is-warning"
+                  >
+                    <InfoCircle className="mr-1" />
+                    About Us
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* LOWER NAVBAR SECTION - NEWS CATEGORIES */}
+      <nav
+        class="breadcrumb is-small is-flex is-justify-content-center has-bullet-separator"
+        aria-label="breadcrumbs"
+      >
+        <ul className="has-background-white m-0 py-2 is-flex is-justify-content-center">
+          <CategoryItem />
+        </ul>
+      </nav>
+    </div>
   );
 }
+
+// <ExtendedNav
+//   opened={opened}
+//   loggedIn={loggedIn}
+//   closeButton={() => setOpened((o) => !o)}
+// />

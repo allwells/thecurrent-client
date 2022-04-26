@@ -1,142 +1,75 @@
-* {
-  font-family: "Ubuntu", sans-serif;
+/* POSITION OF TOP AND BOTTOM(CATEGORY) NAVS */
+.header-section .navbar,
+.header-section nav.breadcrumb {
+  width: 100%;
+  position: fixed;
 }
 
-.navbar {
-  margin-bottom: 1vh;
-  background-color: #fff;
+/* FOT BOTTOM(CATEGORY) NAV */
+.header-section nav.breadcrumb {
+  top: 3.9rem;
+}
+
+/* TOP NAVBAR SECTION */
+.header-section .navbar div span#logo-section img {
+  min-height: 35px;
+}
+
+.header-section .navbar {
+  padding: 0 1%;
+  border-bottom: 1px solid #eee;
+}
+
+.header-section .navbar-item .buttons a.login-button,
+a.about-button {
+  height: 2.3rem;
+  font-size: 16px;
+  transition-duration: 0.3s;
+  box-shadow: 3px 4px 4px #1113;
+}
+
+.header-section .navbar-item .buttons a.login-button:active,
+a.about-button:active {
+  box-shadow: 1px 2px 3px #1113;
+}
+
+.header-section .navbar .navbar-menu form.search-form {
+  flex: 1;
+}
+
+.header-section .navbar .navbar-menu form.search-form .control {
+  flex: 1;
+}
+
+.header-section .navbar .navbar-menu form.search-form button {
+  width: 30px;
+  height: 30px;
+  margin-left: -2.45rem;
+  box-shadow: 0 4px 8px #485fc777;
+}
+
+/* LOWER NAVBAR SECTION(NEWS CATEGORIES) */
+.header-section nav.breadcrumb {
+  flex: 1;
+}
+
+.header-section nav.breadcrumb ul {
+  flex: 1;
   box-shadow: 0 3px 10px #2222;
 }
 
-.navbar .container .navbar-brand {
-  cursor: pointer;
-  color: #368dd6;
-  font-style: italic;
-  font-weight: bolder;
-}
-
-.navbar .container .navbar-collapse {
-  width: 100%;
-  flex-grow: 0;
-  justify-content: space-between;
-}
-
-.navbar .container .navbar-collapse .searchBar {
-  width: 90%;
-  height: 2.3rem;
-}
-
-.navbar .container .navbar-collapse .searchBar form {
-  width: 100%;
-}
-
-.navbar .container .navbar-collapse form input {
-  width: 18vw;
-  color: #333;
-  margin-left: 2vw;
-  font-size: 0.9rem;
-  border-right: none;
-  background-color: #fff;
-  border-radius: 20px 0 0 20px;
-  border-top: 1px solid #3336;
-  border-left: 1px solid #3336;
-  border-bottom: 1px solid #3336;
-}
-
-.navbar .container .navbar-collapse form input:focus {
-  outline: none;
-  box-shadow: none;
-  border-right: none;
-  border-top: 1px solid #368dd6aa;
-  border-left: 1px solid #368dd6aa;
-  border-bottom: 1px solid #368dd6aa;
-}
-
-.navbar .container .navbar-collapse .searchBar form .search-button {
-  height: 2.3rem;
-  padding: 0.45rem;
-  border-radius: 50%;
-  border-left: none;
-  margin-left: -0.6rem;
-  transition-duration: 0.3s;
-  background-color: #ffffff;
-  border-radius: 0 20px 20px 0;
-  border-top: 1px solid #3336;
-  border-right: 1px solid #3336;
-  border-bottom: 1px solid #3336;
-}
-
-.navbar .container .navbar-collapse form input:focus ~ .search-button {
-  border-left: none;
-  border-top: 1px solid #368dd6aa;
-  border-right: 1px solid #368dd6aa;
-  border-bottom: 1px solid #368dd6aa;
-}
-
-.navbar .container .navbar-collapse .new-post {
-  width: 100%;
-  border: none;
-  font-size: 0.8rem;
-  margin-right: 1vw;
-  border-radius: 4px;
-  background-color: #368dd6;
-}
-
-.navbar .container .navbar-collapse a {
-  display: flex;
-  font-size: 0.8rem;
-  place-items: center;
-  justify-content: center;
-}
-
-.navbar .container .navbar-collapse .new-post:hover {
-  background-color: #146bb4;
-}
-
-.navbar .container .navbar-collapse .user-icon {
-  border-radius: 50%;
-  background-color: #2e2d2e;
-  border: 1px solid #111111;
-  transition: all 0.3s ease-in-out;
-}
-
-.navbar .container .navbar-collapse .user-icon:hover {
-  transform: scale(1.05);
-}
-
-.navbar .container .navbar-collapse .dropdown-toggle::after {
-  display: none;
-}
-
-.navbar .container .navbar-collapse .login-button {
-  width: 100%;
-  border: none;
-  color: #fff;
-  margin-left: 2rem;
-  font-size: 0.85rem;
-  border-radius: 50px;
-  background-color: #368dd6;
-}
-
-.navbar .container .navbar-collapse .login-button:hover {
-  background-color: #146bb4;
+@media only screen and (max-width: 1023px) {
+  /* FOR TOP NAVBAR SECTION */
+  .header-section .navbar div.navbar-brand {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-  .navbar .container .navbar-collapse .searchBar {
-    width: 100%;
-    margin-top: 2rem;
-  }
-
-  .navbar .container .navbar-collapse .searchBar input {
-    margin-left: 0;
-  }
-
-  .navbar .container .navbar-collapse .login {
-    margin-top: 1rem;
-  }
-
-  .navbar .container .navbar-collapse .login-button {
-    margin: 0;
+  /* FOR TOP NAVBAR SECTION ON SMALLER SCREENS */
+  .header-section .navbar {
+    padding: 0 0 0 2%;
   }
 }
