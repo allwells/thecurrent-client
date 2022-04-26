@@ -118,6 +118,7 @@ export default function NavBar() {
           {loggedIn ? (
             <>
               <Menu
+                size={"lg"}
                 className="is-flex ml-5 is-justify-content-center is-align-items-center"
                 placement="end"
                 withArrow
@@ -132,7 +133,48 @@ export default function NavBar() {
                   />
                 }
               >
+                <Menu.Label>SEARCH NEWS</Menu.Label>
+                <Menu.Label>
+                  <form
+                    onSubmit={(e) => {
+                      handleSearch(e);
+                    }}
+                    className="search-form mr-4 is-flex is-justify-content-between is-align-items-center"
+                  >
+                    {/* SEARCH INPUT FIELD */}
+                    <div className="control">
+                      <input
+                        type="text"
+                        value={query}
+                        className="input"
+                        aria-label="Search"
+                        onChange={(e) => {
+                          setQuery(e.target.value);
+                        }}
+                        style={{ height: "34px", fontSize: "12px" }}
+                        placeholder="Search..."
+                      />
+                    </div>
+
+                    {/* SEARCH BUTTON ELEMENT */}
+                    <button
+                      type="submit"
+                      className="button is-clickable is-link"
+                      style={{
+                        width: "28px",
+                        height: "28px",
+                        marginLeft: "-2.4rem",
+                        boxShadow: "0 4px 8px #485fc777",
+                      }}
+                    >
+                      <Search size={14} />
+                    </button>
+                  </form>
+                </Menu.Label>
+                <Divider />
+                <Menu.Label>DASHBOARD</Menu.Label>
                 <Menu.Item
+                  color="blue"
                   icon={<Dashboard size={14} />}
                   component={Link}
                   to="/dashboard"
@@ -140,6 +182,7 @@ export default function NavBar() {
                   Dashboard
                 </Menu.Item>
                 <Menu.Item
+                  color="blue"
                   icon={<Settings size={14} />}
                   component={Link}
                   to="/settings"
@@ -147,6 +190,7 @@ export default function NavBar() {
                   Settings
                 </Menu.Item>
                 <Divider />
+                <Menu.Label>LOGOUT</Menu.Label>
                 <Menu.Item icon={<Logout size={14} />} color="red">
                   Logout
                 </Menu.Item>
@@ -166,7 +210,7 @@ export default function NavBar() {
                   </button>
                 }
               >
-                <Menu.Label>SEARCH</Menu.Label>
+                <Menu.Label>SEARCH NEWS</Menu.Label>
                 <Menu.Label>
                   <form
                     onSubmit={(e) => {
