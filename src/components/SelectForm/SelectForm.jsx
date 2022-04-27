@@ -55,12 +55,12 @@ const SelectForm = ({
       label: "Science and Technology",
     },
     {
-      value: "sport",
-      label: "Sport",
+      value: "sports",
+      label: "Sports",
     },
     {
-      value: "transport",
-      label: "Transport",
+      value: "transportation",
+      label: "Transportation",
     },
   ];
 

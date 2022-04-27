@@ -4,7 +4,9 @@ import React from "react";
 
 const DatePublished = ({ blog }) => {
   return (
-    <span className="date">{new Date(blog.created_at).toDateString()}</span>
+    <span className="is-size-6">
+      {new Date(blog.created_at).toDateString()}
+    </span>
   );
 };
 

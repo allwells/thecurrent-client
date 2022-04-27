@@ -61,9 +61,10 @@ const CategoryItem = ({ text, path }) => {
       label: "Transportation",
     },
   ];
+
   return categoryItems.map((category) => {
     return (
-      <li>
+      <li key={category.id}>
         <Link
           className="has-text-weight-semibold"
           to={"/category/" + PurifyReverse(category.label)}

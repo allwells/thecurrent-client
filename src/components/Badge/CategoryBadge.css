@@ -1,5 +1,11 @@
 .category-badge {
   cursor: pointer;
+  font-size: 12px;
   width: fit-content;
+  border-radius: 2px;
   height: fit-content;
+}
+
+.category-badge:hover {
+  text-decoration: underline;
 }
