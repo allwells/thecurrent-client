@@ -1,11 +1,10 @@
 .category-badge {
-  cursor: pointer;
-  font-size: 12px;
-  width: fit-content;
-  border-radius: 2px;
-  height: fit-content;
+  font-size: 12px !important;
+  width: fit-content !important;
+  height: fit-content !important;
 }
 
 .category-badge:hover {
-  text-decoration: underline;
+  cursor: pointer !important;
+  text-decoration: underline !important;
 }

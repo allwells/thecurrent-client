@@ -13,17 +13,22 @@ const NewsCardBig = ({ blog, onClick }) => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
-      onClick={onClick}
       className="news-card"
     >
-      <div className="tint p-4 is-full is-flex is-flex-direction-column is-justify-content-space-between is-align-items-center">
-        <div className="is-full is-flex is-justify-content-flex-end">
+      <div className="tint p-4 is-flex is-flex-direction-column is-justify-content-space-between is-align-items-center">
+        {/* HASHTAG - NEWS CATEGORY */}
+        <div className="category-tag is-full is-flex is-justify-content-end">
           <CategoryBadge blog={blog} />
         </div>
 
-        <div className="is-full has-background-success">
+        <div className="is-full">
+          {/* DATE */}
           <DatePublished blog={blog} />
-          <h3 className="title is-4">{blog.title}</h3>
+
+          {/* CARD TITLE */}
+          <h3 onClick={onClick} className="title is-6 has-text-light">
+            {blog.title}
+          </h3>
         </div>
       </div>
     </div>

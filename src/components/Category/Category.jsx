@@ -40,15 +40,9 @@ const Category = () => {
     <>
       <NavBar />
       <div className="category-container">
-        <h1 className="main-heading">
+        <h1 className="main-heading is-size-6">
           Category:{" "}
-          <span
-            style={{
-              fontSize: "1rem",
-              fontWeight: "400",
-              textTransform: "capitalize",
-            }}
-          >
+          <span className="has-text-weight-light is-capitalized">
             {Purify(query)}
           </span>
         </h1>
