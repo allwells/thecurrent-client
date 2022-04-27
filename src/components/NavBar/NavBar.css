@@ -114,9 +114,7 @@ a.about-button:hover {
   .header-section .navbar {
     padding: 0 3% 0 2%;
   }
-}
 
-@media only screen and (max-width: 600px) {
   .header-section .navbar div#navbar-basic {
     justify-content: flex-end;
   }

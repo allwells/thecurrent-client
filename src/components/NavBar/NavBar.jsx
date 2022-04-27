@@ -115,7 +115,7 @@ export default function NavBar() {
           </form>
 
           {loggedIn ? (
-            <>
+            <div id="menu">
               <Menu
                 size={"lg"}
                 className="is-flex ml-5 is-justify-content-center is-align-items-center"
@@ -132,8 +132,8 @@ export default function NavBar() {
                   />
                 }
               >
-                <Menu.Label>SEARCH NEWS</Menu.Label>
-                <Menu.Label>
+                <Menu.Label id="search-form-label">SEARCH NEWS</Menu.Label>
+                <Menu.Label id="search-form-form">
                   <form
                     onSubmit={(e) => {
                       handleSearch(e);
@@ -170,7 +170,7 @@ export default function NavBar() {
                     </button>
                   </form>
                 </Menu.Label>
-                <Divider />
+                <Divider id="search-form-divider" />
                 <Menu.Label>DASHBOARD</Menu.Label>
                 <Menu.Item
                   color="blue"
@@ -198,7 +198,7 @@ export default function NavBar() {
                   Logout
                 </Menu.Item>
               </Menu>
-            </>
+            </div>
           ) : (
             <>
               <Menu
