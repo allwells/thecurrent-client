@@ -41,7 +41,7 @@
 .home-container .latest-news {
   width: 79%;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
 }
 

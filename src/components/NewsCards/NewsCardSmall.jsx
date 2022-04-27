@@ -20,7 +20,7 @@ const NewsCardSmall = ({
 }) => {
   return (
     <div className="post-card">
-      {blog.cloudinaryId ? (
+      {!blog.cloudinaryId ? (
         <Card.Img
           variant="top"
           src={blog.image}

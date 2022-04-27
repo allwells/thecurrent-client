@@ -40,15 +40,15 @@ const Category = () => {
     <>
       <NavBar />
       <div className="category-container">
-        <h1 className="main-heading is-size-6">
-          Category:{" "}
-          <span className="has-text-weight-light is-capitalized">
-            {Purify(query)}
-          </span>
+        <h1
+          align="center"
+          className="my-5 is-size-5 has-text-weight-semibold is-uppercase"
+        >
+          {Purify(query)}
         </h1>
         {loading ? (
-          <div className="loader">
-            <Loader size="sm" variant="bars" />
+          <div className="b-0 is-flex is-justify-content-center is-align-items-center">
+            <Loader color={"#485FC7"} size="md" variant="bars" />
           </div>
         ) : (
           <Container>
@@ -63,15 +63,9 @@ const Category = () => {
                 );
               })
             ) : (
-              <>
-                <h1 className="message">
-                  Sorry, we couldn't find any post under{" "}
-                  <span style={{ textTransform: "capitalize" }}>
-                    “{Purify(query)}”
-                  </span>{" "}
-                  category
-                </h1>
-              </>
+              <h1 align="center" className="subtitle is-6">
+                No content available.
+              </h1>
             )}
           </Container>
         )}
@@ -82,3 +76,10 @@ const Category = () => {
 };
 
 export default Category;
+
+// <h1 className="subtitle is-6">
+//   Sorry, we couldn't find any news post under{" "}
+//   <span className="is-capitalized">
+//     “{Purify(query)}”
+//   </span>
+// </h1>

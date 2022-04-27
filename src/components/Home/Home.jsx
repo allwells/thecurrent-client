@@ -1,18 +1,12 @@
 import "./Home.css";
 
-import { Card, Container } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 
-import { Button } from "@mantine/core";
-import CategoryBadge from "../Badge/CategoryBadge";
-import DatePublished from "../DatePublished/DatePublished";
 import Footer from "../Footer/Footer";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
 import NewsCard from "../NewsCards/NewsCard";
 import NewsCardSmall from "../NewsCards/NewsCardSmall";
-import Purify from "../../utils/Purify";
-import SelectForm from "../SelectForm/SelectForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -34,13 +28,15 @@ export default function Home() {
               .slice(-5)
               .reverse()
           );
+
           setLoading(!loading);
         })
         .catch((err) => {
           // set error, to display to user
-          // console.log(err);
+          console.log(err);
         });
     };
+
     fetchPosts();
   }, []);
 
@@ -52,23 +48,29 @@ export default function Home() {
     <>
       <NavBar />
       <div className="home-container">
-        <h2 id="latest" className="title is-4 mb-4">
-          Latest news
-        </h2>
         <div className="latest-news">
-          {latestNews.length > 0
-            ? latestNews.map((blog) => {
-                return (
-                  <NewsCard
-                    key={blog._id}
-                    blog={blog}
-                    onClick={() => {
-                      handlePost(blog._id);
-                    }}
-                  />
-                );
-              })
-            : null}
+          {latestNews.length > 0 ? (
+            <div className="">
+              <h2 id="latest" className="title is-4 mb-4">
+                Latest news
+              </h2>
+
+              <div className="is-full is-flex is-justify-content-space-between is-flex-wrap-wrap">
+                {/* DISPLAY LATEST NEWS */}
+                {latestNews.map((blog) => {
+                  return (
+                    <NewsCard
+                      key={blog._id}
+                      blog={blog}
+                      onClick={() => {
+                        handlePost(blog._id);
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
         </div>
         {loading ? (
           <div className="b-0 is-flex is-justify-content-center is-align-items-center">
@@ -77,23 +79,28 @@ export default function Home() {
         ) : (
           // EXPLORE NEWS SECTION
           <div className="container">
-            <h1 id="explore" className="title is-4 mt-5 mb-3" align="center">
-              Explore
-            </h1>
             {blogs.length > 0 ? (
-              blogs.map((blog) => {
-                return (
-                  <NewsCardSmall
-                    key={blog._id}
-                    blog={blog}
-                    handlePost={handlePost}
-                  />
-                );
-              })
-            ) : (
               <>
-                <h1 className="no-post">No Post Available</h1>
+                <h1
+                  id="explore"
+                  align="center"
+                  className="title is-4 mt-5 mb-3"
+                >
+                  Explore
+                </h1>
+                {/* MAP blogs ARRAY AND GET BLOGS */}
+                {blogs.map((blog) => {
+                  return (
+                    <NewsCardSmall
+                      key={blog._id}
+                      blog={blog}
+                      handlePost={handlePost}
+                    />
+                  );
+                })}
               </>
+            ) : (
+              <h1 className="subtitle is-5">No content available.</h1>
             )}
           </div>
         )}
