@@ -1,6 +1,5 @@
 import "./NavBar.css";
 
-import { Burger, Divider, Menu } from "@mantine/core";
 import {
   Dashboard,
   InfoCircle,
@@ -10,6 +9,7 @@ import {
   Search,
   Settings,
 } from "tabler-icons-react";
+import { Divider, Menu } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
@@ -18,12 +18,9 @@ import anchorLogo from "../../img/anchor-logo.png";
 import axios from "axios";
 import profileBtnImg from "../../img/profileButtonImg.png";
 import thecurrentLogo from "../../img/thecurrent-logo.png";
-import { useViewportSize } from "@mantine/hooks";
 
 export default function NavBar() {
   const navigate = useNavigate();
-  const viewPort = useViewportSize();
-  const mobileViewPort = 768;
 
   const [loggedIn, setLoggedIn] = useState(false);
   // eslint-disable-next-line
@@ -31,9 +28,6 @@ export default function NavBar() {
   // eslint-disable-next-line
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
-
-  const [opened, setOpened] = useState(false);
-  const title = opened ? "Close navigation" : "Open navigation";
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -58,6 +52,11 @@ export default function NavBar() {
   const handleSearch = (e) => {
     e.preventDefault();
     navigate(`/search/${query}`);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
   };
 
   return (
@@ -191,7 +190,11 @@ export default function NavBar() {
                 </Menu.Item>
                 <Divider />
                 <Menu.Label>LOGOUT</Menu.Label>
-                <Menu.Item icon={<Logout size={14} />} color="red">
+                <Menu.Item
+                  onClick={() => logout()}
+                  icon={<Logout size={14} />}
+                  color="red"
+                >
                   Logout
                 </Menu.Item>
               </Menu>
@@ -307,15 +310,14 @@ export default function NavBar() {
         aria-label="breadcrumbs"
       >
         <ul className="m-0 px-0 py-2 is-flex is-justify-content-center is-align-items-center">
+          <li>
+            <Link className="has-text-weight-semibold" to={"/#latest"}>
+              Latest
+            </Link>
+          </li>
           <CategoryItem />
         </ul>
       </nav>
     </div>
   );
 }
-
-// <ExtendedNav
-//   opened={opened}
-//   loggedIn={loggedIn}
-//   closeButton={() => setOpened((o) => !o)}
-// />

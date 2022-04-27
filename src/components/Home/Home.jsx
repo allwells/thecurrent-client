@@ -10,6 +10,7 @@ import Footer from "../Footer/Footer";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
 import NewsCard from "../NewsCards/NewsCard";
+import NewsCardSmall from "../NewsCards/NewsCardSmall";
 import Purify from "../../utils/Purify";
 import SelectForm from "../SelectForm/SelectForm";
 import axios from "axios";
@@ -17,7 +18,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const navigate = useNavigate();
-  const [category, setCategory] = useState("");
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const [latestNews, setLatestNews] = useState([]);
@@ -52,6 +52,9 @@ export default function Home() {
     <>
       <NavBar />
       <div className="home-container">
+        <h2 id="latest" className="title is-4 mb-4">
+          Latest news
+        </h2>
         <div className="latest-news">
           {latestNews.length > 0
             ? latestNews.map((blog) => {
@@ -67,101 +70,33 @@ export default function Home() {
               })
             : null}
         </div>
-        {/* {loading ? (
-          <div className="loader">
-            <Loader size="sm" variant="bars" />
+        {loading ? (
+          <div className="b-0 is-flex is-justify-content-center is-align-items-center">
+            <Loader color={"#485FC7"} size="md" variant="bars" />
           </div>
         ) : (
-          <Container>
-            <div className={blogs.length > 0 ? "explore" : "no-explore"}>
-              <h1 className="main-heading" align="center">
-                Explore news posts:
-              </h1>
-              <SelectForm
-                errorMsg={false}
-                category={category}
-                placeholder="Category"
-                setCategory={setCategory}
-              />
-              <Button ml={10} onClick={() => setCategory("")} variant="subtle">
-                Cancel
-              </Button>
-            </div>
+          // EXPLORE NEWS SECTION
+          <div className="container">
+            <h1 id="explore" className="title is-4 mt-5 mb-3" align="center">
+              Explore
+            </h1>
             {blogs.length > 0 ? (
               blogs.map((blog) => {
-                if (category === "" || category === null) {
-                  return (
-                    <Card className="blog-card" key={blog._id}>
-                      {blog.cloudinaryId ? (
-                        <Card.Img variant="top" src={blog.image} />
-                      ) : null}
-                      <Card.Body>
-                        <h1>{blog.title}</h1>
-                        <div className="createdAt">
-                          <DatePublished blog={blog} />
-                          <CategoryBadge
-                            blog={blog}
-                            onClick={() => setCategory("")}
-                          />
-                        </div>
-                        <div className="blog-items">
-                          <Button
-                            className="readMore"
-                            onClick={() => {
-                              handlePost(blog._id);
-                            }}
-                          >
-                            Read More
-                          </Button>
-                        </div>
-                      </Card.Body>
-                    </Card>
-                  );
-                } else {
-                  if (category === blog.category) {
-                    return (
-                      <Card className="blog-card" key={blog._id}>
-                        {blog.cloudinaryId ? (
-                          <Card.Img variant="top" src={blog.image} />
-                        ) : null}
-                        <Card.Body>
-                          <h1>{blog.title}</h1>
-                          <div className="createdAt">
-                            <span className="date">
-                              {new Date(blog.created_at).toDateString()}
-                            </span>
-                            <span
-                              className="category"
-                              onClick={() => setCategory(blog.category)}
-                            >
-                              {Purify(blog.category)}
-                            </span>
-                          </div>
-                          <div className="blog-items">
-                            <Button
-                              className="readMore"
-                              onClick={() => {
-                                handlePost(blog._id);
-                              }}
-                            >
-                              Read More
-                            </Button>
-                          </div>
-                        </Card.Body>
-                      </Card>
-                    );
-                  } else {
-                    return null;
-                  }
-                }
+                return (
+                  <NewsCardSmall
+                    key={blog._id}
+                    blog={blog}
+                    handlePost={handlePost}
+                  />
+                );
               })
             ) : (
               <>
                 <h1 className="no-post">No Post Available</h1>
               </>
             )}
-          </Container>
-        )} */}
+          </div>
+        )}
       </div>
       <Footer />
     </>

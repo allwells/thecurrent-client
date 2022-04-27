@@ -6,58 +6,54 @@ const CategoryItem = ({ text, path }) => {
   const categoryItems = [
     {
       id: 1,
-      label: "Latest",
-    },
-    {
-      id: 2,
       label: "Anchor University",
     },
     {
-      id: 3,
+      id: 2,
       label: "Education",
     },
     {
-      id: 4,
+      id: 3,
       label: "Entertainment",
     },
     {
-      id: 5,
+      id: 4,
       label: "Arts and Culture",
     },
     {
-      id: 6,
+      id: 5,
       label: "Business and Economy",
     },
     {
-      id: 7,
+      id: 6,
       label: "Editorial",
     },
     {
-      id: 8,
+      id: 7,
       label: "Fashion",
     },
     {
-      id: 9,
+      id: 8,
       label: "Feature",
     },
     {
-      id: 10,
+      id: 9,
       label: "Health",
     },
     {
-      id: 11,
+      id: 10,
       label: "Opinion",
     },
     {
-      id: 12,
+      id: 11,
       label: "Science and Technology",
     },
     {
-      id: 13,
+      id: 12,
       label: "Sports",
     },
     {
-      id: 14,
+      id: 13,
       label: "Transportation",
     },
   ];

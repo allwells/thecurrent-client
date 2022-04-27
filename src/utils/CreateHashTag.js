@@ -1,5 +1,4 @@
 export default function createHashTag(tag) {
-  console.log("Before split: ", tag);
   // Split sentence into an array of strings
   const splitedTag = tag.split(" ");
 
