@@ -1,10 +1,10 @@
 /* NEWS CARD */
 .news-card {
-  flex: 1;
-  width: 35%;
+  width: 30%;
+  flex-grow: 1;
   height: 15rem;
   margin: 0.1rem;
-  min-width: 18rem;
+  min-width: 16rem;
   border-radius: 5px;
 }
 

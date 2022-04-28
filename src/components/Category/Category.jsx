@@ -23,8 +23,9 @@ const Category = () => {
       axios
         .get(`${process.env.REACT_APP_BASE_URL}/category/${query}`)
         .then((res) => {
-          setBlogs(res.data.blogs.reverse().slice(5));
-          setLoading(!loading);
+          setBlogs(res.data.blogs.reverse());
+
+          setLoading(false);
         })
         .catch((err) => {
           // set error, to display to user
@@ -42,10 +43,10 @@ const Category = () => {
   return (
     <>
       <NavBar />
-      <div className="category-container">
+      <div className="category-container is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-center">
         <h1
           align="center"
-          className="my-5 is-size-5 has-text-weight-semibold is-uppercase"
+          className="mt-6 mb-4 is-size-5 has-text-weight-semibold is-uppercase"
         >
           {Purify(query)}
         </h1>
@@ -54,9 +55,10 @@ const Category = () => {
             <Loader color={"#485FC7"} size="md" variant="bars" />
           </div>
         ) : (
-          <div className="category-sub-container">
+          <div className="category-sub-container is-full is-flex-wrap-wrap is-flex is-justify-content-center">
             {blogs.length > 0 ? (
               blogs.map((blog) => {
+                // if (blog.category === query) {
                 return (
                   <NewsCardSmall
                     key={blog._id}
@@ -64,9 +66,12 @@ const Category = () => {
                     handlePost={handlePost}
                   />
                 );
+                // } else {
+                //   return null;
+                // }
               })
             ) : (
-              <h1 align="center" className="subtitle is-6">
+              <h1 align="center" className="no-content subtitle is-6">
                 No content available.
               </h1>
             )}

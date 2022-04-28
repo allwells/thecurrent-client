@@ -29,7 +29,7 @@ export default function Home() {
               .reverse()
           );
 
-          setLoading(!loading);
+          setLoading(false);
         })
         .catch((err) => {
           // set error, to display to user
@@ -78,17 +78,20 @@ export default function Home() {
           </div>
         ) : (
           // EXPLORE NEWS SECTION
-          <div className="container">
+          <div className="container is-flex is-justify-content-center is-align-items-center is-flex-direction-column mb-6 pt-5">
             {blogs.length > 0 ? (
-              <>
-                <h1
-                  id="explore"
-                  align="center"
-                  className="title is-4 mt-5 mb-3"
-                >
-                  Explore
-                </h1>
-                {/* MAP blogs ARRAY AND GET BLOGS */}
+              <h1
+                id="explore"
+                align="left"
+                style={{ width: "100%" }}
+                className="title is-4 mt-5 pl-2 mb-4"
+              >
+                Explore
+              </h1>
+            ) : null}
+            {blogs.length > 0 ? (
+              /* MAP blogs ARRAY AND GET BLOGS */
+              <div className="news-cards is-full is-flex-wrap-wrap is-flex is-justify-content-stretch">
                 {blogs.map((blog) => {
                   return (
                     <NewsCardSmall
@@ -98,7 +101,7 @@ export default function Home() {
                     />
                   );
                 })}
-              </>
+              </div>
             ) : (
               <h1 align="center" className="subtitle is-5">
                 No content available.

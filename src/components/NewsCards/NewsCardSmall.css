@@ -1,25 +1,24 @@
+.borders {
+  border: 1px solid red;
+}
+
 .post-card {
-  margin: 0;
-  width: 80%;
-  cursor: default;
-  border-radius: 6px;
-  margin-bottom: 2rem;
+  flex: 1;
+  width: 40%;
+  min-width: 16rem;
+  /* max-width: 50%; */
+  border-radius: 10px;
   border: 1px solid #2222;
+  box-shadow: 1px 2px 9px #2224;
 }
 
-.post-card .card-img-top {
-  height: 40vh;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+.post-card .card-image {
+  height: 12rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.post-card .card-body {
-  padding: 1rem;
-  border-radius: 0 0 6px;
-  background-color: #fff;
-}
-
-.post-card .card-body .menu-container {
+.post-card .menu-container {
   top: 0;
   right: 0;
   width: 100%;
@@ -30,51 +29,36 @@
   place-items: center;
   justify-content: flex-end;
   background-color: #ffffff;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.post-card .card-body .menu-container .post-menu-items svg {
+.post-card .menu-container .post-menu-items svg {
   width: 25px;
   height: 25px;
 }
 
-.post-card .card-body .post-title {
-  font-weight: 500;
-  font-size: 1.4rem;
-  margin-top: 1.6rem;
-  margin-bottom: 0.5rem;
+.read-more-button button {
+  transition-duration: 0.4s;
+  font-size: 13px !important;
+  box-shadow: 0 3px 7px #485fc777 !important;
 }
 
-.post-card .created-at {
-  display: flex;
-  place-items: center;
-  justify-content: center;
+.read-more-button button:hover {
+  box-shadow: 0 6px 10px #485fc777 !important;
 }
 
-.post-card .created-at .divider {
-  width: 1px;
-  height: 20px;
-  margin: 0 0.5rem;
-  background-color: #3336;
+.read-more-button button .right-arrow {
+  transition-duration: 0.4s;
 }
 
-.post-card .card-body .blog-items {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+.read-more-button button:hover > .right-arrow {
+  padding-left: 8px !important;
+  transform: scale(1.5) !important;
 }
 
-.post-card .card-body .blog-items .read-more {
-  font-weight: 500;
-  font-size: 0.8rem;
-}
-
-.post-card .card-body-bottom {
-  display: flex;
-  margin-top: 2rem;
-  place-items: center;
-  justify-content: space-between;
+.read-more-button button:active {
+  box-shadow: 0 1px 4px #485fc777 !important;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -87,46 +71,37 @@
 
 @media only screen and (max-width: 768px) {
   .post-card {
-    width: 95%;
+    margin: 0 0.5rem 1rem 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .post-card {
+    margin: 0 0.5rem 1rem 0.5rem;
   }
 }
 
 @media only screen and (max-width: 426px) {
-  .post-card .card-body-bottom {
-    flex-direction: column;
-    place-items: flex-start;
+  /* SET Read More BUTTON TO FULL WIDTH */
+  .read-more-button,
+  .read-more-button button.button {
+    width: 100% !important;
   }
 
-  .post-card .card-body-bottom .created-at {
-    margin-bottom: 1rem;
-  }
-
-  .post-card .card-body-bottom .blog-items,
-  .post-card .card-body-bottom .blog-items .read-more {
+  .post-card {
     width: 100%;
+    border-radius: 6px;
+  }
+
+  .post-card .card-image {
+    height: 9rem;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
   }
 }
 
 @media only screen and (max-width: 320px) {
-  .post-card .card-body h1 .post-title {
+  .post-card h1 .post-title {
     font-size: 1rem;
-  }
-
-  .post-card .card-body-bottom {
-    margin-top: 0.5rem;
-  }
-
-  .post-card .card-body-bottom .created-at {
-    flex-direction: column;
-    place-items: flex-start;
-  }
-
-  .post-card .card-body-bottom .created-at .divider {
-    display: none;
-  }
-
-  .post-card .card-body-bottom .created-at .date {
-    font-size: 0.7rem;
-    margin-bottom: 0.4rem;
   }
 }

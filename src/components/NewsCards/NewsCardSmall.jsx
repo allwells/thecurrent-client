@@ -1,10 +1,8 @@
 import "./NewsCardSmall.css";
 
-import { Edit, Trash } from "tabler-icons-react";
+import { ArrowRight, Edit, Trash } from "tabler-icons-react";
 import { Highlight, Menu } from "@mantine/core";
 
-import Author from "../Author/Author";
-import { Card } from "react-bootstrap";
 import CategoryBadge from "../Badge/CategoryBadge";
 import { Confirm } from "react-st-modal";
 import DatePublished from "../DatePublished/DatePublished";
@@ -16,21 +14,29 @@ const NewsCardSmall = ({
   handlePost,
   handleEdit,
   handleDelete,
-  profile = false,
+  isDashboard = false,
 }) => {
+  const cardImageStyle = {
+    backgroundImage: `url(${blog.image})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    cursor: isDashboard ? "pointer !important" : "default !important",
+  };
+
   return (
-    <div className="post-card">
+    <div className="post-card has-background-white">
       {blog.cloudinaryId ? (
-        <Card.Img
-          variant="top"
-          src={blog.image}
-          style={{ cursor: profile ? "pointer" : "default" }}
-          onClick={() => (profile ? handlePost(blog._id) : null)}
-        />
+        <div
+          className="card-image"
+          style={cardImageStyle}
+          onClick={() => (isDashboard ? handlePost(blog._id) : null)}
+        ></div>
       ) : null}
-      <div className="card-body">
-        {profile ? (
-          <div className="menu-container">
+      <div className="p-3">
+        {isDashboard ? (
+          // MENU OPTIONS - For Logged in user only
+          <div className="borders menu-container">
             <Menu className="post-menu-items" shadow="xl">
               <Menu.Item
                 onClick={() => {
@@ -60,35 +66,41 @@ const NewsCardSmall = ({
             </Menu>
           </div>
         ) : null}
+
+        {/* DATE CREATED AND HASHTAG */}
+
+        <div className="mb-2 is-flex is-justify-content-space-between is-align-items-center">
+          {/* Date */}
+          <DatePublished blog={blog} />
+
+          {/* Hashtag */}
+          <CategoryBadge blog={blog} color="#333" />
+        </div>
+
+        {/* CARD TITLE */}
         <h1
-          style={{ cursor: profile ? "pointer" : "default" }}
-          onClick={() => (profile ? handlePost(blog._id) : null)}
+          style={{ cursor: isDashboard ? "pointer" : "default" }}
+          onClick={() => (isDashboard ? handlePost(blog._id) : null)}
         >
-          <Highlight className="post-title" highlight={query}>
+          <Highlight
+            className="post-title title is-5 has-text-weight-semibold has-text-dark"
+            highlight={query}
+          >
             {blog.title}
           </Highlight>
         </h1>
 
-        <div className="card-body-bottom">
-          <div className="created-at">
-            <DatePublished blog={blog} />
-            <span className="divider"></span>
-            <CategoryBadge blog={blog} color="#333" />
-            <span className="divider"></span>
-            <Author blog={blog} />
-          </div>
-          <div className="blog-items">
-            {profile ? null : (
-              <button
-                className="read-mor button is-link is-light has-text-weight-semibold is-size-6"
-                onClick={() => {
-                  handlePost(blog._id);
-                }}
-              >
-                Read More
-              </button>
-            )}
-          </div>
+        <div className="read-more-button mt-3 is-flex is-justify-content-flex-end">
+          {!isDashboard ? (
+            <button
+              className="button is-link has-text-weight-semibold is-size-6"
+              onClick={() => {
+                handlePost(blog._id);
+              }}
+            >
+              Read More <ArrowRight className="right-arrow ml-1" size={20} />
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
