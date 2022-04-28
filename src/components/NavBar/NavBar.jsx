@@ -264,7 +264,7 @@ export default function NavBar() {
                 <Divider />
                 <Menu.Label>ABOUT</Menu.Label>
                 <Menu.Item
-                  to="/login"
+                  to="/about"
                   color="orange"
                   component={Link}
                   icon={<InfoCircle size={14} />}
@@ -276,7 +276,7 @@ export default function NavBar() {
                 <div className="navbar-item">
                   <div className="buttons">
                     {/* LOGIN BUTTON */}
-                    <a
+                    <button
                       onClick={() => {
                         navigate("/login");
                       }}
@@ -284,10 +284,10 @@ export default function NavBar() {
                     >
                       <Login size={18} className="mr-1" />
                       Log in
-                    </a>
+                    </button>
 
                     {/* ABOUT US BUTTON - FOR VIEWERS */}
-                    <a
+                    <button
                       onClick={() => {
                         navigate("/about");
                       }}
@@ -295,7 +295,7 @@ export default function NavBar() {
                     >
                       <InfoCircle size={18} className="mr-1" />
                       About Us
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -306,7 +306,7 @@ export default function NavBar() {
 
       {/* LOWER NAVBAR SECTION - NEWS CATEGORIES */}
       <nav
-        class="breadcrumb has-background-white is-small is-flex is-justify-content-center is-align-items-center has-bullet-separator"
+        className="breadcrumb has-background-white is-small is-flex is-justify-content-center is-align-items-center has-bullet-separator"
         aria-label="breadcrumbs"
       >
         <ul className="m-0 px-0 py-2 is-flex is-justify-content-center is-align-items-center">

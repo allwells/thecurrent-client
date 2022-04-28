@@ -32,17 +32,22 @@
   letter-spacing: 1px;
 }
 
-.header-section .navbar-item .buttons a.login-button,
-a.about-button {
+.header-section .navbar-item .buttons button.login-button,
+button.about-button {
   height: 2.3rem;
   font-size: 16px;
   transition-duration: 0.3s;
   box-shadow: 1px 2px 2px #1113;
 }
 
-.header-section .navbar-item .buttons a.login-button:hover,
-a.about-button:hover {
+.header-section .navbar-item .buttons button.login-button:hover,
+button.about-button:hover {
   box-shadow: 3px 4px 4px #1113;
+}
+
+.header-section .navbar-item .buttons button *,
+button * {
+  cursor: pointer !important;
 }
 
 .header-section .navbar .navbar-menu form.search-form {

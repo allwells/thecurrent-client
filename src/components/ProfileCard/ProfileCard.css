@@ -2,52 +2,14 @@
   cursor: default;
 }
 
-.profile-card-container {
-  padding: 1rem;
-  display: flex;
-  flex-wrap: wrap;
+/* PROFILE CARD */
+.profile-card {
   border-radius: 8px;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  place-items: flex-start;
-  justify-content: center;
-  background-color: #fff;
   box-shadow: 2px 4px 12px #ccc;
 }
 
-/* PROFILE IMAGE */
-.profile-card-container .image {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  margin-right: 0.7rem;
-  background-size: contain;
-  border: 4px solid #368dd6;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url("../../img/profile.png");
-}
-
-/* PROFILE DETAILS */
-.profile-card-container .details {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  place-items: flex-start;
-  justify-content: center;
-}
-
-/* PROFILE DETAILS: NAME */
-.profile-card-container .details .name {
-  font-size: 17px;
-  color: #2d2d2d;
-  font-weight: 600;
-  text-transform: capitalize;
-}
-
-/* PROFILE DETAILS: POSITION */
-.profile-card-container .details .position {
-  font-size: 13px;
-  color: #5d5d5d;
-  text-transform: capitalize;
+@media only screen and (max-width: 426px) {
+  .profile-card {
+    margin-right: 0 !important;
+  }
 }
