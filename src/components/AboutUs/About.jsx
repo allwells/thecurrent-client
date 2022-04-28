@@ -1,31 +1,34 @@
 import "./About.css";
 
+import * as editors from "../../api";
+
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
 import ProfileCard from "../ProfileCard/ProfileCard";
 import React from "react";
 
 const About = () => {
-  // const [founding, setFounding] = React.useState([]);
-  // const [current, setCurrent] = React.useState([]);
-  // const [editorial, setEditorial] = React.useState([]);
+  const [founding, setFounding] = React.useState([]);
+  const [current, setCurrent] = React.useState([]);
+  const [editorial, setEditorial] = React.useState([]);
 
-  // const sortName = (array) => {
-  //   array.sort(function(x, y) {
-  //     let a = x.name.toUpperCase(),
-  //       b = y.name.toUpperCase();
-  //     return a === b ? 0 : a > b ? 1 : -1;
-  //   });
-  // };
+  const sortName = (array) => {
+    array.sort(function(x, y) {
+      let a = x.name.toUpperCase(),
+        b = y.name.toUpperCase();
+      return a === b ? 0 : a > b ? 1 : -1;
+    });
+  };
 
-  // React.useEffect(() => {
-  //   sortName(currentEditors);
-  //   sortName(foundingEditors);
+  React.useEffect(() => {
+    sortName(editors.foundingEditors);
+    sortName(editors.currentEditors);
+    sortName(editors.editorialAdvicers);
 
-  //   setCurrent(currentEditors);
-  //   setFounding(foundingEditors);
-  //   setEditorial(editorialAdvicers);
-  // }, []);
+    setFounding(editors.foundingEditors);
+    setCurrent(editors.currentEditors);
+    setEditorial(editors.editorialAdvicers);
+  }, []);
 
   const HEADERSTYLE = "title has-text-dark has-text-weight-bold is-4 mt-3";
   const HEADERCOLOR = "has-text-link";
@@ -65,29 +68,9 @@ const About = () => {
         </h2>
 
         <div className="about-sub-section">
-          {/* {founding.map((profile) => {
-          return <ProfileCard {...profile} key={profile.id} />;
-        })} */}
-          <ProfileCard name={"Favor Akeredola"} position={"Editor-in-chief"} />
-          <ProfileCard name={"Favor Akeredola"} position={"Editor-in-chief"} />
-          <ProfileCard
-            name={"Favor sjdsdbja garg"}
-            position={"Editor-in-chief"}
-          />
-          <ProfileCard
-            name={"aewggag Akeragsgedola"}
-            position={"Editor-in-chief"}
-          />
-          <ProfileCard
-            name={"asgasgagdgdgd asgdggagsgd AEFEFG"}
-            position={"Editor-in-chief"}
-          />
-          <ProfileCard name={"Favor RGSGSGR"} position={"Editor-in-chief"} />
-          <ProfileCard name={"DGDFGFDG SDG"} position={"Editor-in-chief"} />
-          <ProfileCard
-            name={"SRGGRGSERGR FGSGSG"}
-            position={"Editor-in-chief"}
-          />
+          {founding.map((profile) => {
+            return <ProfileCard {...profile} key={profile.id} />;
+          })}
         </div>
 
         <h2 className={`${HEADERSTYLE} mt-5`}>
@@ -95,30 +78,9 @@ const About = () => {
         </h2>
 
         <div className="about-sub-section">
-          {/* {current.map((profile) => {
-          return <ProfileCard {...profile} key={profile.id} />;
-        })} */}
-
-          <ProfileCard name={"Favor Akeredola"} position={"Editor-in-chief"} />
-          <ProfileCard name={"Favor Akeredola"} position={"Editor-in-chief"} />
-          <ProfileCard
-            name={"Favor sjdsdbja garg"}
-            position={"Editor-in-chief"}
-          />
-          <ProfileCard
-            name={"aewggag Akeragsgedola"}
-            position={"Editor-in-chief"}
-          />
-          <ProfileCard
-            name={"asgasgagdgdgd asgdggagsgd AEFEFG"}
-            position={"Editor-in-chief"}
-          />
-          <ProfileCard name={"Favor RGSGSGR"} position={"Editor-in-chief"} />
-          <ProfileCard name={"DGDFGFDG SDG"} position={"Editor-in-chief"} />
-          <ProfileCard
-            name={"SRGGRGSERGR FGSGSG"}
-            position={"Editor-in-chief"}
-          />
+          {current.map((profile) => {
+            return <ProfileCard {...profile} key={profile.id} />;
+          })}
         </div>
 
         <h2 className={`${HEADERSTYLE} mt-5`}>
@@ -126,37 +88,16 @@ const About = () => {
         </h2>
 
         <div className="about-sub-section">
-          {/* {editorial.map((profile) => {
-          return (
-            <ProfileCard
-              key={profile.id}
-              name={profile.title + ". " + profile.name}
-              position={profile.position}
-              img={profile.img}
-            />
-          );
-        })} */}
-
-          <ProfileCard name={"Favor Akeredola"} position={"Editor-in-chief"} />
-          <ProfileCard name={"Favor Akeredola"} position={"Editor-in-chief"} />
-          <ProfileCard
-            name={"Favor sjdsdbja garg"}
-            position={"Editor-in-chief"}
-          />
-          <ProfileCard
-            name={"aewggag Akeragsgedola"}
-            position={"Editor-in-chief"}
-          />
-          <ProfileCard
-            name={"asgasgagdgdgd asgdggagsgd AEFEFG"}
-            position={"Editor-in-chief"}
-          />
-          <ProfileCard name={"Favor RGSGSGR"} position={"Editor-in-chief"} />
-          <ProfileCard name={"DGDFGFDG SDG"} position={"Editor-in-chief"} />
-          <ProfileCard
-            name={"SRGGRGSERGR FGSGSG"}
-            position={"Editor-in-chief"}
-          />
+          {editorial.map((profile) => {
+            return (
+              <ProfileCard
+                key={profile.id}
+                name={profile.title + ". " + profile.name}
+                position={profile.position}
+                img={profile.img}
+              />
+            );
+          })}
         </div>
       </div>
       <Footer />
