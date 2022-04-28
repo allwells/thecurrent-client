@@ -3,7 +3,7 @@
   padding-top: 7rem;
 }
 
-.category-container .container {
+.category-container .category-sub-container {
   width: 50%;
   padding-top: 3vh;
   display: flex;
@@ -19,13 +19,13 @@
     flex-direction: column;
   }
 
-  .category-container .container {
+  .category-container .category-sub-container {
     width: 70%;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .category-container .container {
+  .category-container .category-sub-container {
     width: 100%;
   }
 }

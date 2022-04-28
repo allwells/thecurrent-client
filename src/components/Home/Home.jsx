@@ -33,7 +33,7 @@ export default function Home() {
         })
         .catch((err) => {
           // set error, to display to user
-          console.log(err);
+          // console.log(err);
         });
     };
 
@@ -100,7 +100,9 @@ export default function Home() {
                 })}
               </>
             ) : (
-              <h1 className="subtitle is-5">No content available.</h1>
+              <h1 align="center" className="subtitle is-5">
+                No content available.
+              </h1>
             )}
           </div>
         )}

@@ -1,7 +1,7 @@
 import "./NewsCardSmall.css";
 
-import { Button, Highlight, Menu } from "@mantine/core";
 import { Edit, Trash } from "tabler-icons-react";
+import { Highlight, Menu } from "@mantine/core";
 
 import Author from "../Author/Author";
 import { Card } from "react-bootstrap";
@@ -20,7 +20,7 @@ const NewsCardSmall = ({
 }) => {
   return (
     <div className="post-card">
-      {!blog.cloudinaryId ? (
+      {blog.cloudinaryId ? (
         <Card.Img
           variant="top"
           src={blog.image}
@@ -79,16 +79,14 @@ const NewsCardSmall = ({
           </div>
           <div className="blog-items">
             {profile ? null : (
-              <Button
-                className="read-more"
+              <button
+                className="read-mor button is-link is-light has-text-weight-semibold is-size-6"
                 onClick={() => {
                   handlePost(blog._id);
                 }}
-                variant="light"
-                compact
               >
                 Read More
-              </Button>
+              </button>
             )}
           </div>
         </div>

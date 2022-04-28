@@ -3,7 +3,6 @@ import "./Category.css";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Container } from "react-bootstrap";
 import Footer from "../Footer/Footer";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
@@ -20,16 +19,20 @@ const Category = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get(`${process.env.REACT_APP_BASE_URL}/category/${query}`)
-      .then((res) => {
-        setBlogs(res.data.blogs.reverse());
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
-      });
+    const fetchPosts = () => {
+      axios
+        .get(`${process.env.REACT_APP_BASE_URL}/category/${query}`)
+        .then((res) => {
+          setBlogs(res.data.blogs.reverse().slice(5));
+          setLoading(!loading);
+        })
+        .catch((err) => {
+          // set error, to display to user
+          // console.log(err);
+        });
+    };
+
+    fetchPosts();
   }, [query]);
 
   const handlePost = (id) => {
@@ -51,7 +54,7 @@ const Category = () => {
             <Loader color={"#485FC7"} size="md" variant="bars" />
           </div>
         ) : (
-          <Container>
+          <div className="category-sub-container">
             {blogs.length > 0 ? (
               blogs.map((blog) => {
                 return (
@@ -67,7 +70,7 @@ const Category = () => {
                 No content available.
               </h1>
             )}
-          </Container>
+          </div>
         )}
       </div>
       <Footer />
