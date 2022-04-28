@@ -1,35 +1,14 @@
 .about {
   width: 100%;
-  padding-top: 2rem;
+  padding-top: 9rem;
   padding-left: 20%;
   padding-right: 20%;
   padding-bottom: 10%;
   height: fit-content;
 }
 
-.about .head {
-  color: #222;
-  font-size: 38px;
-  margin-top: 2rem;
-  margin-bottom: 20px;
-}
-
-.about span {
-  color: #368dd6;
-}
-
-.about .aboutText {
-  color: #222;
-  font-size: 18px;
-  line-height: 1.6;
-  margin-top: 1rem;
-  text-align: justify;
-  letter-spacing: 1px;
-  font-family: Ubuntu;
-}
-
 /* FOUNDING EDITORS */
-.editors {
+.about-sub-section {
   display: flex;
   flex-grow: 3;
   flex-wrap: wrap;
@@ -41,6 +20,7 @@
   .about {
     padding-left: 13%;
     padding-right: 13%;
+    padding-top: 11rem;
   }
 }
 
@@ -48,14 +28,5 @@
   .about {
     padding-left: 7%;
     padding-right: 7%;
-    padding-top: 5rem;
-  }
-
-  .about .head {
-    font-size: 30px;
-  }
-
-  .about .aboutText {
-    font-size: 16px;
   }
 }
