@@ -1,0 +1,17 @@
+.server-error {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  place-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.server-error span.subtitle {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.server-error img {
+  height: 260px;
+}
