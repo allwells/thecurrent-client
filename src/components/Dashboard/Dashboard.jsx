@@ -1,4 +1,4 @@
-import "./Profile.css";
+import "./Dashboard.css";
 
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
@@ -12,7 +12,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useViewportSize } from "@mantine/hooks";
 
-export default function Profile() {
+export default function Dashboard() {
   const navigate = useNavigate();
   const viewPort = useViewportSize();
 
@@ -84,17 +84,17 @@ export default function Profile() {
   return (
     <>
       <NavBar />
-      <div className="profile-container">
+      <div className="dashboard-container">
         <div
           style={{
             position: viewPort >= 768 ? "static" : "relative",
           }}
-          className="profile-card"
+          className="dashboard-card"
         >
           <div className="card">
-            <div className="card-header">Profile</div>
+            <div className="card-header">Dashboard</div>
             <div className="card-body">
-              <div className="basic-profile">
+              <div className="basic-dashboard">
                 <div>
                   <div className="user-email">{email}</div>
                   <div className="user-info">
@@ -143,17 +143,17 @@ export default function Profile() {
             <Loader size="sm" variant="bars" />
           </div>
         ) : (
-          <div className="profile-blogs">
+          <div className="dashboard-blogs">
             {isBlog ? (
               <>
-                <h1 className="main-heading">Your Posts</h1>
+                <h1 className="">Your Posts</h1>
                 <div>
                   {blogs.map((blog) => {
                     return (
                       <NewsCardSmall
                         blog={blog}
                         key={blog._id}
-                        profile={true}
+                        isDashboard={true}
                         handlePost={handlePost}
                         handleEdit={handleEdit}
                         handleDelete={handleDelete}

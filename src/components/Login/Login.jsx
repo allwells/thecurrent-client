@@ -61,7 +61,7 @@ export default function Login() {
         notifySuccess();
 
         setTimeout(() => {
-          navigate("/profile");
+          navigate("/dashboard");
         }, 1000);
       })
       .catch((err) => {

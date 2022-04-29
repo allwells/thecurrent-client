@@ -5,7 +5,7 @@
 
 .category-container .category-sub-container {
   gap: 20px;
-  width: 90%;
+  width: 80%;
   padding-top: 1.5rem;
   margin-bottom: 3rem;
   align-items: stretch;
@@ -13,7 +13,11 @@
 }
 
 .category-container .category-sub-container .post-card:nth-child(1) {
-  flex-grow: 9;
+  flex-grow: 6 !important;
+}
+
+.category-container .category-sub-container .post-card:last-child {
+  flex-grow: 3 !important;
 }
 
 .category-container .category-sub-container .no-content {

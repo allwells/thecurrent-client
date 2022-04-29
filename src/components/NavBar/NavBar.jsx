@@ -50,7 +50,10 @@ export default function NavBar() {
 
   // HANDLE SEARCH ACTION
   const handleSearch = (e) => {
+    // Submits form
     e.preventDefault();
+
+    // navigate to search results
     navigate(`/search/${query}`);
   };
 
@@ -109,7 +112,7 @@ export default function NavBar() {
             </div>
 
             {/* SEARCH BUTTON ELEMENT */}
-            <button className="button is-clickable is-link" type="submit">
+            <button className="button is-link" type="submit">
               <Search />
             </button>
           </form>
@@ -119,7 +122,7 @@ export default function NavBar() {
               <Menu
                 size={"lg"}
                 className="is-flex ml-5 is-justify-content-center is-align-items-center"
-                placement="end"
+                placement="start"
                 withArrow
                 control={
                   // <button className="button is-link is-light">Profile</button>

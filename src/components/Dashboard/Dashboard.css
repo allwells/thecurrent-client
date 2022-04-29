@@ -2,7 +2,7 @@
   font-family: Ubuntu;
 }
 
-.profile-container {
+.dashboard-container {
   display: flex;
   padding-top: 3vh;
   min-height: 75vh;
@@ -11,7 +11,7 @@
   justify-content: space-between;
 }
 
-.profile-container .loader {
+.dashboard-container .loader {
   width: 100%;
   height: 100%;
   display: flex;
@@ -19,62 +19,62 @@
   justify-content: center;
 }
 
-.profile-container .profile-card {
+.dashboard-container .dashboard-card {
   top: 4rem;
   left: 3rem;
   width: 20rem;
   height: fit-content;
 }
 
-.profile-container .profile-card .card {
+.dashboard-container .dashboard-card .card {
   margin: 0;
   border-radius: 6px;
   background-color: #fff;
 }
 
-.profile-container .profile-card .tab {
+.dashboard-container .dashboard-card .tab {
   margin-top: 1rem;
 }
 
-.profile-container .profile-card .tab .tab-buttons {
+.dashboard-container .dashboard-card .tab .tab-buttons {
   margin-bottom: 0.7rem;
 }
 
-.profile-container .card .card-body .basic-profile {
+.dashboard-container .card .card-body .basic-dashboard {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.profile-container .card .user-icon {
+.dashboard-container .card .user-icon {
   border-radius: 50%;
   background-color: #222;
 }
 
-.profile-container .card h1 {
+.dashboard-container .card h1 {
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 0.1rem;
 }
 
-.profile-container .card .user-email {
+.dashboard-container .card .user-email {
   color: #333;
   font-weight: 500;
   font-size: 0.8rem;
   margin-bottom: 0.1rem;
 }
 
-.profile-container .card .user-info {
+.dashboard-container .card .user-info {
   color: #333;
   font-weight: 500;
   font-size: 0.8rem;
 }
 
-.profile-container .profile-blogs {
+.dashboard-container .dashboard-blogs {
   width: 70%;
 }
 
-.profile-container .profile-blogs .main-heading {
+.dashboard-container .dashboard-blogs .main-heading {
   font-weight: 500;
   color: #368dd6;
   font-size: 1.5rem;
@@ -86,65 +86,65 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .profile-container .card {
+  .dashboard-container .card {
     min-width: 19rem;
   }
 
-  .profile-container .profile-blogs {
+  .dashboard-container .dashboard-blogs {
     width: 60%;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .profile-container {
+  .dashboard-container {
     padding-top: 0;
     place-items: center;
     flex-direction: column;
   }
 
-  .profile-container .card .user-icon {
+  .dashboard-container .card .user-icon {
     margin-right: 1rem;
   }
 
-  .profile-container .profile-blogs .main-heading {
+  .dashboard-container .dashboard-blogs .main-heading {
     margin-top: 2rem;
   }
 
-  .profile-container .profile-card {
+  .dashboard-container .dashboard-card {
     top: 0;
     width: 90%;
     margin-top: 3rem;
   }
 
-  .profile-container .profile-card .card {
+  .dashboard-container .dashboard-card .card {
     margin: 0 0.3rem;
   }
 
-  .profile-container .profile-card .tab {
+  .dashboard-container .dashboard-card .tab {
     display: flex;
     place-items: center;
     justify-content: space-between;
   }
 
-  .profile-container .profile-card .tab-buttons {
+  .dashboard-container .dashboard-card .tab-buttons {
     margin: 0 0.3rem;
   }
 
-  .profile-container .card .card-body .basic-profile {
+  .dashboard-container .card .card-body .basic-dashboard {
     justify-content: flex-start;
   }
 
-  .profile-container .profile-blogs {
+  .dashboard-container .dashboard-blogs {
     width: 90%;
   }
 
-  .profile-container .profile-blogs .blog-card {
+  .dashboard-container .dashboard-blogs .blog-card {
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .profile-container .profile-card .tab {
+  .dashboard-container .dashboard-card .tab {
     flex-direction: column;
   }
 }
