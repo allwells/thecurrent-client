@@ -7,60 +7,60 @@ const SelectForm = ({
   category,
   setCategory,
   errorMsg = true,
-  placeholder = "Pick one",
+  placeholder = "Select tag",
 }) => {
   const categoryData = [
     {
       value: "anchor-university",
-      label: "Anchor University",
+      label: "#AnchorUniversity",
     },
     {
       value: "arts-and-culture",
-      label: "Arts and Culture",
+      label: "#ArtsAndCulture",
     },
     {
       value: "business-and-economy",
-      label: "Business and Economy",
+      label: "#BusinessAndEconomy",
     },
     {
       value: "editorial",
-      label: "Editorial",
+      label: "#Editorial",
     },
     {
       value: "education",
-      label: "Education",
+      label: "#Education",
     },
     {
       value: "entertainment",
-      label: "Entertainment",
+      label: "#Entertainment",
     },
     {
       value: "fashion",
-      label: "Fashion",
+      label: "#Fashion",
     },
     {
       value: "feature",
-      label: "Feature",
+      label: "#Feature",
     },
     {
       value: "health",
-      label: "Health",
+      label: "#Health",
     },
     {
       value: "opinion",
-      label: "Opinion",
+      label: "#Opinion",
     },
     {
       value: "science-and-technology",
-      label: "Science and Technology",
+      label: "#ScienceAndTechnology",
     },
     {
       value: "sports",
-      label: "Sports",
+      label: "#Sports",
     },
     {
       value: "transportation",
-      label: "Transportation",
+      label: "#Transportation",
     },
   ];
 
@@ -75,7 +75,7 @@ const SelectForm = ({
       error={
         errorMsg
           ? category === ""
-            ? "Select at least one from the options"
+            ? "Select at one hashtag for you post"
             : ""
           : null
       }

@@ -1,15 +1,15 @@
 import "./NavBar.css";
 
+import { Divider, Menu } from "@mantine/core";
 import {
-  Dashboard,
   InfoCircle,
+  LayoutDashboard,
   Login,
   Logout,
   Menu2,
   Search,
   Settings,
 } from "tabler-icons-react";
-import { Divider, Menu } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
@@ -177,7 +177,7 @@ export default function NavBar() {
                 <Menu.Label>DASHBOARD</Menu.Label>
                 <Menu.Item
                   color="blue"
-                  icon={<Dashboard size={14} />}
+                  icon={<LayoutDashboard size={14} />}
                   component={Link}
                   to="/dashboard"
                 >

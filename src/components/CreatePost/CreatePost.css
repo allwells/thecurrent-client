@@ -1,5 +1,5 @@
 .createpost-container {
-  min-height: calc(100vh - 34px);
+  height: fit-content;
 }
 
 .createpost-container .container {
@@ -11,18 +11,10 @@
 }
 
 .createpost-container .container .card {
-  width: 65%;
+  width: 70%;
   border: none;
-  padding: 1rem;
-  border-radius: 7px;
+  box-shadow: none;
   background-color: transparent;
-}
-
-.createpost-container .container .card .heading {
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1.5rem;
 }
 
 /* input type file */
@@ -48,16 +40,7 @@
 .createpost-container .container .card form .remove-image {
   width: 100%;
   border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: medium;
-  font-weight: bold;
   border-radius: 5px;
-  background-color: #f44336;
-}
-
-.createpost-container .container .card form .remove-image:hover {
-  background: #c9291e;
 }
 
 .createpost-container .container .card form input[type="file"] {
@@ -94,13 +77,8 @@
 }
 
 .createpost-container .container .card form .submit {
-  width: 8rem;
-  border: none;
+  width: 10rem;
   padding: 0.3rem;
-  font-weight: 500;
-  font-size: 0.9rem;
-  border-radius: 4px;
-  background-color: #368dd6;
 }
 
 .createpost-container .container .card .error {

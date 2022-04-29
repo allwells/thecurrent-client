@@ -1,11 +1,12 @@
 import "./Dashboard.css";
 
+import { Button, Loader, Tabs } from "@mantine/core";
+import { CirclePlus, LayoutDashboard, Settings } from "tabler-icons-react";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-import { Button } from "@mantine/core";
+import CreatePost from "../CreatePost/CreatePost";
 import Footer from "../Footer/Footer";
-import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
 import NewsCardSmall from "../NewsCards/NewsCardSmall";
 import axios from "axios";
@@ -15,6 +16,8 @@ import { useViewportSize } from "@mantine/hooks";
 export default function Dashboard() {
   const navigate = useNavigate();
   const viewPort = useViewportSize();
+
+  const mobileDeviceScreenWidth = 768;
 
   const notifySuccess = () => toast.success("Deleted Successfully!");
   const notifyError = (message) => toast.error(message);
@@ -29,7 +32,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/profile`, {
+        .post(`${process.env.REACT_APP_BASE_URL}/dashboard`, {
           token: localStorage.getItem("token"),
         })
         .then((res) => {
@@ -84,10 +87,26 @@ export default function Dashboard() {
   return (
     <>
       <NavBar />
+
       <div className="dashboard-container">
+        <Tabs color="indigo" position="left" tabPadding="xl" grow>
+          <Tabs.Tab label="Dashboard" icon={<LayoutDashboard size={14} />}>
+            Dashboard
+          </Tabs.Tab>
+          <Tabs.Tab label="Create" icon={<CirclePlus size={14} />}>
+            <CreatePost />
+          </Tabs.Tab>
+          <Tabs.Tab label="Settings" icon={<Settings size={14} />}>
+            Settings
+          </Tabs.Tab>
+        </Tabs>
+      </div>
+
+      {/* <div className="dashboard-container">
         <div
           style={{
-            position: viewPort >= 768 ? "static" : "relative",
+            position:
+              viewPort >= mobileDeviceScreenWidth ? "static" : "relative",
           }}
           className="dashboard-card"
         >
@@ -115,8 +134,8 @@ export default function Dashboard() {
               onClick={() => navigate("/create")}
             >
               Create Post
-            </Button>
-            {/* <Button
+            </Button> */}
+      {/* <Button
               fullWidth
               radius="sm"
               color="dark"
@@ -126,7 +145,7 @@ export default function Dashboard() {
             >
               Settings
             </Button> */}
-            <Button
+      {/* <Button
               fullWidth
               radius="sm"
               color="dark"
@@ -137,16 +156,16 @@ export default function Dashboard() {
               Logout
             </Button>
           </div>
-        </div>
-        {loading ? (
-          <div className="loader">
-            <Loader size="sm" variant="bars" />
+        </div> */}
+      {/* {loading ? (
+          <div className="loadingIndicator is-flex is-justify-content-center is-align-items-center">
+            <Loader color={"#485FC7"} size="sm" variant="bars" />
           </div>
         ) : (
           <div className="dashboard-blogs">
             {isBlog ? (
               <>
-                <h1 className="">Your Posts</h1>
+                <h1 className="title is-3">Your Posts</h1>
                 <div>
                   {blogs.map((blog) => {
                     return (
@@ -165,7 +184,7 @@ export default function Dashboard() {
             ) : null}
           </div>
         )}
-      </div>
+      </div> */}
       <Toaster />
       <Footer />
     </>

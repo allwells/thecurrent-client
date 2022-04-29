@@ -1,22 +1,16 @@
-* {
-  font-family: Ubuntu;
-}
-
-.dashboard-container {
+/* .dashboard-container {
   display: flex;
-  padding-top: 3vh;
-  min-height: 75vh;
+  min-height: 80vh;
+  padding-top: 9rem;
   flex-direction: row;
   margin-bottom: 3.5rem;
   justify-content: space-between;
 }
 
-.dashboard-container .loader {
+.dashboard-container .loadingIndicator {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: none;
 }
 
 .dashboard-container .dashboard-card {
@@ -146,5 +140,34 @@
 @media only screen and (max-width: 480px) {
   .dashboard-container .dashboard-card .tab {
     flex-direction: column;
+  }
+} */
+
+.borders {
+  border: 1px solid red !important;
+}
+
+.dashboard-container {
+  width: 100%;
+  padding: 0 10%;
+  min-height: 100vh;
+  padding-top: 9rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .dashboard-container {
+    padding-top: 11rem;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .dashboard-container {
+    padding: 12rem 3% 0 3%;
+  }
+}
+
+@media only screen and (max-width: 335px) {
+  .dashboard-container {
+    padding-top: 13rem;
   }
 }

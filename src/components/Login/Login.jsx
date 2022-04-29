@@ -1,20 +1,20 @@
 import "./Login.css";
 
+import { ArrowLeft, At, Lock, Login as LoginIcon } from "tabler-icons-react";
 import {
-  ArrowLeft,
-  At,
-  EyeCheck,
-  EyeOff,
-  Lock,
-  Login as LoginIcon,
-} from "tabler-icons-react";
-import { Button, Card, Form, Spinner } from "react-bootstrap";
+  Button as BootstrapButton,
+  Card,
+  Form,
+  Spinner,
+} from "react-bootstrap";
 import {
   Divider,
   Input,
   InputWrapper,
+  Loader,
   Button as MantineButton,
   PasswordInput,
+  TextInput,
 } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
@@ -75,93 +75,98 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <Card>
-        <Card.Body>
-          <Card.Title>Login</Card.Title>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            {/* EMAIL FIELD */}
-            <Form.Group className="mb-3">
-              <InputWrapper className="input-field" label="Email">
-                <Input
-                  value={email}
-                  variant="filled"
-                  placeholder="Email"
-                  className="input-field"
-                  icon={<At size={20} />}
-                  onChange={(event) => setEmail(event.currentTarget.value)}
-                />
-              </InputWrapper>
+      <div className="card">
+        {/* LOGIN TITLE */}
+        <h2 className="title is-4 has-text-white">Login</h2>
 
-              {/* EMAIL WARNING MESSAGE */}
-              <Form.Control.Feedback type="invalid">
-                Please provide email
-              </Form.Control.Feedback>
-            </Form.Group>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          {/* EMAIL SECTION */}
+          <div className="mb-3">
+            {/* EMAIL INPUT FIELD */}
+            <TextInput
+              size="md"
+              value={email}
+              variant="filled"
+              placeholder="Email"
+              icon={<At size={14} color="#888" />}
+              className="input-field has-text-white"
+              onChange={(event) => setEmail(event.currentTarget.value)}
+            />
 
-            {/* PASSWORD FIELD */}
-            <Form.Group className="mb-3">
-              <PasswordInput
-                variant="filled"
-                value={password}
-                label="Password"
-                placeholder="Password"
-                className="input-field"
-                icon={<Lock size={20} />}
-                onChange={(event) => setPassword(event.currentTarget.value)}
-                visibilityToggleIcon={({ reveal, size }) =>
-                  reveal ? <EyeOff size={size} /> : <EyeCheck size={size} />
-                }
-              />
+            {/* EMAIL WARNING MESSAGE */}
+            <Form.Control.Feedback type="invalid">
+              Please provide email
+            </Form.Control.Feedback>
+          </div>
 
-              {/* PASSWORD WARNING MESSAGE */}
-              <Form.Control.Feedback type="invalid">
-                Please enter password
-              </Form.Control.Feedback>
-            </Form.Group>
+          {/* PASSWORD SECTION */}
+          <div className="mb-3">
+            {/* PASSWORD INPUT FIELD */}
+            <PasswordInput
+              size="md"
+              variant="filled"
+              value={password}
+              placeholder="Password"
+              className="input-field"
+              icon={<Lock size={14} color="#888" />}
+              onChange={(event) => setPassword(event.currentTarget.value)}
+            />
 
-            {/* LOGIN BUTTON */}
-            <div className="is-full">
-              <Button
-                type="submit"
-                className="login-button button is-full is-link has-text-bold"
-                {...(submitting ? { disabled: true } : {})}
-              >
-                {submitting ? (
-                  <Spinner as="span" animation="border" role="status" />
-                ) : (
-                  <>
-                    <LoginIcon size={20} className="mr-2" />
-                    <span>Login</span>
-                  </>
-                )}
-              </Button>
-            </div>
-            {/* <MantineButton
-              className="mantine-button mt-2 is-clickable"
-              variant="subtle"
-              radius="xs"
-              size="xs"
-              compact
-              onClick={() => navigate("/")}
+            {/* PASSWORD WARNING MESSAGE */}
+            <Form.Control.Feedback type="invalid">
+              Please enter password
+            </Form.Control.Feedback>
+          </div>
+
+          {/* LOGIN BUTTON */}
+          <div>
+            <BootstrapButton
+              type="submit"
+              className="login-button button is-light has-text-weight-bold is-outlined is-full"
+              {...(submitting ? { disabled: true } : {})}
             >
-              Forgot password?
-            </MantineButton> */}
-            <Divider mt="lg" mb="md" />
-            <MantineButton
-              className="mantine-button"
-              variant="subtle"
-              radius="xs"
-              size="xs"
-              compact
-              leftIcon={<ArrowLeft color="white" size={20} />}
-              onClick={() => navigate("/")}
-            >
-              Back to Home
-            </MantineButton>
-          </Form>
-          <Toaster />
-        </Card.Body>
-      </Card>
+              {submitting ? (
+                <Loader size="xs" variant="bars" color={"#FFFFFF"} />
+              ) : (
+                <>
+                  <LoginIcon size={20} className="mr-2" />
+                  <span>Login</span>
+                </>
+              )}
+            </BootstrapButton>
+          </div>
+
+          {/* FORGOT PASSWORD BUTTON */}
+          <MantineButton
+            className="mantine-button mt-4 is-clickable"
+            variant="subtle"
+            radius="xs"
+            size="xs"
+            compact
+            onClick={() => navigate("/")}
+          >
+            Forgot password?
+          </MantineButton>
+
+          <Divider mt="lg" mb="md" />
+
+          {/* BACK TO HOME BUTTON */}
+          <MantineButton
+            className="mantine-button"
+            variant="subtle"
+            radius="xs"
+            size="xs"
+            compact
+            leftIcon={<ArrowLeft color="white" size={20} />}
+            onClick={() => navigate("/")}
+          >
+            Back to Home
+          </MantineButton>
+        </Form>
+      </div>
+
+      {/* NOTIFICATION - toast */}
+      <Toaster />
     </div>
   );
 }
