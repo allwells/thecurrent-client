@@ -13,11 +13,11 @@
 }
 
 .category-container .category-sub-container .post-card:nth-child(1) {
-  flex-grow: 6 !important;
+  flex-grow: 4 !important;
 }
 
 .category-container .category-sub-container .post-card:last-child {
-  flex-grow: 3 !important;
+  flex-grow: 2 !important;
 }
 
 .category-container .category-sub-container .no-content {
@@ -29,6 +29,12 @@
 @media only screen and (max-width: 1024px) {
   .category-container {
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .category-container .category-sub-container {
+    width: 90%;
   }
 }
 

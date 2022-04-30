@@ -101,6 +101,56 @@ export default function Home() {
                     />
                   );
                 })}
+
+                {blogs.map((blog) => {
+                  return (
+                    <NewsCardSmall
+                      key={blog._id}
+                      blog={blog}
+                      handlePost={handlePost}
+                    />
+                  );
+                })}
+
+                {blogs.map((blog) => {
+                  return (
+                    <NewsCardSmall
+                      key={blog._id}
+                      blog={blog}
+                      handlePost={handlePost}
+                    />
+                  );
+                })}
+
+                {blogs.map((blog) => {
+                  return (
+                    <NewsCardSmall
+                      key={blog._id}
+                      blog={blog}
+                      handlePost={handlePost}
+                    />
+                  );
+                })}
+
+                {blogs.map((blog) => {
+                  return (
+                    <NewsCardSmall
+                      key={blog._id}
+                      blog={blog}
+                      handlePost={handlePost}
+                    />
+                  );
+                })}
+
+                {blogs.map((blog) => {
+                  return (
+                    <NewsCardSmall
+                      key={blog._id}
+                      blog={blog}
+                      handlePost={handlePost}
+                    />
+                  );
+                })}
               </div>
             ) : (
               <h1 align="center" className="subtitle is-5">

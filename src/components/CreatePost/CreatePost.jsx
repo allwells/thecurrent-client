@@ -1,5 +1,6 @@
 import "./CreatePost.css";
 
+import { Button as BootstrapButton, Form } from "react-bootstrap";
 import {
   Input,
   InputWrapper,
@@ -10,7 +11,6 @@ import {
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-import { Button as BootstrapButton } from "react-bootstrap";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@aaditya1978/ckeditor5-build-classic";
 import SelectForm from "../SelectForm/SelectForm";
@@ -106,13 +106,14 @@ export default function CreatePost() {
               </InputWrapper>
 
               {/* COVER PICTURE LABEL */}
-              <label className="subtitle is-5 has-text-dark has-text-weight-normal">
-                Add Cover Image
-              </label>
+              <span id="cover-image-label" className="has-text-dark">
+                Cover image
+              </span>
 
               {/* COVER PICTURE FIELD */}
-              <Input
+              <Form.Control
                 type="File"
+                className="mt-2"
                 accept="image/*"
                 value={imageName}
                 onChange={(e) => {
@@ -125,7 +126,15 @@ export default function CreatePost() {
 
               {/* COVER PICTURE PREVIEW */}
               {image && (
-                <img className="img-preview" src={image} alt="preview" />
+                <div
+                  className="img-preview"
+                  style={{
+                    backgroundImage: `url(${image})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                  }}
+                ></div>
               )}
 
               <br />
@@ -133,7 +142,7 @@ export default function CreatePost() {
               {/* COVER PICTURE UPLOAD BUTTON */}
               {image && (
                 <MantineButton
-                  className="remove-image is-full button is-danger has-text-white is-clickable"
+                  className="remove-image is-full button is-danger has-text-white is-clickable has-text-weight-normal"
                   onClick={() => {
                     setImage(null);
                     setImageData(null);
@@ -145,11 +154,11 @@ export default function CreatePost() {
               )}
 
               {/* POST TITLE */}
-              <div className="my-3">
+              <div className="mb-3">
                 <TextInput
                   type="text"
-                  className="postTitle"
-                  placeholder="Post Title Here"
+                  id="post-title"
+                  placeholder="New post title here..."
                   value={title}
                   onChange={(e) => {
                     setTitle(e.target.value);

@@ -10,6 +10,7 @@ const CategoryBadge = ({ blog }) => {
 
   return (
     <span
+      id="hashtag"
       onClick={() => navigate(`/category/${blog.category}`)}
       className="category-badge has-text-link has-text-weight-medium"
     >

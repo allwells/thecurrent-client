@@ -137,7 +137,7 @@ export default function Login() {
           </div>
 
           {/* FORGOT PASSWORD BUTTON */}
-          <MantineButton
+          {/* <MantineButton
             className="mantine-button mt-4 is-clickable"
             variant="subtle"
             radius="xs"
@@ -146,7 +146,7 @@ export default function Login() {
             onClick={() => navigate("/")}
           >
             Forgot password?
-          </MantineButton>
+          </MantineButton> */}
 
           <Divider mt="lg" mb="md" />
 

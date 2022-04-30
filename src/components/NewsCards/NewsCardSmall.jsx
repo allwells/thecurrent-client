@@ -33,7 +33,7 @@ const NewsCardSmall = ({
           onClick={() => (isDashboard ? handlePost(blog._id) : null)}
         ></div>
       ) : null}
-      <div className="p-3">
+      <div className="pt-3 pb-1 px-2 is-flexl is-flex-column is-justify-content-space-between is-align-items-flex-start">
         {isDashboard ? (
           // MENU OPTIONS - For Logged in user only
           <div className="borders menu-container">
@@ -69,7 +69,7 @@ const NewsCardSmall = ({
 
         {/* DATE CREATED AND HASHTAG */}
 
-        <div className="mb-2 is-flex is-justify-content-space-between is-align-items-center">
+        <div className="datetime mb-2 is-flex is-justify-content-space-between is-align-items-center">
           {/* Date */}
           <DatePublished blog={blog} />
 
