@@ -69,7 +69,7 @@ export default function CreatePost() {
         notifySuccess();
 
         setInterval(() => {
-          navigate("/");
+          navigate("/dashboard");
         }, 2100);
       })
       .catch((err) => {
@@ -185,7 +185,11 @@ export default function CreatePost() {
                 className=" button is-full is-link has-text-bold mt-3 submit"
                 {...(submitting ? { disabled: true } : {})}
               >
-                {submitting ? <Loader variant="bars" size={"xs"} /> : "Publish"}
+                {submitting ? (
+                  <Loader variant="bars" size={"xs"} color="#ffffff" />
+                ) : (
+                  "Publish"
+                )}
               </BootstrapButton>
             </form>
           </div>

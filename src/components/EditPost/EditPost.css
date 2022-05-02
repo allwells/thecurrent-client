@@ -1,9 +1,8 @@
-* {
-  font-family: "Ubuntu" sans-serif;
-}
-
 .editpost-container {
-  min-height: calc(100vh - 34px);
+  width: 100%;
+  padding: 0 10%;
+  min-height: 100vh;
+  padding-top: 9rem;
 }
 
 .editpost-container .container {
@@ -15,31 +14,22 @@
 }
 
 .editpost-container .container .card {
-  width: 60%;
+  width: 70%;
   border: none;
-  padding: 1rem;
-  border-radius: 7px;
+  box-shadow: none;
   background-color: transparent;
 }
 
-.editpost-container .container .card .heading {
-  font-size: 2.2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-/* input type file */
-.editpost-container .container .card form label {
-  font-weight: 500;
-  font-size: 1.1rem;
+.editpost-container .container .card form span#cover-image-label {
+  color: #222;
+  font-size: 14px !important;
+  font-weight: 400 !important;
 }
 
 .editpost-container .container .card form .img-preview {
   width: 100%;
-  height: 30vh;
-  border-radius: 5px;
-  margin-bottom: 1rem;
+  height: 35vh;
+  border-radius: 10px;
 }
 
 .editpost-container .container .card form .img-preview img {
@@ -51,75 +41,80 @@
 .editpost-container .container .card form .remove-image {
   width: 100%;
   border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: medium;
-  font-weight: bold;
   border-radius: 5px;
-  background-color: #f44336;
-}
-
-.editpost-container .container .card form .remove-image:hover {
-  background: #c9291e;
+  margin-bottom: 1rem;
 }
 
 .editpost-container .container .card form input[type="file"] {
   width: 100%;
+  font-size: 0.8rem;
   border-radius: 5px;
   margin-bottom: 1rem;
   border: 1px solid #ddd;
 }
 
-.editpost-container .container .card form .postTitle {
+.editpost-container .container .card form #post-title {
   width: 100%;
+  height: 5rem;
   border: none;
   color: #222;
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 3rem;
   background-color: transparent;
 }
 
-.editpost-container .container .card form .postTitle:focus {
+.editpost-container .container .card form #post-title:focus {
   outline: none;
   box-shadow: none;
 }
 
-.editpost-container .container .card form .postTitle::placeholder {
+.editpost-container .container .card form #post-title::placeholder {
   color: #2224;
   font-size: 2rem;
   font-weight: bold;
 }
 
 .editpost-container .container .card form .ck-editor__editable {
-  min-height: 25vh;
+  min-height: 30vh;
 }
 
 .editpost-container .container .card form .submit {
-  width: 9rem;
-  border: none;
+  width: 10rem;
   padding: 0.3rem;
-  font-weight: 500;
-  font-size: 1.1rem;
-  border-radius: 4px;
-  background-color: #368dd6;
 }
 
 .editpost-container .container .card .error {
+  margin: 1rem 0;
   color: #f44336;
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 0.8rem;
   text-align: center;
-  margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 786px) {
+  .editpost-container {
+    padding-top: 11rem;
+  }
+
   .editpost-container .container .card {
     width: 100%;
   }
 
   .editpost-container .container .card form .submit {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .editpost-container .container .card form .ck-editor__editable {
+    min-height: 20vh;
+  }
+  .editpost-container {
+    padding: 12rem 3% 0 3%;
+  }
+}
+
+@media only screen and (max-width: 335px) {
+  .editpost-container {
+    padding-top: 13rem;
   }
 }
