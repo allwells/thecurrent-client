@@ -75,11 +75,6 @@ export default function Dashboard() {
       });
   };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
-
   const handleEdit = (id) => {
     navigate(`/edit/${id}`);
   };

@@ -1,16 +1,9 @@
 import "./Login.css";
 
 import { ArrowLeft, At, Lock, Login as LoginIcon } from "tabler-icons-react";
-import {
-  Button as BootstrapButton,
-  Card,
-  Form,
-  Spinner,
-} from "react-bootstrap";
+import { Button as BootstrapButton, Form } from "react-bootstrap";
 import {
   Divider,
-  Input,
-  InputWrapper,
   Loader,
   Button as MantineButton,
   PasswordInput,

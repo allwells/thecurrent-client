@@ -7,7 +7,7 @@
   flex-direction: column-reverse;
 }
 
-.blog-container .loader {
+.blog-container .loading {
   width: 100%;
   height: 70vh;
   display: flex;

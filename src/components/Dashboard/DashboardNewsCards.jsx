@@ -1,14 +1,23 @@
 import "./DashboardNewsCards.css";
 
 import { ArrowRight, Edit, Trash } from "tabler-icons-react";
-import { Highlight, Menu } from "@mantine/core";
 
 import CategoryBadge from "../Badge/CategoryBadge";
 import { Confirm } from "react-st-modal";
 import DatePublished from "../DatePublished/DatePublished";
+import { Highlight } from "@mantine/core";
 import React from "react";
+import { useParams } from "react-router-dom";
 
-const DashboardNewsCards = ({ blog, handlePost, handleEdit, handleDelete }) => {
+const DashboardNewsCards = ({
+  blog,
+  handlePost,
+  handleEdit,
+  isDashboard = true,
+  handleDelete,
+}) => {
+  const { query } = useParams();
+
   const dashboardCardImage = {
     backgroundImage: `url('${blog.image}')`,
     backgroundPosition: "center",
@@ -31,7 +40,14 @@ const DashboardNewsCards = ({ blog, handlePost, handleEdit, handleDelete }) => {
         </div>
 
         {/* Card title */}
-        <h1 className="title is-5">{blog.title}</h1>
+        <h1>
+          <Highlight
+            className="title is-5 has-text-weight-semibold has-text-dark"
+            highlight={query}
+          >
+            {blog.title}
+          </Highlight>
+        </h1>
       </div>
 
       <div className="read-more-button-container mt-3 is-flex is-justify-content-space-between">
@@ -46,35 +62,38 @@ const DashboardNewsCards = ({ blog, handlePost, handleEdit, handleDelete }) => {
         </button>
 
         {/* Delete and edit buttons container */}
-        <div className="delete-and-edit is-flex is-justify-content-space-between">
-          <button
-            className="button edit-btn is-warning has-text-weight-semibold is-size-6"
-            onClick={() => {
-              handleEdit(blog._id);
-            }}
-          >
-            Edit
-            <Edit className="ml-1" size={20} />
-          </button>
-          <button
-            className="button delete-btn is-danger has-text-weight-semibold is-size-6"
-            onClick={async () => {
-              const result = await Confirm(
-                "Are you sure you want to delete this post?",
-                "Delete",
-                "Yes",
-                "No"
-              );
 
-              if (result) {
-                handleDelete(blog._id);
-              }
-            }}
-          >
-            Delete
-            <Trash className="ml-1" size={20} />
-          </button>
-        </div>
+        {isDashboard ? (
+          <div className="delete-and-edit is-flex is-justify-content-space-between">
+            <button
+              className="button edit-btn is-warning has-text-weight-semibold is-size-6"
+              onClick={() => {
+                handleEdit(blog._id);
+              }}
+            >
+              Edit
+              <Edit className="ml-1" size={20} />
+            </button>
+            <button
+              className="button delete-btn is-danger has-text-weight-semibold is-size-6"
+              onClick={async () => {
+                const result = await Confirm(
+                  "Are you sure you want to delete this post?",
+                  "Delete",
+                  "Yes",
+                  "No"
+                );
+
+                if (result) {
+                  handleDelete(blog._id);
+                }
+              }}
+            >
+              Delete
+              <Trash className="ml-1" size={20} />
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

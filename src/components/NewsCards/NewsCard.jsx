@@ -15,7 +15,7 @@ const NewsCardBig = ({ blog, onClick }) => {
       }}
       className="news-card"
     >
-      <div className="tint p-4 is-flex is-flex-direction-column is-justify-content-space-between is-align-items-center">
+      <div className="tint p-4 is-flex is-flex-direction-column is-justify-content-space-between is-align-items-flex-start">
         {/* HASHTAG - NEWS CATEGORY */}
         <div className="category-tag is-full is-flex is-justify-content-end">
           <CategoryBadge blog={blog} />

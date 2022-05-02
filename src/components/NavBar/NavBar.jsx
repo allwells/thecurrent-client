@@ -8,7 +8,6 @@ import {
   Logout,
   Menu2,
   Search,
-  Settings,
 } from "tabler-icons-react";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -182,14 +181,6 @@ export default function NavBar() {
                   to="/dashboard"
                 >
                   Dashboard
-                </Menu.Item>
-                <Menu.Item
-                  color="blue"
-                  icon={<Settings size={14} />}
-                  component={Link}
-                  to="/settings"
-                >
-                  Settings
                 </Menu.Item>
                 <Divider />
                 <Menu.Label>LOGOUT</Menu.Label>

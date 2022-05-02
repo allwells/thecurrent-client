@@ -47,7 +47,7 @@ const NewsCardSmall = ({ blog, query, handlePost }) => {
               handlePost(blog._id);
             }}
           >
-            Read More <ArrowRight className="right-arrow ml-1" size={20} />
+            View <ArrowRight className="right-arrow ml-1" size={20} />
           </button>
         </div>
       </div>

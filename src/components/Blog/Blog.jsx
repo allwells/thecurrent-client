@@ -71,8 +71,8 @@ export default function Blog() {
       <NavBar />
       <div className="blog-container">
         {loading ? (
-          <div className="loader">
-            <Loader size="sm" variant="bars" />
+          <div className="loading">
+            <Loader size="sm" variant="bars" color={"#485FC7"} />
           </div>
         ) : (
           <>

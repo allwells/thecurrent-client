@@ -3,11 +3,10 @@ import "./Search.css";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Container } from "react-bootstrap";
+import DashboardNewsCards from "../Dashboard/DashboardNewsCards";
 import Footer from "../Footer/Footer";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
-import NewsCardSmall from "../NewsCards/NewsCardSmall";
 import axios from "axios";
 
 export default function Search() {
@@ -40,32 +39,35 @@ export default function Search() {
     <>
       <NavBar />
       <div className="search-container">
-        <h1 className="main-heading">Showing results for "{query}"</h1>
+        <h1 className="main-heading mt-5 subtitle is-6">
+          Showing results for "{query}"
+        </h1>
         {loading ? (
-          <div className="loader">
-            <Loader size="sm" variant="bars" />
+          <div className="loading">
+            <Loader size="md" variant="bars" color={"#485FC7"} />
           </div>
         ) : (
-          <Container>
+          <div className="container">
             {blogs.length > 0 ? (
               blogs.map((blog) => {
                 return (
-                  <NewsCardSmall
+                  <DashboardNewsCards
                     key={blog._id}
                     blog={blog}
                     query={query}
+                    isDashboard={false}
                     handlePost={handlePost}
                   />
                 );
               })
             ) : (
               <>
-                <h1 className="message">
+                <h1 className="subtitle is-6">
                   Sorry, we couldn't find anything for “{query}”
                 </h1>
               </>
             )}
-          </Container>
+          </div>
         )}
       </div>
       <Footer />
