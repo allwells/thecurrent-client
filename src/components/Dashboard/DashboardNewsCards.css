@@ -1,0 +1,96 @@
+.dashboard-cards-container {
+  width: 100%;
+  padding: 1rem;
+  min-height: 10rem;
+  border-radius: 10px;
+  border: 1px solid #2222;
+  box-shadow: 1px 2px 9px #2224;
+}
+
+.dashboard-cards-container .dashboard-card-image {
+  height: 15rem;
+  border-radius: 10px;
+}
+
+.delete-and-edit {
+  gap: 0 20px;
+}
+
+.dashboard-cards-container .read-more-button-container .view-btn {
+  transition-duration: 0.4s;
+  font-size: 13px !important;
+  box-shadow: 0 3px 7px #263da5 !important;
+}
+
+.dashboard-cards-container .read-more-button-container .view-btn:hover {
+  box-shadow: 0 6px 10px #263da5 !important;
+}
+
+.dashboard-cards-container .read-more-button-container .view-btn:active {
+  box-shadow: 0 1px 4px #263da5 !important;
+}
+
+.dashboard-cards-container .read-more-button-container .view-btn .right-arrow {
+  transition-duration: 0.4s;
+}
+
+.dashboard-cards-container
+  .read-more-button-container
+  .view-btn:hover
+  > .right-arrow {
+  padding-left: 8px !important;
+  transform: scale(1.5) !important;
+}
+
+/* FOR EDIT BUTTON */
+.dashboard-cards-container .read-more-button-container .edit-btn {
+  transition-duration: 0.4s;
+  font-size: 13px !important;
+  box-shadow: 0 3px 7px #ddc068 !important;
+}
+
+.dashboard-cards-container .read-more-button-container .edit-btn:hover {
+  box-shadow: 0 6px 10px #ddc068 !important;
+}
+
+.dashboard-cards-container .read-more-button-container .edit-btn:active {
+  box-shadow: 0 1px 4px #ddc068 !important;
+}
+
+/* FOR DELETE BUTTON */
+.dashboard-cards-container .read-more-button-container .delete-btn {
+  transition-duration: 0.4s;
+  font-size: 13px !important;
+  box-shadow: 0 3px 7px #d02446 !important;
+}
+
+.dashboard-cards-container .read-more-button-container .delete-btn:hover {
+  box-shadow: 0 6px 10px #d02446 !important;
+}
+
+.dashboard-cards-container .read-more-button-container .delete-btn:active {
+  box-shadow: 0 1px 4px #d02446 !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .dashboard-cards-container .dashboard-card-image {
+    height: 10rem;
+  }
+
+  .read-more-button-container {
+    gap: 20px 0;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  /* SET Read More BUTTON TO FULL WIDTH */
+  /* .read-more-button-container,
+  .read-more-button-container button.button {
+    width: 100% !important;
+  } */
+
+  h1.title {
+    font-size: 16px !important;
+  }
+}

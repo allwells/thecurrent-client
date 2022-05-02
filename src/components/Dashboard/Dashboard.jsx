@@ -1,23 +1,24 @@
 import "./Dashboard.css";
 
-import { Button, Loader, Tabs } from "@mantine/core";
-import { CirclePlus, LayoutDashboard, Settings } from "tabler-icons-react";
+import {
+  CirclePlus,
+  LayoutDashboard,
+  Settings as SettingsIcon,
+} from "tabler-icons-react";
+import { Loader, Tabs } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 import CreatePost from "../CreatePost/CreatePost";
+import DashboardNewsCards from "./DashboardNewsCards";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
-import NewsCardSmall from "../NewsCards/NewsCardSmall";
+import Settings from "../Setting/Settings";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useViewportSize } from "@mantine/hooks";
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const viewPort = useViewportSize();
-
-  const mobileDeviceScreenWidth = 768;
 
   const notifySuccess = () => toast.success("Deleted Successfully!");
   const notifyError = (message) => toast.error(message);
@@ -26,7 +27,6 @@ export default function Dashboard() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [blogs, setBlogs] = useState([]);
-  const [isBlog] = useState(true);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -90,103 +90,94 @@ export default function Dashboard() {
 
       <div className="dashboard-container">
         <Tabs color="indigo" position="left" tabPadding="xl" grow>
-          <Tabs.Tab label="Dashboard" icon={<LayoutDashboard size={14} />}>
-            Dashboard
+          <Tabs.Tab
+            id="tab"
+            className="post-tab"
+            label="Dashboard"
+            icon={<LayoutDashboard size={14} />}
+          >
+            <DashboardContent
+              loading={loading}
+              blogs={blogs}
+              email={email}
+              handlePost={handlePost}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            />
           </Tabs.Tab>
-          <Tabs.Tab label="Create" icon={<CirclePlus size={14} />}>
+          <Tabs.Tab id="tab" label="Create" icon={<CirclePlus size={14} />}>
             <CreatePost />
           </Tabs.Tab>
-          <Tabs.Tab label="Settings" icon={<Settings size={14} />}>
-            Settings
+          <Tabs.Tab id="tab" label="Settings" icon={<SettingsIcon size={14} />}>
+            <Settings />
           </Tabs.Tab>
         </Tabs>
       </div>
 
-      {/* <div className="dashboard-container">
-        <div
-          style={{
-            position:
-              viewPort >= mobileDeviceScreenWidth ? "static" : "relative",
-          }}
-          className="dashboard-card"
-        >
-          <div className="card">
-            <div className="card-header">Dashboard</div>
-            <div className="card-body">
-              <div className="basic-dashboard">
-                <div>
-                  <div className="user-email">{email}</div>
-                  <div className="user-info">
-                    Posts Published - {blogs.length}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="tab">
-            <Button
-              fullWidth
-              radius="sm"
-              color="dark"
-              variant="default"
-              className="tab-buttons"
-              onClick={() => navigate("/create")}
-            >
-              Create Post
-            </Button> */}
-      {/* <Button
-              fullWidth
-              radius="sm"
-              color="dark"
-              variant="default"
-              className="tab-buttons"
-              onClick={() => navigate("/setting")}
-            >
-              Settings
-            </Button> */}
-      {/* <Button
-              fullWidth
-              radius="sm"
-              color="dark"
-              variant="default"
-              className="tab-buttons"
-              onClick={() => logout()}
-            >
-              Logout
-            </Button>
-          </div>
-        </div> */}
-      {/* {loading ? (
-          <div className="loadingIndicator is-flex is-justify-content-center is-align-items-center">
-            <Loader color={"#485FC7"} size="sm" variant="bars" />
-          </div>
-        ) : (
-          <div className="dashboard-blogs">
-            {isBlog ? (
-              <>
-                <h1 className="title is-3">Your Posts</h1>
-                <div>
-                  {blogs.map((blog) => {
-                    return (
-                      <NewsCardSmall
-                        blog={blog}
-                        key={blog._id}
-                        isDashboard={true}
-                        handlePost={handlePost}
-                        handleEdit={handleEdit}
-                        handleDelete={handleDelete}
-                      />
-                    );
-                  })}
-                </div>
-              </>
-            ) : null}
-          </div>
-        )}
-      </div> */}
       <Toaster />
       <Footer />
     </>
   );
 }
+
+const DashboardContent = ({
+  loading,
+  blogs,
+  email,
+  handlePost,
+  handleEdit,
+  handleDelete,
+}) => {
+  return (
+    <div className="dashboard-posts is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-center">
+      <div className="dashboard-details-container mb-4 is-flex is-full">
+        {/* Dashboard details section */}
+        <div className="dashboard-details is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-center">
+          {/* email of post label */}
+          <span className="total-posts-label mb-2 is-uppercase has-text-grey">
+            Email
+          </span>
+          <span className="total-posts-value has-text-weight-semibold subtitle is-6">
+            {email}
+          </span>
+        </div>
+
+        {/* Dashboard details section */}
+        <div className="dashboard-details is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-center">
+          {/* total number of post label */}
+          <span className="total-posts-label mb-2 is-uppercase has-text-grey">
+            Total posts published
+          </span>
+          {/* Total number of posts */}
+          <span className="total-posts-value title is-2">{blogs.length}</span>
+        </div>
+      </div>
+
+      {loading ? (
+        <div className="loadingIndicator is-flex is-justify-content-center is-align-items-center">
+          <Loader color={"#485FC7"} size="sm" variant="bars" />
+        </div>
+      ) : (
+        <div className="mt-5 is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-center">
+          <h1 className="title is-5 has-text-dark">Your Posts</h1>
+          <div
+            id="post-container"
+            className="is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-center"
+          >
+            {blogs.map((blog) => {
+              return (
+                <DashboardNewsCards
+                  blog={blog}
+                  key={blog._id}
+                  handlePost={handlePost}
+                  handleEdit={handleEdit}
+                  handleDelete={handleDelete}
+                />
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
