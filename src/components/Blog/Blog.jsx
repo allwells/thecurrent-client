@@ -77,8 +77,8 @@ export default function Blog() {
         ) : (
           <>
             <div className="blog">
-              <Card>
-                <h1>{blog.title}</h1>
+              <div className="card">
+                <h1 className="title is-3">{blog.title}</h1>
                 <div className="postHeader">
                   <div className="dateCategory">
                     <DatePublished blog={blog} />
@@ -102,7 +102,7 @@ export default function Blog() {
                     dangerouslySetInnerHTML={{ __html: blog.content }}
                   ></div>
                 </Card.Body>
-              </Card>
+              </div>
             </div>
             <Modal
               className="copy-link"
