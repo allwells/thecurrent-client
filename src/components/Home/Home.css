@@ -96,20 +96,25 @@
     width: 100%;
   }
 
-  .home-container .container .explore {
-    width: 100%;
-    flex-direction: column;
-    place-items: flex-start;
+  .home-container .container #explore {
+    width: 100% !important;
+    flex-direction: column !important;
+    place-items: flex-start !important;
   }
 
-  .home-container .container .explore h1 {
+  .home-container .container #explore h1 {
     margin-right: 0;
     margin-bottom: 1rem;
   }
 
-  .home-container .container .explore div {
-    width: 100%;
-    justify-content: flex-end;
+  .home-container .container #explore #news-cards .post-card {
+    margin-bottom: 20px !important;
+  }
+
+  .home-container .container #explore #news-cards {
+    width: 100% !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
   }
 }
 

@@ -2,11 +2,14 @@ import "./Home.css";
 
 import React, { useEffect, useState } from "react";
 
+import CategoryBadge from "../Badge/CategoryBadge";
+import DatePublished from "../DatePublished/DatePublished";
 import Footer from "../Footer/Footer";
 import { Loader } from "@mantine/core";
 import NavBar from "../NavBar/NavBar";
 import NewsCard from "../NewsCards/NewsCard";
 import NewsCardSmall from "../NewsCards/NewsCardSmall";
+import { Pin as PinnedIcon } from "tabler-icons-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -15,11 +18,12 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const [latestNews, setLatestNews] = useState([]);
+  const [pinned] = useState([]);
 
   useEffect(() => {
     const fetchPosts = () => {
       axios
-        .get(`${process.env.REACT_APP_BASE_URL}/posts`)
+        .get(`${process.env.REACT_APP_BASE_URL}/news`)
         .then((res) => {
           setBlogs(res.data.blogs.reverse().slice(5));
           setLatestNews(
@@ -51,6 +55,53 @@ export default function Home() {
         <div className="latest-news">
           {latestNews.length > 0 ? (
             <div className="">
+              <div className="is-full is-flex is-flex-direction-column is-justify-content-space-between is-flex-wrap-wrap mb-4">
+                <span className="has-text-grey is-size-7 is-uppercase has-text-weight-bold mb-2">
+                  <PinnedIcon size={11} color="#777" /> Pinned Post
+                </span>
+
+                <div className="is-full is-flex is-justify-content-space-between is-flex-wrap-wrap mb-4">
+                  {pinned.map((pin) => {
+                    if (pin._id === "627b91cbbba11933e07b1846") {
+                      return (
+                        <div
+                          key={pin._id}
+                          style={{
+                            backgroundImage: `url(${pin.image})`,
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "cover",
+                          }}
+                          className="news-card"
+                        >
+                          <div className="tint p-4 is-flex is-flex-direction-column is-justify-content-space-between is-align-items-flex-start">
+                            {/* HASHTAG - NEWS CATEGORY */}
+                            <div className="category-tag is-full is-flex is-justify-content-end">
+                              <CategoryBadge blog={pin} />
+                            </div>
+
+                            <div className="is-full">
+                              {/* DATE */}
+                              <DatePublished blog={pin} />
+
+                              {/* CARD TITLE */}
+                              <h3
+                                onClick={() => {
+                                  handlePost(pin._id);
+                                }}
+                                className="title is-6 has-text-light"
+                              >
+                                {pin.title}
+                              </h3>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+              </div>
+
               <h2 id="latest" className="title is-4 mb-4">
                 Latest news
               </h2>
@@ -58,15 +109,20 @@ export default function Home() {
               <div className="is-full is-flex is-justify-content-space-between is-flex-wrap-wrap">
                 {/* DISPLAY LATEST NEWS */}
                 {latestNews.map((blog) => {
-                  return (
-                    <NewsCard
-                      key={blog._id}
-                      blog={blog}
-                      onClick={() => {
-                        handlePost(blog._id);
-                      }}
-                    />
-                  );
+                  if (blog._id === "627b91cbbba11933e07b1846") {
+                    // eslint-disable-next-line
+                    pinned.push(blog);
+                  } else {
+                    return (
+                      <NewsCard
+                        key={blog._id}
+                        blog={blog}
+                        onClick={() => {
+                          handlePost(blog._id);
+                        }}
+                      />
+                    );
+                  }
                 })}
               </div>
             </div>
@@ -78,10 +134,12 @@ export default function Home() {
           </div>
         ) : (
           // EXPLORE NEWS SECTION
-          <div className="container is-flex is-justify-content-center is-align-items-center is-flex-direction-column mb-6 pt-5">
+          <div
+            id="explore"
+            className="container is-flex is-justify-content-center is-align-items-center is-flex-direction-column mb-6 pt-5"
+          >
             {blogs.length > 0 ? (
               <h1
-                id="explore"
                 align="left"
                 style={{ width: "100%" }}
                 className="title is-4 mt-5 pl-2 mb-4"
@@ -90,8 +148,11 @@ export default function Home() {
               </h1>
             ) : null}
             {blogs.length > 0 ? (
-              /* MAP blogs ARRAY AND GET BLOGS */
-              <div className="news-cards is-full is-flex-wrap-wrap is-flex is-justify-content-stretch">
+              /* MAP 'blogs' ARRAY AND GET BLOGS */
+              <div
+                id="news-cards"
+                className="is-full is-flex-wrap-wrap is-flex is-justify-content-stretch"
+              >
                 {blogs.map((blog) => {
                   return (
                     <NewsCardSmall

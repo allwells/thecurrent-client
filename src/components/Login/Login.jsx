@@ -43,7 +43,7 @@ export default function Login() {
     }
 
     axios
-      .post(`/api/auth/login`, {
+      .post(`api/auth/login`, {
         email,
         password,
       })

@@ -2,8 +2,14 @@
 
 A news application for anchor university Faculty of Science and Management Sciences.
 
-## Getting Started
+### Getting started
 
----
+Provide the details to the `.env.local` file
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+`.env.local` file:
+
+    REACT_APP_BASE_URL=<YOUR BASE URL>
+
+Example:
+
+    REACT_APP_BASE_URL='/api/products'

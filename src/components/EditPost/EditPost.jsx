@@ -41,7 +41,7 @@ export default function EditPost() {
       navigate("/login");
     }
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/post/${id}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/news/${id}`)
       .then((res) => {
         setTitle(res.data.blog.title);
         setCategory(res.data.blog.category);

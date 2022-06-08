@@ -46,8 +46,9 @@ export default function Blog() {
           setLoggedIn(false);
         });
     }
+
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/post/${id}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/news/${id}`)
       .then((res) => {
         setBlog(res.data.blog);
         if (loggedIn) {

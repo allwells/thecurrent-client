@@ -18,14 +18,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/edit/:id" element={<EditPost />} />
-          <Route exact path="/news/:id" element={<Blog />} />
-          <Route exact path="/search/:query" element={<Search />} />
-          <Route exact path="/category/:query" element={<Category />} />
-          <Route exact path="/dashboard" element={<Dashboard />} />
-          <Route exact path="*" element={<NotFound />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/edit/:id" element={<EditPost />} />
+          <Route path="/news/:id" element={<Blog />} />
+          <Route path="/search/:query" element={<Search />} />
+          <Route path="/category/:query" element={<Category />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
       <AffiXx />
